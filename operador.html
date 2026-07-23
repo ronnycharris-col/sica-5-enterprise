@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SICA - Registro de Entrada y Salida</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body>
+
+    <script src="js/seguridad.js"></script>
+
+    <div class="login">
+
+        <h1>Registro de Entrada y Salida</h1>
+
+        <label>Documento</label>
+
+        <input
+            type="text"
+            id="documento"
+            readonly>
+
+        <br><br>
+
+        <label>Nombre</label>
+
+        <input
+            type="text"
+            id="nombre"
+            readonly>
+
+        <br><br>
+
+        <label>Punto de Venta</label>
+
+<!--==========================================
+            BUSCAR PUNTO DE VENTA
+===========================================-->
+
+<div class="contenedor-buscador">
+
+    <input
+        type="text"
+        id="buscarPuntoVenta"
+        autocomplete="off"
+        placeholder="Buscar punto de venta...">
+
+    <div
+        id="listaPuntos"
+        class="lista-buscador">
+    </div>
+
+</div>
+
+<!--==========================================
+            SELECT ORIGINAL
+NO SE ELIMINA
+SEGUIRÁ SIENDO USADO POR EL SISTEMA
+===========================================-->
+
+<select id="puntoventa">
+
+    <option value="">
+        Seleccione un punto de venta
+    </option>
+
+</select>
+
+        <br><br>
+
+        <hr>
+
+        <h3>Fotografía</h3>
+
+        <video
+            id="camara"
+            width="320"
+            height="240"
+            autoplay
+            playsinline>
+        </video>
+
+        <br><br>
+
+        <button id="btnFoto">
+
+            📸 Tomar Foto
+
+        </button>
+
+        <br><br>
+
+        <canvas
+            id="foto"
+            width="320"
+            height="240"
+            style="display:none;">
+        </canvas>
+
+        <img
+            id="preview"
+            width="320"
+            style="display:none;border:1px solid black;">
+
+        <br><br>
+
+        <hr>
+
+        <h3>Ubicación GPS</h3>
+
+        <p id="ubicacion">
+
+            Esperando ubicación...
+
+        </p>
+
+        <br><br>
+
+        <button id="btnEntrada">
+
+            Registrar Entrada
+
+        </button>
+
+        <button id="btnSalida">
+
+            Registrar Salida
+
+        </button>
+
+        <br><br>
+
+        <button onclick="location.href='menu.html'">
+
+            Volver al Menú
+
+        </button>
+
+        <br><br>
+
+        <button id="btnLimpiar">
+
+            Limpiar Registros de Prueba
+
+        </button>
+
+        <hr>
+
+        <h2>Registros del Día</h2>
+
+        <table border="1" width="100%">
+
+            <thead>
+
+                <tr>
+
+                    <th>Documento</th>
+
+                    <th>Nombre</th>
+
+                    <th>Punto de Venta</th>
+
+                    <th>Ciudad</th>
+
+                    <th>Fecha</th>
+
+                    <th>Hora</th>
+
+                    <th>Tipo</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tablaRegistros">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script type="module" src="js/operador.js"></script>
+
+</body>
+
+</html>

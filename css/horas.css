@@ -1,0 +1,41 @@
+.lista-empleados{
+
+    display:none;
+
+    background:#fff;
+
+    border:1px solid #d0d7de;
+
+    border-radius:8px;
+
+    max-height:220px;
+
+    overflow-y:auto;
+
+    margin-top:5px;
+
+}
+
+.item-empleado{
+
+    padding:10px 12px;
+
+    color:#222;
+
+    background:#fff;
+
+    cursor:pointer;
+
+    border-bottom:1px solid #eee;
+
+    font-size:14px;
+
+}
+
+.item-empleado:hover{
+
+    background:#0d6efd;
+
+    color:#fff;
+
+}

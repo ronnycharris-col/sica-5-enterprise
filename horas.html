@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Horas Laboradas</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <link rel="stylesheet" href="css/horas.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<script src="js/seguridad.js"></script>
+
+<div class="contenedor">
+
+    <h1>
+
+        <i class="fa-solid fa-clock"></i>
+
+        Horas Laboradas
+
+    </h1>
+
+    <p>
+
+        Consulta de horas ordinarias y horas extras.
+
+    </p>
+
+    <div class="login">
+                <!--==========================================
+                    FECHA INICIAL
+        ===========================================-->
+
+        <label for="fechaInicio">
+
+            Fecha Inicial
+
+        </label>
+
+        <input
+            type="date"
+            id="fechaInicio">
+
+        <br><br>
+
+        <!--==========================================
+                    FECHA FINAL
+        ===========================================-->
+
+        <label for="fechaFin">
+
+            Fecha Final
+
+        </label>
+
+        <input
+            type="date"
+            id="fechaFin">
+
+        <br><br>
+
+        <!--==========================================
+                    EMPLEADO
+        ===========================================-->
+
+        <label for="buscarEmpleado">
+
+            Empleado
+
+        </label>
+
+        <input
+            type="text"
+            id="buscarEmpleado"
+            class="input"
+            placeholder="🔎 Buscar empleado..."
+            autocomplete="off">
+
+        <div
+            id="listaEmpleados"
+            class="lista-empleados">
+
+        </div>
+
+        <input
+            type="hidden"
+            id="empleado">
+
+        <br><br>
+
+        <!--==========================================
+                    PUNTO DE VENTA
+        ===========================================-->
+
+        <label for="buscarPuntoVenta">
+
+            Punto de Venta
+
+        </label>
+
+        <input
+            type="text"
+            id="buscarPuntoVenta"
+            class="input"
+            placeholder="📍 Buscar punto de venta..."
+            autocomplete="off">
+
+        <div
+            id="listaPuntosVenta"
+            class="lista-empleados">
+
+        </div>
+
+        <input
+            type="hidden"
+            id="puntoVenta">
+
+        <br><br>
+                <!--==========================================
+                BOTONES
+===========================================-->
+
+<button id="btnBuscar">
+
+    <i class="fa-solid fa-magnifying-glass"></i>
+
+    Buscar
+
+</button>
+
+<button id="btnLimpiar">
+
+    <i class="fa-solid fa-broom"></i>
+
+    Limpiar
+
+</button>
+
+<button id="btnExcel">
+
+    <i class="fa-solid fa-file-excel"></i>
+
+    Exportar a Excel
+
+</button>
+
+<button
+    id="btnPDF"
+    class="btn btn-danger">
+
+    <i class="fa-solid fa-file-pdf"></i>
+
+    Exportar PDF
+
+</button>
+
+<button
+    type="button"
+    onclick="location.href='menu.html'">
+
+    <i class="fa-solid fa-arrow-left"></i>
+
+    Volver al Menú
+
+</button>
+
+</div>
+
+<br>
+
+    <!--==========================================
+                TABLA DE RESULTADOS
+    ===========================================-->
+
+    <table
+        border="1"
+        width="100%">
+
+        <thead>
+
+            <tr>
+
+                <th>Empleado</th>
+
+                <th>Fecha</th>
+
+                <th>Entrada</th>
+
+                <th>Salida</th>
+
+                <th>Ordinarias</th>
+
+                <th>Extra D</th>
+
+                <th>Extra N</th>
+
+                <th>Total</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tablaHoras">
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <div>
+
+        <strong id="totalRegistros">
+
+            Registros encontrados: 0
+
+        </strong>
+
+    </div>
+        <!--==========================================
+                FIN DEL CONTENEDOR
+    ===========================================-->
+
+</div>
+
+<!--==========================================
+            SCRIPT PRINCIPAL
+===========================================-->
+
+<script type="module" src="js/horas.js"></script>
+
+</body>
+
+</html>

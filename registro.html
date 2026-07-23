@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administración de Usuarios</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body>
+
+<!-- SEGURIDAD -->
+<script src="js/seguridad.js"></script>
+
+<div class="contenedor">
+
+    <h1>Administración de Usuarios</h1>
+
+    <div class="login">
+
+       <label>Empleado</label>
+
+<div class="contenedor-buscador">
+
+    <input
+        type="text"
+        id="buscarEmpleado"
+        placeholder="🔍 Buscar empleado por nombre o documento">
+
+    <div id="listaEmpleados" class="listaBuscador"></div>
+
+</div>
+
+<select id="empleado">
+
+    <option value="">
+        Seleccione un empleado
+    </option>
+
+</select>
+
+    <option value="">
+        Seleccione un empleado
+    </option>
+
+</select>
+<br>
+
+
+        <br><br>
+
+        <label>Usuario</label>
+
+        <input
+            type="text"
+            id="usuario"
+            readonly>
+
+        <small>
+            El usuario será automáticamente el número de documento.
+        </small>
+
+        <br><br>
+
+        <label>Contraseña</label>
+
+        <input
+            type="password"
+            id="clave">
+
+        <br><br>
+
+        <label>Rol</label>
+
+      <select id="tipo">
+
+    <option value="operador">
+
+        Operador
+
+    </option>
+
+    <option value="coordinador">
+
+        Coordinador Ciudades
+
+    </option>
+
+    <option value="administrador">
+
+        Administrador
+
+    </option>
+
+</select>
+        <br><br>
+
+        <button id="btnGuardar">
+
+            Guardar Usuario
+
+        </button>
+
+        <br><br>
+
+        <button onclick="location.href='menu.html'">
+
+            Volver al Menú
+
+        </button>
+
+    </div>
+
+    <br><br>
+
+    <h2>Usuarios Registrados</h2>
+
+    <input
+        type="text"
+        id="buscarUsuario"
+        placeholder="Buscar usuario">
+
+    <br><br>
+
+    <table border="1" width="100%">
+
+        <thead>
+
+            <tr>
+
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tablaUsuarios">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script type="module" src="js/registro.js"></script>
+
+</body>
+
+</html>

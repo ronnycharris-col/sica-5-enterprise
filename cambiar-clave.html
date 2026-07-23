@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SICA 4.0 | Cambio de Contraseña</title>
+
+    <link rel="stylesheet" href="css/cambiar-clave.css">
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <div class="panel">
+
+            <h1>SICA v4.0</h1>
+
+            <h2>Sistema Integral de Control de Acceso</h2>
+
+            <h3>Cambio Obligatorio de Contraseña</h3>
+
+            <hr>
+
+            <div class="datosUsuario">
+
+                <label>Usuario</label>
+
+                <input
+                    type="text"
+                    id="usuario"
+                    readonly>
+
+                <label>Nombre</label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    readonly>
+
+            </div>
+
+            <hr>
+
+            <div id="grupoClaveActual">
+
+    <label>Contraseña Actual</label>
+
+    <input
+        type="password"
+        id="claveActual"
+        placeholder="Ingrese la contraseña actual">
+
+</div>
+
+            <label>Nueva Contraseña</label>
+
+            <input
+                type="password"
+                id="claveNueva"
+                placeholder="Ingrese la nueva contraseña">
+
+            <label>Confirmar Nueva Contraseña</label>
+
+            <input
+                type="password"
+                id="claveConfirmar"
+                placeholder="Confirme la nueva contraseña">
+
+            <br><br>
+
+            <button id="btnGuardar">
+
+                🔐 Actualizar Contraseña
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="js/cambiar-clave.js"></script>
+
+</body>
+
+</html>

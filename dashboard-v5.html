@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SICA 5.0 Enterprise | Centro de Operaciones</title>
+
+    <!--==========================================
+                    ESTILOS
+    ===========================================-->
+
+    <link rel="stylesheet"
+          href="css/dashboard-v5.css">
+
+    <!--==========================================
+                FONT AWESOME
+    ===========================================-->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!--==========================================
+                GOOGLE FONTS
+    ===========================================-->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!--==========================================
+                    LEAFLET
+    ===========================================-->
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+</head>
+
+<body>
+
+    <!--=========================================================
+                    CONTENEDOR GENERAL
+    ==========================================================-->
+
+    <div class="dashboard-container">
+
+        <!--=====================================================
+                        HEADER
+        ======================================================-->
+
+        <header class="dashboard-header">
+
+    <!--======================================
+                LOGO
+    =======================================-->
+
+    <div class="dashboard-logo">
+
+        <div class="logo-card">
+
+            <img
+                src="img/logo.png"
+                alt="SICA">
+
+        </div>
+
+        <div class="logo-info">
+
+            <h1>Centro de Operaciones</h1>
+
+            <p>
+
+                
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!--======================================
+                BUSCADOR
+    =======================================-->
+
+    <div class="dashboard-search">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            type="text"
+            id="txtBuscar"
+            placeholder="Buscar operador...">
+
+    </div>
+
+    <!--======================================
+                PANEL DERECHO
+    =======================================-->
+
+    <div class="dashboard-user">
+
+        <button
+            id="btnTema"
+            class="btnIcono"
+            title="Modo oscuro">
+
+            <i
+                id="iconoTema"
+                class="fa-solid fa-moon">
+
+            </i>
+
+        </button>
+
+        <button class="btnIcono">
+
+            <i class="fa-solid fa-bell"></i>
+
+        </button>
+
+        <button
+    id="btnActualizar"
+    class="btnIcono"
+    title="Actualizar">
+
+    <i class="fa-solid fa-arrows-rotate"></i>
+
+</button>
+
+<button
+    id="btnInicio"
+    class="btnIcono"
+    title="Volver al menú principal">
+
+    <i class="fa-solid fa-house"></i>
+
+</button>
+
+<div class="usuario">
+
+            <i class="fa-solid fa-circle-user"></i>
+
+            <div>
+
+                <strong id="lblUsuario">
+
+                    Administrador
+
+                </strong>
+
+                <small>
+
+                    Sesión Activa
+
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+        <!--=====================================================
+                    RESUMEN DEL TURNO
+        ======================================================-->
+
+        <section class="resumen-turno">
+
+            <div>
+
+                <h2>
+
+                   
+
+                </h2>
+
+                <p id="lblResumen">
+
+                    Monitoreo en tiempo real de toda la operación.
+
+                </p>
+
+            </div>
+
+            <div class="ultimaActualizacion">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <span id="lblHoraActualizacion">
+
+                    Última actualización:
+                    --:--
+
+                </span>
+
+            </div>
+
+        </section>
+
+        <!--=====================================================
+                        KPIs
+        ======================================================-->
+
+        <section class="cards-dashboard">
+                        <!--======================================-->
+
+            <article class="card-dashboard azul">
+
+                <div class="card-icono">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+                <div class="card-info">
+
+                    <span>Operadores</span>
+
+                    <h2 id="kpiOperadores">0</h2>
+
+                    <small>Registrados</small>
+<div class="kpi-progress">
+
+    <div
+        id="barraOperadores"
+        class="kpi-progress-fill"
+        style="width:100%;">
+
+    </div>
+
+</div>
+
+<span
+    id="porcentajeOperadores"
+    class="kpi-porcentaje">
+
+    100%
+
+</span>
+                </div>
+
+            </article>
+
+            <!--======================================-->
+
+            <article class="card-dashboard verde">
+
+                <div class="card-icono">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                </div>
+
+                <div class="card-info">
+
+                    <span>Entradas</span>
+
+                    <h2 id="kpiEntradas">0</h2>
+
+                    <small>Hoy</small>
+<div class="kpi-progress">
+
+    <div
+        id="barraEntradas"
+        class="kpi-progress-fill"
+        style="width:0%;">
+
+    </div>
+
+</div>
+
+<span
+    id="porcentajeEntradas"
+    class="kpi-porcentaje">
+
+    0%
+
+</span>
+                </div>
+
+            </article>
+
+            <!--======================================-->
+
+            <article class="card-dashboard amarillo">
+
+                <div class="card-icono">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                </div>
+
+                <div class="card-info">
+
+                    <span>Salidas</span>
+
+                    <h2 id="kpiSalidas">0</h2>
+
+                    <small>Hoy</small>
+<div class="kpi-progress">
+
+    <div
+        id="barraSalidas"
+        class="kpi-progress-fill"
+        style="width:0%;">
+
+    </div>
+
+</div>
+
+<span
+    id="porcentajeSalidas"
+    class="kpi-porcentaje">
+
+    0%
+
+</span>
+                </div>
+
+            </article>
+
+            <!--======================================-->
+
+            <article class="card-dashboard rojo">
+
+                <div class="card-icono">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                </div>
+
+                <div class="card-info">
+
+                    <span>Pendientes</span>
+
+                    <h2 id="kpiPendientes">0</h2>
+
+                    <small>Requieren atención</small>
+<div class="kpi-progress">
+
+    <div
+        id="barraPendientes"
+        class="kpi-progress-fill"
+        style="width:0%;">
+
+    </div>
+
+</div>
+
+<span
+    id="porcentajePendientes"
+    class="kpi-porcentaje">
+
+    0%
+
+</span>
+                </div>
+
+            </article>
+
+            <!--======================================-->
+
+            <article class="card-dashboard morado">
+
+                <div class="card-icono">
+
+                    <i class="fa-solid fa-store"></i>
+
+                </div>
+
+                <div class="card-info">
+
+                    <span>Puntos de Venta</span>
+
+                    <h2 id="kpiPuntosVenta">0</h2>
+
+                    <small>Activos</small>
+<div class="kpi-progress">
+
+    <div
+        id="barraPV"
+        class="kpi-progress-fill"
+        style="width:100%;">
+
+    </div>
+
+</div>
+
+<span
+    id="porcentajePV"
+    class="kpi-porcentaje">
+
+    100%
+
+</span>
+                </div>
+
+            </article>
+
+        </section>
+
+        <!--=====================================================
+                    CENTRO DE OPERACIONES
+        ======================================================-->
+
+        <section class="centro-operaciones">
+                        <!--==========================================
+                    CENTRO DE OPERACIONES
+            ==========================================-->
+
+            <article class="panel panel-mapa">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+
+                            <i class="fa-solid fa-map-location-dot"></i>
+
+                            Centro de Operaciones
+
+                        </h2>
+
+                        <div class="estado-mapa">
+
+                            <span id="pvOperando">
+
+                                🟢 Operando: 0
+
+                            </span>
+
+                            <span id="pvSinIniciar">
+
+                                🔴 Sin iniciar: 0
+
+                            </span>
+
+                        </div>
+
+                        <p>
+
+                            Monitoreo en tiempo real de todos los puntos de venta.
+
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="btnExpandirMapa"
+                        class="btnPanel">
+
+                        <i class="fa-solid fa-expand"></i>
+
+                    </button>
+
+                </div>
+
+                <div id="mapaContainer"></div>
+
+            </article>
+
+            <!--==========================================
+                    OPERADORES ACTIVOS
+            ==========================================-->
+
+            <article class="panel panel-operadores">
+
+                <div class="panel-header">
+
+                    <h2>
+
+                        <i class="fa-solid fa-users"></i>
+
+                        Operadores Activos
+
+                    </h2>
+
+                </div>
+
+                <div
+                    id="operadoresActivos"
+                    class="lista-operadores">
+
+                </div>
+
+            </article>
+
+            <!--==========================================
+                ACTIVIDAD POR PUNTO DE VENTA
+            ==========================================-->
+
+            <article class="panel panel-grafica">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+
+                            <i class="fa-solid fa-chart-column"></i>
+
+                            Actividad por Punto de Venta
+
+                        </h2>
+
+                        <p>
+
+                            Entradas · Salidas · Pendientes
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="grafica-container">
+
+                    <canvas id="graficaPV"></canvas>
+
+                </div>
+
+                <div class="insights">
+
+                    <div class="insight">
+
+                        <strong>
+
+                            Mayor actividad
+
+                        </strong>
+
+                        <span id="lblMayorActividad">
+
+                            --
+
+                        </span>
+
+                    </div>
+
+                    <div class="insight">
+
+                        <strong>
+
+                            Cumplimiento
+
+                        </strong>
+
+                        <span id="lblCumplimiento">
+
+                            0%
+
+                        </span>
+
+                    </div>
+
+                    <div class="insight">
+
+                        <strong>
+
+                            Pendientes
+
+                        </strong>
+
+                        <span id="lblPendientesPV">
+
+                            0
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!--=====================================================
+                INFORMACIÓN OPERATIVA
+        ======================================================-->
+
+        <section class="operacion-grid">
+                <!--==========================================
+            INDICADORES DEL DÍA
+    ==========================================-->
+
+    <article class="panel">
+
+        <div class="panel-header">
+
+            <h2>
+
+                <i class="fa-solid fa-chart-simple"></i>
+
+                Indicadores del Día
+
+            </h2>
+
+        </div>
+
+        <div class="indicadores-dia">
+
+            <div class="indicador-item">
+
+                <i class="fa-regular fa-clock"></i>
+
+                <div>
+
+                    <span>Hora Pico</span>
+
+                    <strong id="indHoraPico">
+
+                        --
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="indicador-item">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <div>
+
+                    <span>Promedio por Hora</span>
+
+                    <strong id="indPromedio">
+
+                        0
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="indicador-item">
+
+                <i class="fa-solid fa-user-clock"></i>
+
+                <div>
+
+                    <span>Permanencia Promedio</span>
+
+                    <strong id="indPermanencia">
+
+                        --
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="indicador-item">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <div>
+
+                    <span>Salidas Pendientes</span>
+
+                    <strong id="indPendientes">
+
+                        0
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+    <!--==========================================
+            CENTRO DE ALERTAS
+    ==========================================-->
+
+    <article class="panel">
+
+        <div class="panel-header">
+
+            <h2>
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                Centro de Alertas
+
+            </h2>
+
+        </div>
+
+        <div
+            id="centroAlertas"
+            class="lista-alertas">
+
+        </div>
+
+    </article>
+
+</section>
+
+<!--=====================================================
+        TENDENCIAS DEL DÍA
+======================================================-->
+
+<section class="panel">
+
+    <div class="panel-header">
+
+        <h2>
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Tendencias del Día
+
+        </h2>
+
+    </div>
+
+    <div class="grafica-container">
+
+        <canvas id="graficaTendencias"></canvas>
+
+    </div>
+
+    <div class="insights">
+
+        <div class="insight">
+
+            <strong>
+
+                Hora Pico
+
+            </strong>
+
+            <span id="lblHoraPico">
+
+                --
+
+            </span>
+
+        </div>
+
+        <div class="insight">
+
+            <strong>
+
+                Movimientos
+
+            </strong>
+
+            <span id="lblMovimientosHora">
+
+                0
+
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+<!--=====================================================
+        PANEL PUNTO DE VENTA
+======================================================-->
+
+<aside id="panelPV" class="panel-pv">
+
+    <div class="panel-pv-header">
+
+        <h2 id="pvNombre">
+
+            Punto de Venta
+
+        </h2>
+
+        <button id="btnCerrarPV">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+    <div class="panel-pv-body">
+
+        <div id="pvEstado" class="pv-estado">
+
+            🟢 Operando
+
+        </div>
+
+        <div class="pv-card">
+
+            <h3>
+
+                Supervisor
+
+            </h3>
+
+            <p id="pvSupervisor">
+
+                Sin asignar
+
+            </p>
+
+        </div>
+
+        <div class="pv-card">
+
+            <h3>
+
+                Operadores
+
+            </h3>
+
+            <div id="pvOperadores">
+
+                Sin información
+
+            </div>
+
+        </div>
+
+        <div class="pv-card">
+
+            <h3>
+
+                Estadísticas
+
+            </h3>
+
+            <p>
+
+                Entradas:
+                <strong id="pvEntradas">0</strong>
+
+            </p>
+
+            <p>
+
+                Salidas:
+                <strong id="pvSalidas">0</strong>
+
+            </p>
+
+            <p>
+
+                Pendientes:
+                <strong id="pvPendientes">0</strong>
+
+            </p>
+
+        </div>
+
+        <button class="btn-panel">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            Ver Reporte
+
+        </button>
+
+    </div>
+
+</aside>
+
+<!--=====================================================
+        PANEL LATERAL OPERADOR
+======================================================-->
+
+<aside
+    id="panelOperador"
+    class="panel-operador">
+
+    <div class="panel-operador-header">
+
+        <h2>
+
+            Operador
+
+        </h2>
+
+        <button
+            id="btnCerrarPanel">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+    <div class="panel-operador-body">
+
+        <div class="foto-operador">
+
+            <img
+                id="fotoOperador"
+                src="img/user.png"
+                alt="Operador">
+
+        </div>
+
+        <div class="dato">
+
+            <span>Nombre</span>
+
+            <strong id="detalleNombre">--</strong>
+
+        </div>
+
+        <div class="dato">
+
+            <span>Documento</span>
+
+            <strong id="detalleDocumento">--</strong>
+
+        </div>
+
+        <div class="dato">
+
+            <span>Punto de Venta</span>
+
+            <strong id="detallePV">--</strong>
+
+        </div>
+
+        <div class="dato">
+
+            <span>Estado</span>
+
+            <strong id="detalleEstado">--</strong>
+
+        </div>
+
+        <div class="dato">
+
+            <span>Hora Entrada</span>
+
+            <strong id="detalleEntrada">--</strong>
+
+        </div>
+
+        <div class="dato">
+
+            <span>Hora Salida</span>
+
+            <strong id="detalleSalida">--</strong>
+
+        </div>
+
+        <div class="dato">
+
+            <span>Tiempo Laborado</span>
+
+            <strong id="detalleTiempo">--</strong>
+
+        </div>
+
+        <div class="dato">
+
+            <span>Ubicación GPS</span>
+
+            <strong id="detalleGPS">--</strong>
+
+        </div>
+
+    </div>
+
+</aside>
+
+<!--=====================================================
+                FOOTER
+======================================================-->
+
+<footer class="footer-dashboard">
+
+    <span>
+
+        SICA 5.0 Enterprise
+
+    </span>
+
+    <span>
+
+        © 2026 - Centro de Operaciones
+
+    </span>
+
+</footer>
+
+</div>
+
+<!--=====================================================
+                LIBRERÍAS
+======================================================-->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!--=====================================================
+                JAVASCRIPT
+======================================================-->
+
+<script
+    type="module"
+    src="js/dashboard.js">
+
+</script>
+
+</body>
+
+</html>

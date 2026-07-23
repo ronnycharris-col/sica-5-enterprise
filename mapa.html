@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SICA 4.1 | Ubicación del Operador</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <!-- Leaflet -->
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <style>
+
+        #mapa{
+
+            width:100%;
+            height:600px;
+
+            border-radius:12px;
+
+            margin-top:20px;
+
+        }
+
+        .datos{
+
+            margin-top:20px;
+
+            font-size:18px;
+
+            line-height:32px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>
+
+        📍 Ubicación del Operador
+
+    </h1>
+
+    <div class="datos">
+
+        <strong>Documento:</strong>
+
+        <span id="lblDocumento"></span>
+
+        <br>
+
+        <strong>Nombre:</strong>
+
+        <span id="lblNombre"></span>
+
+        <br>
+
+        <strong>Punto de Venta:</strong>
+
+        <span id="lblPunto"></span>
+
+        <br>
+
+        <strong>Tipo:</strong>
+
+        <span id="lblTipo"></span>
+
+        <br>
+
+        <strong>Fecha:</strong>
+
+        <span id="lblFecha"></span>
+
+        <br>
+
+        <strong>Hora:</strong>
+
+        <span id="lblHora"></span>
+
+    </div>
+
+    <div id="mapa"></div>
+
+    <br>
+
+    <button
+        onclick="history.back()">
+
+        ⬅️ Volver
+
+    </button>
+
+</div>
+
+<script
+    type="module"
+    src="js/mapa.js">
+
+</script>
+
+</body>
+
+</html>

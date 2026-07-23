@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        SICA 5.0 Enterprise | Mantenimiento
+
+    </title>
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- FontAwesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Estilos -->
+
+    <link rel="stylesheet"
+          href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+<link rel="stylesheet" href="css/mantenimiento.css">
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <!--====================================
+            ENCABEZADO
+    =====================================-->
+
+    <header class="header">
+
+        <div class="titulo">
+
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            <h1>
+
+                MANTENIMIENTO DEL SISTEMA
+
+            </h1>
+
+        </div>
+
+        <button
+            id="btnInicio"
+            class="btnVolver">
+
+            <i class="fa-solid fa-house"></i>
+
+            Inicio
+
+        </button>
+
+    </header>
+        <!--====================================
+            MÓDULOS DE MANTENIMIENTO
+    =====================================-->
+
+    <section class="gridMantenimiento">
+
+        <!-- USUARIOS -->
+
+        <article class="cardMantenimiento"
+                 id="cardUsuarios">
+
+            <i class="fa-solid fa-users-gear"></i>
+
+            <h2>
+
+                Usuarios
+
+            </h2>
+
+            <p>
+
+                Administrar usuarios, roles y contraseñas.
+
+            </p>
+
+        </article>
+
+        <!-- EMPLEADOS -->
+
+        <article class="cardMantenimiento"
+                 id="cardEmpleados">
+
+            <i class="fa-solid fa-id-card"></i>
+
+            <h2>
+
+                Empleados
+
+            </h2>
+
+            <p>
+
+                Editar información y estado de los empleados.
+
+            </p>
+
+        </article>
+
+        <!-- PUNTOS DE VENTA -->
+
+        <article class="cardMantenimiento"
+                 id="cardPuntos">
+
+            <i class="fa-solid fa-store"></i>
+
+            <h2>
+
+                Puntos de Venta
+
+            </h2>
+
+            <p>
+
+                Crear, editar, activar y desactivar puntos de venta.
+
+            </p>
+
+        </article>
+
+        <!-- REGISTROS -->
+
+        <article class="cardMantenimiento"
+                 id="cardRegistros">
+
+            <i class="fa-solid fa-clipboard-list"></i>
+
+            <h2>
+
+                Registros
+
+            </h2>
+
+            <p>
+
+                Eliminar registros y realizar mantenimiento de datos.
+
+            </p>
+
+        </article>
+
+    </section>
+        <!--====================================
+            SEGUNDA FILA
+    =====================================-->
+
+    <section class="gridMantenimiento">
+
+        <!-- SEGURIDAD -->
+
+        <article class="cardMantenimiento"
+                 id="cardSeguridad">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h2>
+
+                Seguridad
+
+            </h2>
+
+            <p>
+
+                Administrar sesiones, accesos y permisos especiales.
+
+            </p>
+
+        </article>
+
+        <!-- HERRAMIENTAS -->
+
+        <article class="cardMantenimiento"
+                 id="cardHerramientas">
+
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            <h2>
+
+                Herramientas
+
+            </h2>
+
+            <p>
+
+                Sincronizar, optimizar y verificar el sistema.
+
+            </p>
+
+        </article>
+
+        <!-- ESTADO DEL SISTEMA -->
+
+        <article class="cardMantenimiento"
+                 id="cardSistema">
+
+            <i class="fa-solid fa-server"></i>
+
+            <h2>
+
+                Estado del Sistema
+
+            </h2>
+
+            <p id="lblEstadoSistema">
+
+                Firebase conectado.
+
+            </p>
+
+        </article>
+
+        <!-- INFORMACIÓN -->
+
+        <article class="cardMantenimiento"
+                 id="cardInfo">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <h2>
+
+                Información
+
+            </h2>
+
+            <p>
+
+                SICA 5.0 Enterprise
+                <br>
+                Centro de Administración.
+
+            </p>
+
+        </article>
+
+    </section>
+
+    <!--====================================
+            PANEL DE TRABAJO
+    =====================================-->
+
+    <section
+        class="panelTrabajo"
+        id="panelTrabajo">
+
+        <h2>
+
+            Bienvenido al Centro de Mantenimiento
+
+        </h2>
+
+        <p>
+
+            Seleccione un módulo para comenzar.
+
+        </p>
+
+    </section>
+        <!--====================================
+            PIE DE PÁGINA
+    =====================================-->
+
+    <footer class="footerMantenimiento">
+
+        <span>
+
+            SICA 5.0 Enterprise
+
+        </span>
+
+        <span>
+
+            Centro de Administración del Sistema
+
+        </span>
+
+    </footer>
+
+</div>
+
+<!--====================================
+        JAVASCRIPT
+=====================================-->
+
+<script
+    type="module"
+    src="js/mantenimiento.js">
+
+</script>
+</body>
+
+</html>

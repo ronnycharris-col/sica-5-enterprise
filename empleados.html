@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro de Empleados</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body>
+
+<!-- SEGURIDAD -->
+<script src="js/seguridad.js"></script>
+
+<div class="contenedor">
+
+    <h1>Administración de Empleados</h1>
+
+    <div class="login">
+
+        <label>Documento</label>
+        <input type="text" id="documento">
+
+        <br><br>
+
+        <label>Nombre Completo</label>
+        <input type="text" id="nombre">
+
+        <br><br>
+
+        <label>Punto de Venta</label>
+
+        <select id="puntoventa">
+
+            <option value="">Seleccione un punto de venta</option>
+
+        </select>
+
+        <br><br>
+
+        <button id="btnGuardar" data-modo="nuevo">
+            Guardar Empleado
+        </button>
+
+        <br><br>
+
+        <button onclick="location.href='menu.html'">
+
+            Volver al Menú
+
+        </button>
+
+    </div>
+
+    <br><br>
+
+    <h2>Búsqueda de Empleados Registrados</h2>
+
+    <input
+        type="text"
+        id="buscarEmpleado"
+        placeholder="Buscar por documento o nombre">
+
+    <br><br>
+
+    <table border="1" width="100%">
+
+        <thead>
+
+            <tr>
+
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Punto de Venta</th>
+                <th>Acciones</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tablaEmpleados">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script type="module" src="js/empleados.js"></script>
+
+</body>
+
+</html>

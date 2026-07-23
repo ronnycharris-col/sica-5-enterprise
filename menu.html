@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>RCH Systems | Menú Principal</title>
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- FontAwesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Estilos -->
+
+    <link rel="stylesheet"
+          href="css/estilos.css">
+
+    
+     <link rel="stylesheet"
+      href="css/menu-premium.css">
+
+</head>
+
+<body>
+
+<div class="contenedor-menu">
+
+    <!--====================================
+    ENCABEZADO
+    ====================================-->
+
+    <header class="header">
+
+        <div class="header-izquierda">
+
+            <div class="logoEmpresa">
+
+                <img
+                    src="img/logo.png"
+                    alt="Logo">
+
+            </div>
+<div class="tituloSistema">
+
+<small class="marca">
+    RCH Systems
+</small>
+
+<h1>
+    SICA Enterprise
+</h1>
+
+<p class="subtitulo">
+    Sistema Integral de Control de Acceso
+</p>
+
+<small class="version">
+    Versión 6.0
+</small>
+
+</div>
+            
+        </div>
+
+        <div class="usuario">
+
+            <div class="avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div class="datosUsuario">
+
+                <span id="nombreUsuario"></span>
+
+                <small id="rolUsuario">
+
+                    Bienvenido
+
+                </small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!--====================================
+    TÍTULO
+    ====================================-->
+
+    <div class="tituloMenu">
+
+        <div class="linea"></div>
+
+        <h2>
+
+            MENÚ PRINCIPAL
+
+        </h2>
+
+        <div class="linea"></div>
+
+    </div>
+
+    <!--====================================
+    MENÚ
+    ====================================-->
+
+    <div class="menu">
+                <!-- PANEL DE CONTROL -->
+
+        <button id="btnDashboard"
+                onclick="location.href='dashboard-v5.html'">
+
+            <div class="iconoMenu">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+            </div>
+
+            <h3>Panel de Control</h3>
+
+            <p>
+
+                Visualice estadísticas e indicadores del sistema.
+
+            </p>
+
+            <div class="accion">
+
+                <i class="fa-solid fa-eye"></i>
+
+            </div>
+
+       
+
+       
+
+        </button>
+
+        <!-- USUARIOS -->
+
+        <button id="btnUsuarios"
+                onclick="location.href='registro.html'">
+
+            <div class="iconoMenu">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+            </div>
+
+            <h3>Usuarios</h3>
+
+            <p>
+
+                Administre usuarios, roles y permisos del sistema.
+
+            </p>
+
+            <div class="accion">
+
+                <i class="fa-solid fa-gear"></i>
+
+            </div>
+
+        </button>
+
+        <!-- EMPLEADOS -->
+
+        <button id="btnEmpleados"
+                onclick="location.href='empleados.html'">
+
+            <div class="iconoMenu">
+
+                <i class="fa-solid fa-id-card"></i>
+
+            </div>
+
+            <h3>Empleados</h3>
+
+            <p>
+
+                Gestione la información de los empleados registrados.
+
+            </p>
+
+            <div class="accion">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+        </button>
+
+        <!-- PUNTOS DE VENTA -->
+
+        <button id="btnPuntos"
+                onclick="location.href='puntoventa.html'">
+
+            <div class="iconoMenu">
+
+                <i class="fa-solid fa-store"></i>
+
+            </div>
+
+            <h3>Puntos de Venta</h3>
+
+            <p>
+
+                Administre sedes y puntos de venta autorizados.
+
+            </p>
+
+            <div class="accion">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+            </div>
+
+        </button>
+                <!-- ENTRADAS / SALIDAS -->
+
+        <button id="btnOperador"
+                onclick="location.href='operador.html'">
+
+            <div class="iconoMenu">
+
+                <i class="fa-solid fa-camera"></i>
+
+            </div>
+
+            <h3>Entradas / Salidas</h3>
+
+            <p>
+
+                Registre ingresos y salidas del personal en tiempo real.
+
+            </p>
+
+            <div class="accion">
+
+                <i class="fa-solid fa-camera"></i>
+
+            </div>
+
+        </button>
+
+        <!-- CONSULTAR REGISTROS -->
+
+        <button id="btnConsultar"
+                onclick="location.href='consultar.html'">
+
+            <div class="iconoMenu">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+            </div>
+
+            <h3>Consultar Registros</h3>
+
+            <p>
+
+                Consulte el historial de registros y realice búsquedas.
+
+            </p>
+
+            <div class="accion">
+
+                <i class="fa-solid fa-clipboard-list"></i>
+
+            </div>
+
+        </button>
+
+        <!-- RESPALDO -->
+
+        <button id="btnBackup"
+                onclick="location.href='backup.html'">
+
+            <div class="iconoMenu">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+            </div>
+
+            <h3>Respaldo</h3>
+
+            <p>
+
+                Genere copias de seguridad y exporte la información.
+
+            </p>
+
+            <div class="accion">
+
+                <i class="fa-solid fa-cloud-arrow-down"></i>
+
+            </div>
+
+        </button>
+<!-- HORAS LABORADAS -->
+
+<button id="btnHoras"
+
+        onclick="location.href='horas.html'">
+
+    <div class="iconoMenu">
+
+        <i class="fa-solid fa-clock"></i>
+
+    </div>
+
+    <h3>Horas Laboradas</h3>
+
+    <p>
+
+        Consulte horas ordinarias y extras por empleado y período.
+
+    </p>
+
+    <div class="accion">
+
+        <i class="fa-solid fa-business-time"></i>
+
+    </div>
+
+</button>
+        <!-- MANTENIMIENTO -->
+
+        <button id="btnMantenimiento"
+                onclick="location.href='mantenimiento.html'">
+
+            <div class="iconoMenu">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            </div>
+
+            <h3>Mantenimiento</h3>
+
+            <p>
+
+                Herramientas exclusivas para administradores autorizados.
+
+            </p>
+
+            <div class="accion">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+            </div>
+
+        </button>
+
+    </div>
+
+    <button class="cerrar" id="btnCerrarSesion">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Cerrar Sesión
+
+    </button>
+
+    <footer>
+
+    © 2026 RCH Systems | Sistema Integral de Control de Acceso
+
+</footer>
+
+</div>
+
+<script
+    type="module"
+    src="js/menu.js">
+</script>
+
+</body>
+
+</html>

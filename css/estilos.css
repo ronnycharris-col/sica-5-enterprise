@@ -1,0 +1,1179 @@
+/*====================================================
+    SICA 4.1
+    ESTILOS GENERALES
+====================================================*/
+
+/*====================================================
+RESET
+====================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+/*====================================================
+BODY
+====================================================*/
+
+body{
+
+    font-family:'Poppins', Arial, sans-serif;
+
+    background:#0057B8;
+
+    color:white;
+
+}
+
+/*====================================================
+CONTENEDORES
+====================================================*/
+
+.login{
+
+    width:100%;
+    max-width:600px;
+
+    margin:60px auto;
+
+    padding:50px;
+
+    background:linear-gradient(180deg,#0B57D0,#003F88);
+
+    border-radius:24px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+
+    border:1px solid rgba(255,255,255,.15);
+position:relative;
+}
+
+.contenedor{
+
+    width:95%;
+    max-width:1300px;
+
+    margin:30px auto;
+
+    background:#0057B8;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.30);
+
+}
+
+/*====================================================
+TÍTULOS
+====================================================*/
+
+h1{
+
+    text-align:center;
+
+    font-size:36px;
+
+    color:white;
+
+    margin-bottom:10px;
+
+}
+
+h2{
+
+    text-align:center;
+
+    color:#FFD54F;
+
+    margin-bottom:25px;
+
+}
+
+h3{
+
+    color:white;
+
+}
+
+/*====================================================
+TEXTOS
+====================================================*/
+
+p{
+
+    line-height:1.6;
+
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+/*====================================================
+INPUTS
+====================================================*/
+
+input,
+select{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    margin-bottom:18px;
+
+    font-size:15px;
+
+    background:white;
+
+    color:#003F88;
+
+}
+
+input:focus,
+select:focus{
+
+    outline:none;
+
+    box-shadow:0 0 10px #FFD54F;
+
+}
+
+/*====================================================
+BOTONES
+====================================================*/
+
+button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#F4D35E;
+
+    color:#003F88;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    background:#FFD54F;
+
+}
+
+/*======================================
+BOTÓN CERRAR SESIÓN
+======================================*/
+
+.cerrar{
+
+    display:block;
+
+    width:260px;
+
+    margin:35px auto 20px;
+
+    padding:15px 25px;
+
+    background:#e53935;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+
+}
+
+.cerrar i{
+
+    margin-right:10px;
+
+}
+
+.cerrar:hover{
+
+    background:#c62828;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.35);
+
+}
+
+.cerrar:active{
+
+    transform:scale(.97);
+
+}
+/*====================================================
+TABLAS
+====================================================*/
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:white;
+
+    color:#003F88;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+th{
+
+    background:#F4D35E;
+
+    color:#003F88;
+
+    padding:12px;
+
+    font-size:15px;
+
+    text-align:center;
+
+}
+
+td{
+
+    padding:10px;
+
+    text-align:center;
+
+    border-bottom:1px solid #E5E5E5;
+
+}
+
+tbody tr:nth-child(even){
+
+    background:#F8F9FA;
+
+}
+
+tbody tr:hover{
+
+    background:#FFF5CC;
+
+}
+
+/*====================================================
+IMÁGENES
+====================================================*/
+
+img{
+
+    max-width:100%;
+
+    border-radius:10px;
+
+}
+
+video{
+
+    width:100%;
+
+    max-width:420px;
+
+    border-radius:10px;
+
+    border:4px solid #F4D35E;
+
+}
+
+/*====================================================
+MENÚ PRINCIPAL
+====================================================*/
+
+.header{
+
+    background:#0057B8;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 35px;
+
+    border-radius:20px;
+
+    margin-bottom:35px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.header-izquierda{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+.logoEmpresa{
+
+    background:white;
+
+    padding:12px;
+
+    border-radius:15px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.logoEmpresa img{
+
+    width:150px;
+
+    height:auto;
+
+    border:none;
+
+    border-radius:0;
+
+    box-shadow:none;
+
+}
+
+.tituloSistema{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.header h1{
+
+    margin:0;
+
+    color:white;
+
+    font-size:42px;
+
+    letter-spacing:2px;
+
+    text-align:left;
+
+}
+
+.header p{
+
+    margin-top:6px;
+
+    color:#DCEEFF;
+
+    font-size:17px;
+
+}
+
+.usuario{
+
+    background:white;
+
+    color:#0057B8;
+
+    padding:14px 24px;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    font-size:17px;
+
+}
+
+/*====================================================
+BOTONES DEL MENÚ
+====================================================*/
+
+.menu{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+    margin-top:35px;
+
+}
+
+.menu button{
+
+    height:210px;
+
+    background:#F4D35E;
+
+    color:#003F88;
+
+    border-radius:18px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    transition:.30s;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.20);
+
+}
+
+.menu button i{
+
+    font-size:48px;
+
+    margin-bottom:15px;
+
+}
+
+.menu button span{
+
+    display:block;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+}
+
+.menu button small{
+
+    display:block;
+
+    text-align:center;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+    color:#003F88;
+
+    padding:0 12px;
+
+}
+
+.menu button:hover{
+
+    background:white;
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.25);
+
+}
+/*====================================================
+DASHBOARD PROFESIONAL
+====================================================*/
+
+.dashboard{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-top:30px;
+
+}
+
+.tarjeta{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+
+    transition:.30s;
+
+}
+
+.tarjeta:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.25);
+
+}
+
+.tarjeta h1{
+
+    color:#0057B8;
+
+    font-size:46px;
+
+    margin-top:10px;
+
+}
+
+.tarjeta h2{
+
+    font-size:48px;
+
+    margin-bottom:10px;
+
+}
+
+.tarjeta h3{
+
+    color:#666;
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+/*====================================================
+COLORES TARJETAS
+====================================================*/
+
+.azul{
+
+    border-top:8px solid #0d6efd;
+
+}
+
+.verde{
+
+    border-top:8px solid #198754;
+
+}
+
+.naranja{
+
+    border-top:8px solid #fd7e14;
+
+}
+
+.roja{
+
+    border-top:8px solid #dc3545;
+
+}
+
+.morada{
+
+    border-top:8px solid #6f42c1;
+
+}
+
+/*====================================================
+GRÁFICA
+====================================================*/
+
+#graficaEntradas{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+
+}
+
+/*====================================================
+TABLA DASHBOARD
+====================================================*/
+
+#tablaDashboard th,
+#tablaDashboard td{
+
+    text-align:center;
+
+    padding:10px;
+
+}
+
+/*====================================================
+MODAL FOTOGRAFÍAS
+====================================================*/
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    z-index:9999;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.85);
+
+}
+
+#imagenGrande{
+
+    display:block;
+
+    margin:auto;
+
+    margin-top:40px;
+
+    max-width:90%;
+
+    max-height:85%;
+
+    border-radius:12px;
+
+    border:none;
+
+    box-shadow:0 0 20px white;
+
+}
+
+#cerrarModal{
+
+    position:absolute;
+
+    top:20px;
+
+    right:35px;
+
+    color:white;
+
+    font-size:48px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+/*====================================================
+FOOTER
+====================================================*/
+
+footer{
+
+    text-align:center;
+
+    margin-top:35px;
+
+    color:white;
+
+    font-size:14px;
+
+}
+/*====================================================
+HR
+====================================================*/
+
+hr{
+
+    border:1px solid rgba(255,255,255,.25);
+
+    margin:25px 0;
+
+}
+
+/*====================================================
+LISTAS
+====================================================*/
+
+ul{
+
+    margin-left:25px;
+
+    line-height:2;
+
+}
+
+li{
+
+    margin-bottom:6px;
+
+}
+
+/*====================================================
+SCROLL
+====================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#EAEAEA;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#F4D35E;
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#FFD54F;
+
+}
+
+/*====================================================
+RESPONSIVE TABLETS
+====================================================*/
+
+@media(max-width:1100px){
+
+    .menu{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .header{
+
+        flex-direction:column;
+
+        gap:25px;
+
+        text-align:center;
+
+    }
+
+    .header-izquierda{
+
+        flex-direction:column;
+
+    }
+
+    .header h1{
+
+        text-align:center;
+
+    }
+
+}
+
+/*====================================================
+RESPONSIVE CELULARES
+====================================================*/
+
+@media(max-width:700px){
+
+    .menu{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .dashboard{
+
+        grid-template-columns:1fr;
+
+    }
+
+    h1{
+
+        font-size:28px;
+
+    }
+
+    .logoEmpresa img{
+
+        width:110px;
+
+    }
+
+    .usuario{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+}
+/*====================================================
+MODAL EXPORTAR EXCEL
+====================================================*/
+
+.ventanaExcel{
+
+    background:white;
+
+    width:420px;
+
+    max-width:90%;
+
+    margin:8% auto;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.ventanaExcel h2{
+
+    color:#003F88;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+}
+
+.ventanaExcel label{
+
+    color:#003F88;
+
+    font-weight:bold;
+
+}
+
+.ventanaExcel input{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #CCC;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+}
+
+#btnGenerarExcel{
+
+    background:#FFC72C;
+
+    color:#003F88;
+
+    font-weight:bold;
+
+}
+
+#btnCancelarExcel{
+
+    background:#D62828;
+
+    color:white;
+
+}
+/*=========================================
+            MODAL MAPA
+=========================================*/
+
+/*=========================================
+            MODAL MAPA
+=========================================*/
+
+.modal-mapa{
+
+    position:relative;
+
+    background:#ffffff;
+
+    width:900px;
+
+    max-width:95%;
+
+    margin:auto;
+
+    padding:25px;
+
+    border-radius:18px;
+
+}
+
+#mapaRegistro{
+
+    width:100%;
+
+    height:500px;
+
+    border-radius:12px;
+
+}
+
+#cerrarMapa{
+
+    position:absolute;
+
+    top:10px;
+
+    right:20px;
+
+    color:#d32f2f;
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+}
+
+#cerrarMapa:hover{
+
+    color:#ff0000;
+
+}
+#modalMapa{
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+/*==========================================
+BUSCADOR INTELIGENTE SICA
+==========================================*/
+
+.listaBuscador,
+.lista-buscador{
+
+    display:none;
+    position:absolute;
+    width:100%;
+    background:#ffffff;
+    border:1px solid #dcdcdc;
+    border-radius:10px;
+    max-height:320px;
+    overflow-y:auto;
+    margin-top:4px;
+    box-shadow:0 8px 20px rgba(0,0,0,.20);
+    z-index:9999;
+
+}
+
+.itemBuscador,
+.item-empleado{
+
+    padding:12px 14px;
+    cursor:pointer;
+    border-bottom:1px solid #eeeeee;
+    transition:.20s;
+
+}
+.itemBuscador:hover,
+.item-empleado:hover{
+
+    background:#EAF4FF;
+
+}
+
+.itemBuscador strong,
+.item-empleado strong{
+
+    display:block;
+    color:#0B57D0;
+    font-size:14px;
+
+}
+
+.itemBuscador span,
+.item-empleado small{
+
+    display:block;
+    color:#666;
+    font-size:12px;
+
+}
+/*====================================================
+CONTENEDOR BUSCADOR
+====================================================*/
+
+.contenedor-buscador{
+
+    position:relative;
+
+}
+
+.listaBuscador,
+.lista-buscador{
+
+    position:absolute;
+
+    top:100%;
+
+    left:0;
+
+    right:0;
+
+    width:100%;
+
+    z-index:9999;
+
+}
+/*====================================================
+OCULTAR SELECT DE PUNTO DE VENTA
+====================================================*/
+
+
+/*====================================================
+RCH SYSTEMS
+====================================================*/
+
+.logo-r/*====================================================
+RCH SYSTEMS LOGIN
+====================================================*/
+
+.logo-rch{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.logo-rch h1{
+
+    margin:0;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    line-height:1;
+
+}
+
+
+.logo-rch .marca{
+
+    margin-top:4px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    letter-spacing:3px;
+
+    color:#FFD54A;
+
+}
+
+.logo-rch .tituloSistema{
+
+    margin-top:20px;
+
+    color:#FFFFFF;
+
+    font-size:40px;
+
+    font-weight:100;
+
+    line-height:1.15;
+
+}
+
+.logo-rch .version{
+
+    display:block;
+
+    margin-top:14px;
+
+    color:#57C7FF;
+
+    font-size:12px;
+
+    font-weight:350;
+
+}
+
+
+/*====================================================
+FIN SICA 5.1
+====================================================*/

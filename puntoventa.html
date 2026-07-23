@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Puntos de Venta</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body>
+
+<!-- SEGURIDAD -->
+<script src="js/seguridad.js"></script>
+
+<div class="login">
+
+    <h1>Administración de Puntos de Venta</h1>
+       
+    <label>Nombre del Punto de Venta</label>
+    <input
+    type="text"
+    id="nombre"
+    placeholder="Ejemplo: Centro Comercial Andino"
+    maxlength="100"
+    autocomplete="off">
+
+    <br><br>
+
+    <label>Ciudad</label>
+<input
+    type="text"
+    id="ciudad"
+    placeholder="Ejemplo: Bogotá"
+    maxlength="60"
+    autocomplete="off">
+
+    <br><br>
+
+    <button onclick="guardarPuntoVenta()">
+        Guardar Punto de Venta
+    </button>
+
+    <br><br>
+
+    <button onclick="location.href='menu.html'">
+        Volver al Menú
+    </button>
+
+</div>
+
+<script type="module" src="js/puntoventa.js"></script>
+
+</body>
+</html>

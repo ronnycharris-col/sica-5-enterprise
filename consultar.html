@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Consulta de Registros</title>
+
+    <link rel="stylesheet"
+          href="css/estilos.css">
+
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+</head>
+
+<body>
+
+<!--==========================================
+                SEGURIDAD
+===========================================-->
+
+<script src="js/seguridad.js"></script>
+
+<div class="contenedor">
+
+    <h1>Consulta de Registros</h1>
+
+    <div class="login">
+
+        <!--==========================================
+                    DOCUMENTO
+        ===========================================-->
+
+        <label>Documento</label>
+
+        <input
+            type="text"
+            id="buscarDocumento"
+            placeholder="Buscar por documento">
+
+        <br><br>
+
+        <!--==========================================
+                    EMPLEADO
+        ===========================================-->
+
+        <div class="contenedor-buscador">
+
+    <label>Empleado</label>
+
+    <input
+        type="text"
+        id="buscarNombre"
+        autocomplete="off"
+        placeholder="Buscar empleado...">
+
+    <input
+        type="hidden"
+        id="empleado">
+
+    <div
+        id="listaEmpleados"
+        class="lista-buscador">
+    </div>
+
+</div>
+        <br><br>
+
+        <!--==========================================
+                    CIUDAD
+        ===========================================-->
+
+        <label>Ciudad</label>
+
+        <select id="buscarCiudad">
+
+            <option value="">
+                Todas
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <!--==========================================
+                PUNTO DE VENTA
+        ===========================================-->
+
+        <label>Punto de Venta</label>
+
+        <select id="buscarPunto">
+
+            <option value="">
+                Todos
+            </option>
+
+        </select>
+
+        <br><br>
+                <!--==========================================
+                    TIPO
+        ===========================================-->
+
+        <label>Tipo</label>
+
+        <select id="buscarTipo">
+
+            <option value="">
+                Todos
+            </option>
+
+            <option value="Entrada">
+                Entrada
+            </option>
+
+            <option value="Salida">
+                Salida
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <!--==========================================
+                FECHA DESDE
+        ===========================================-->
+
+        <label>Fecha Desde</label>
+
+        <input
+            type="date"
+            id="buscarFechaDesde">
+
+        <br><br>
+
+        <!--==========================================
+                FECHA HASTA
+        ===========================================-->
+
+        <label>Fecha Hasta</label>
+
+        <input
+            type="date"
+            id="buscarFechaHasta">
+
+        <br><br>
+
+        <!--==========================================
+                    BOTONES
+        ===========================================-->
+
+        <button id="btnBuscar">
+
+            Buscar
+
+        </button>
+
+        <button id="btnLimpiar">
+
+            Limpiar
+
+        </button>
+
+        <button id="btnExcel">
+
+            📊 Exportar a Excel
+
+        </button>
+
+        <button
+            onclick="location.href='menu.html'">
+
+            Volver al Menú
+
+        </button>
+
+    </div>
+
+    <br>
+
+    <!--==========================================
+                    TABLA
+    ===========================================-->
+
+    <table
+        border="1"
+        width="100%">
+
+        <thead>
+
+            <tr>
+
+                <th>Documento</th>
+
+                <th>Nombre</th>
+
+                <th>Punto de Venta</th>
+
+                <th>Fecha</th>
+
+                <th>Hora</th>
+
+                <th>Tipo</th>
+
+                <th>Foto</th>
+
+                <th>Mapa</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tablaConsulta">
+
+        </tbody>
+
+    </table>
+
+</div>
+<!--==================================================
+                    MODAL FOTO
+===================================================-->
+
+<div id="modalFoto" class="modal">
+
+    <span id="cerrarModal">&times;</span>
+
+    <img id="imagenGrande">
+
+</div>
+
+<!--==================================================
+                    MODAL MAPA
+===================================================-->
+
+<div id="modalMapa" class="modal">
+
+    <div class="modal-mapa">
+
+        <span id="cerrarMapa">&times;</span>
+
+        <h2>Ubicación del Registro</h2>
+
+        <div id="mapaRegistro"></div>
+
+        <br>
+
+        <button id="btnGoogleMaps">
+
+            📍 Abrir en Google Maps
+
+        </button>
+
+    </div>
+
+</div>
+
+<!--==========================================
+                LEAFLET
+===========================================-->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!--==========================================
+                SICA
+===========================================-->
+
+<script type="module" src="js/consultar-v2.js"></script>
+
+</body>
+
+</html>

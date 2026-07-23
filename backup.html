@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Respaldo del Sistema</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body>
+
+<!-- SEGURIDAD -->
+<script src="js/seguridad.js"></script>
+
+<div class="login">
+
+    <h1>💾 Respaldo del Sistema</h1>
+
+    <p style="text-align:center; line-height:1.6;">
+        Este módulo permite crear y restaurar copias de seguridad del sistema.
+    </p>
+
+    <hr>
+
+    <p><strong>El respaldo incluye:</strong></p>
+
+    <ul style="line-height:2;">
+        <li>👤 Usuarios</li>
+        <li>👷 Empleados</li>
+        <li>🏪 Puntos de Venta</li>
+        <li>📝 Registros de Entrada y Salida</li>
+        <li>📷 Fotografías</li>
+    </ul>
+
+    <br>
+
+    <button onclick="crearRespaldo()">
+        💾 Crear Respaldo
+    </button>
+
+    <br><br>
+
+    <input
+        type="file"
+        id="archivoRespaldo"
+        accept=".json">
+
+    <br><br>
+
+    <button onclick="restaurarRespaldo()">
+        📂 Restaurar Respaldo
+    </button>
+
+    <br><br>
+
+    <button onclick="location.href='menu.html'">
+        ⬅️ Volver al Menú
+    </button>
+
+</div>
+
+<script src="js/backup.js"></script>
+
+</body>
+
+</html>

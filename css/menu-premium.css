@@ -1,0 +1,1152 @@
+/*==================================================
+ SICA ENTERPRISE v6.0
+ MENU PREMIUM
+ RCH Systems
+==================================================*/
+
+/*==================================================
+ VARIABLES
+==================================================*/
+
+:root{
+
+    --azul:#0057B8;
+    --azulOscuro:#003E87;
+
+    --amarillo:#FFC928;
+
+    --verde:#22C55E;
+
+    --morado:#7C3AED;
+
+    --rojo:#EF4444;
+
+    --gris:#6B7280;
+
+    --grisClaro:#F5F7FB;
+
+    --blanco:#FFFFFF;
+
+    --texto:#1F2937;
+
+    --sombra:
+        0 15px 35px rgba(0,0,0,.12);
+
+}
+
+/*==================================================
+ RESET
+==================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+/*==================================================
+ BODY
+==================================================*/
+
+body{
+
+    font-family:"Poppins",sans-serif;
+
+    background:linear-gradient(
+        180deg,
+        #0057B8,
+        #0052AE,
+        #004DA5
+    );
+
+    color:var(--texto);
+
+    min-height:100vh;
+
+}
+
+/*==================================================
+ CONTENEDOR
+==================================================*/
+
+.contenedor-menu{
+
+    width:min(1400px,95%);
+
+    margin:auto;
+
+    padding:20px 0 40px;
+
+}
+
+/*==================================================
+ HEADER
+==================================================*/
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:linear-gradient(
+        90deg,
+        #0D67C9,
+        #0A5FBE
+    );
+
+    border-radius:20px;
+
+    padding:24px 30px;
+
+    box-shadow:var(--sombra);
+
+}
+
+/*==================================================
+ LADO IZQUIERDO
+==================================================*/
+
+.header-izquierda{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+/*==================================================
+ LOGO
+==================================================*/
+
+.logoEmpresa{
+
+    width:120px;
+
+    height:78px;
+
+    background:white;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.15);
+
+}
+
+.logoEmpresa img{
+
+    max-width:92%;
+
+    max-height:92%;
+
+}
+
+/*==================================================
+ TITULO
+==================================================*/
+
+.tituloSistema .marca{
+
+    color:var(--amarillo);
+
+    font-weight:700;
+
+    font-size:15px;
+
+}
+
+.tituloSistema h1{
+
+    color:white;
+
+    font-size:42px;
+
+    line-height:1.1;
+
+    margin:5px 0;
+
+}
+
+.tituloSistema .subtitulo{
+
+    color:white;
+
+    opacity:.95;
+
+    font-size:20px;
+
+}
+
+.tituloSistema .version{
+
+    color:white;
+
+    opacity:.85;
+
+    font-size:14px;
+
+}
+/*==================================================
+ PANEL USUARIO
+==================================================*/
+
+.usuario{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    background:rgba(255,255,255,.12);
+
+    padding:14px 20px;
+
+    border-radius:18px;
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+/*==================================================
+ AVATAR
+==================================================*/
+
+.avatar{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:#FFFFFF;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.18);
+
+}
+
+.avatar i{
+
+    font-size:26px;
+
+    color:var(--azul);
+
+}
+
+/*==================================================
+ DATOS USUARIO
+==================================================*/
+
+.datosUsuario{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+#nombreUsuario{
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+#rolUsuario{
+
+    color:#E8EEF8;
+
+    font-size:14px;
+
+    margin-top:3px;
+
+}
+
+/*==================================================
+ TITULO PRINCIPAL
+==================================================*/
+
+.tituloMenu{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin:35px 0 30px;
+
+}
+
+.tituloMenu h2{
+
+    color:#FFC928;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.linea{
+
+    width:140px;
+
+    height:4px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.35);
+
+}
+
+/*==================================================
+ GRID DEL MENU
+==================================================*/
+
+.menu{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:28px;
+
+    align-items:stretch;
+
+}
+
+/*==================================================
+ ANIMACION SUAVE
+==================================================*/
+
+.header,
+.tituloMenu{
+
+    animation:fadeTop .6s ease;
+
+}
+
+@keyframes fadeTop{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+/*==================================================
+ TARJETAS DEL MENÚ
+==================================================*/
+
+.menu button{
+
+    position:relative;
+
+    background:#FFFFFF;
+
+    border:none;
+
+    border-radius:22px;
+
+    min-height:240px;
+
+    padding:32px 25px;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.10);
+
+}
+
+/*==================================================
+ FRANJA SUPERIOR
+==================================================*/
+
+.menu button::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:8px;
+
+    background:var(--azul);
+
+}
+
+/*==================================================
+ COLORES POR MÓDULO
+==================================================*/
+
+#btnDashboard::before,
+#btnUsuarios::before,
+#btnEmpleados::before{
+
+    background:var(--azul);
+
+}
+
+#btnPuntos::before,
+#btnOperador::before,
+#btnConsultar::before{
+
+    background:var(--amarillo);
+
+}
+
+#btnHoras::before{
+
+    background:var(--verde);
+
+}
+
+#btnBackup::before{
+
+    background:var(--morado);
+
+}
+
+#btnMantenimiento::before{
+
+    background:var(--rojo);
+
+}
+
+/*==================================================
+ ICONO PRINCIPAL
+==================================================*/
+
+.iconoMenu{
+
+    width:88px;
+
+    height:88px;
+
+    margin-top:10px;
+
+    margin-bottom:22px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        180deg,
+        #FFFFFF,
+        #EEF5FF
+    );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:4px solid #F3F7FC;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.10);
+
+    transition:.25s;
+
+}
+
+.iconoMenu i{
+
+    font-size:38px;
+
+    color:var(--azul);
+
+}
+
+/*==================================================
+ TITULO
+==================================================*/
+
+.menu h3{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:var(--texto);
+
+    text-align:center;
+
+    margin-bottom:12px;
+
+}
+
+/*==================================================
+ DESCRIPCIÓN
+==================================================*/
+
+.menu p{
+
+    text-align:center;
+
+    color:var(--gris);
+
+    font-size:14px;
+
+    line-height:22px;
+
+    width:90%;
+
+    flex:1;
+
+}
+
+/*==================================================
+ BOTÓN DE ACCIÓN
+==================================================*/
+
+.accion{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    background:var(--azul);
+
+    color:#FFFFFF;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-top:20px;
+
+    box-shadow:
+        0 8px 18px rgba(0,87,184,.30);
+
+    transition:.25s;
+
+}
+
+.accion i{
+
+    font-size:18px;
+
+}
+
+/*==================================================
+ EFECTOS
+==================================================*/
+
+.menu button:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+        0 22px 45px rgba(0,0,0,.16);
+
+}
+
+.menu button:hover .iconoMenu{
+
+    transform:scale(1.08);
+
+}
+
+.menu button:hover .accion{
+
+    transform:scale(1.10);
+
+}
+/*==================================================
+ SICA ENTERPRISE v6
+ PARTE 4
+ ACABADO PREMIUM
+==================================================*/
+
+/*====================================
+TARJETAS
+====================================*/
+
+.menu button{
+
+    background:linear-gradient(
+        180deg,
+        #FFFFFF 0%,
+        #FBFCFE 100%
+    );
+
+    border:1px solid #E8EDF5;
+
+}
+
+/*====================================
+EFECTO DE LUZ
+====================================*/
+
+.menu button::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,.30),
+        rgba(255,255,255,0)
+    );
+
+    pointer-events:none;
+
+}
+
+/*====================================
+ICONO
+====================================*/
+
+.iconoMenu{
+
+    transition:all .30s ease;
+
+}
+
+.menu button:hover .iconoMenu{
+
+    transform:scale(1.10) rotate(3deg);
+
+}
+
+/*====================================
+TITULO
+====================================*/
+
+.menu h3{
+
+    transition:.30s;
+
+}
+
+.menu button:hover h3{
+
+    color:var(--azul);
+
+}
+
+/*====================================
+DESCRIPCION
+====================================*/
+
+.menu p{
+
+    min-height:55px;
+
+}
+
+/*====================================
+BOTON
+====================================*/
+
+.accion{
+
+    transition:.30s;
+
+}
+
+.menu button:hover .accion{
+
+    transform:scale(1.12);
+
+}
+
+/*====================================
+HOVER
+====================================*/
+
+.menu button:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+
+        0 20px 45px rgba(0,0,0,.18);
+
+}
+
+/*====================================
+BOTON CERRAR SESION
+====================================*/
+
+.cerrar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin:45px auto 20px;
+
+    padding:16px 38px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#E53935;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    box-shadow:
+
+        0 10px 25px rgba(229,57,53,.35);
+
+}
+
+.cerrar:hover{
+
+    background:#C62828;
+
+    transform:translateY(-3px);
+
+}
+
+/*====================================
+FOOTER
+====================================*/
+
+footer{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    color:rgba(255,255,255,.80);
+
+    font-size:14px;
+
+    letter-spacing:.5px;
+
+}
+
+/*====================================
+RESPONSIVE
+====================================*/
+
+@media(max-width:1100px){
+
+    .menu{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .header{
+
+        flex-direction:column;
+
+        gap:25px;
+
+        text-align:center;
+
+    }
+
+    .header-izquierda{
+
+        flex-direction:column;
+
+    }
+
+    .menu{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .tituloSistema h1{
+
+        font-size:30px;
+
+    }
+
+}
+/*==================================================
+ PARTE 4
+ ESTILO CORPORATIVO DEFINITIVO
+==================================================*/
+
+/* Tarjetas */
+
+.menu button{
+
+    border-radius:20px;
+
+    border:1px solid #E7ECF3;
+
+    background:#FFFFFF;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.08);
+
+}
+
+/* Hover */
+
+.menu button:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.14);
+
+}
+
+/* Icono */
+
+.iconoMenu{
+
+    width:82px;
+
+    height:82px;
+
+    border-radius:20px;
+
+    background:#F4F8FD;
+
+    border:none;
+
+    box-shadow:none;
+
+}
+
+.iconoMenu i{
+
+    font-size:36px;
+
+}
+
+/* Colores de iconos */
+
+#btnDashboard .iconoMenu i,
+#btnUsuarios .iconoMenu i,
+#btnEmpleados .iconoMenu i{
+
+    color:#0057B8;
+
+}
+
+#btnPuntos .iconoMenu i,
+#btnOperador .iconoMenu i,
+#btnConsultar .iconoMenu i{
+
+    color:#F5B400;
+
+}
+
+#btnHoras .iconoMenu i{
+
+    color:#16A34A;
+
+}
+
+#btnBackup .iconoMenu i{
+
+    color:#7C3AED;
+
+}
+
+#btnMantenimiento .iconoMenu i{
+
+    color:#E53935;
+
+}
+
+/* Títulos */
+
+.menu h3{
+
+    margin-top:18px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#243247;
+
+}
+
+/* Descripción */
+
+.menu p{
+
+    margin-top:10px;
+
+    color:#6B7280;
+
+    line-height:22px;
+
+    min-height:48px;
+
+}
+
+/* Botón */
+
+.accion{
+
+    margin-top:18px;
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    background:#0057B8;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:none;
+
+}
+
+.accion i{
+
+    font-size:17px;
+
+}
+
+/* Sin efectos exagerados */
+
+.menu button:hover .iconoMenu{
+
+    transform:scale(1.05);
+
+}
+
+.menu button:hover .accion{
+
+    transform:scale(1.08);
+
+}
+
+/* Igualar alturas */
+
+.menu button{
+
+    min-height:255px;
+
+}
+
+/* Espaciado del grid */
+
+.menu{
+
+    gap:30px;
+
+}
+/*==================================================
+PARTE 5
+AJUSTES FINALES TARJETAS
+==================================================*/
+
+.menu button{
+
+    min-height:220px;
+
+    padding:25px;
+
+    justify-content:flex-start;
+
+    transition:.30s;
+
+}
+
+.menu button:hover{
+
+    transform:translateY(-8px);
+
+}
+
+/*=========================
+ICONO
+=========================*/
+
+.iconoMenu{
+
+    width:90px;
+
+    height:90px;
+
+    margin-bottom:18px;
+
+    border-radius:18px;
+
+    background:#F3F7FC;
+
+}
+
+.iconoMenu i{
+
+    font-size:42px;
+
+}
+
+/*=========================
+TITULO
+=========================*/
+
+.menu h3{
+
+    margin:8px 0;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+/*=========================
+DESCRIPCION
+=========================*/
+
+.menu p{
+
+    width:90%;
+
+    margin:auto;
+
+    margin-top:10px;
+
+    line-height:23px;
+
+    font-size:15px;
+
+    color:#6B7280;
+
+}
+
+/*=========================
+BOTON
+=========================*/
+
+.accion{
+
+    margin-top:18px;
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#0057B8;
+
+    color:white;
+
+    box-shadow:
+
+        0 8px 18px rgba(0,87,184,.30);
+
+}
+
+.accion i{
+
+    font-size:18px;
+
+}

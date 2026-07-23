@@ -1,0 +1,3244 @@
+/*==================================================
+SICA 5.0 ENTERPRISE
+PARTE 1
+BASE + HEADER + RESUMEN + KPIs
+==================================================*/
+
+/*==========================
+FUENTE
+==========================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/*==========================
+VARIABLES
+==========================*/
+
+:root{
+
+    --azul:#2563EB;
+    --azulOscuro:#1D4ED8;
+    --verde:#16A34A;
+    --amarillo:#F59E0B;
+    --rojo:#DC2626;
+    --morado:#7C3AED;
+
+    --texto:#1E293B;
+    --texto2:#64748B;
+
+    --fondo:#EDF3FA;
+
+    --blanco:#FFFFFF;
+
+    --radio:22px;
+
+    --sombra:0 18px 45px rgba(15,23,42,.08);
+
+}
+
+/*==========================*/
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    color:var(--texto);
+
+    background:
+
+    radial-gradient(circle at top left,#FFFFFF 0%,transparent 40%),
+
+    radial-gradient(circle at bottom right,#D9E8FF 0%,transparent 40%),
+
+    var(--fondo);
+
+}
+
+/*==========================*/
+
+.dashboard-container{
+
+    width:95%;
+
+    max-width:1800px;
+
+    margin:30px auto;
+
+}
+
+/*==================================================
+HEADER SICA ENTERPRISE
+==================================================*/
+
+/*==================================================
+HEADER SICA ENTERPRISE V3
+==================================================*/
+
+.dashboard-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    padding:20px 30px;
+
+    margin-bottom:25px;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #1565C0,
+
+        #0D47A1
+
+    );
+
+    box-shadow:
+
+        0 18px 40px rgba(13,71,161,.30);
+
+}
+
+/*==================================================*/
+
+.dashboard-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    flex-shrink:0;
+
+}
+
+/*==================================================*/
+
+.logo-card{
+
+    width:190px;
+
+    height:82px;
+
+    background:white;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:
+
+        0 10px 25px rgba(0,0,0,.18);
+
+}
+
+.logo-card img{
+
+    width:150px;
+
+    height:auto;
+
+}
+
+/*==================================================*/
+
+.logo-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.logo-info h1{
+
+    margin:0;
+
+    color:white;
+
+    font-size:34px;
+
+    font-weight:800;
+
+}
+
+.logo-info p{
+
+    margin-top:6px;
+
+    color:#DBEAFE;
+
+    font-size:16px;
+
+}
+/*==================================================
+BUSCADOR ENTERPRISE
+==================================================*/
+
+.dashboard-search{
+
+    flex:1;
+
+    max-width:520px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:14px 22px;
+
+    background:rgba(255,255,255,.15);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    border-radius:18px;
+
+    backdrop-filter:blur(10px);
+
+}
+
+.dashboard-search i{
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+.dashboard-search input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+.dashboard-search input::placeholder{
+
+    color:rgba(255,255,255,.75);
+
+}
+
+/*==================================================
+PANEL DERECHO
+==================================================*/
+
+.dashboard-user{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+/*==================================================
+BOTONES
+==================================================*/
+
+.btnIcono{
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.18);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+}
+
+.btnIcono:hover{
+
+    background:white;
+
+    color:#1565C0;
+
+    transform:translateY(-2px);
+
+}
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.btnIcono{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:white;
+
+    color:var(--azul);
+
+    cursor:pointer;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+    transition:.30s;
+
+}
+
+.btnIcono:hover{
+
+    background:var(--azul);
+
+    color:white;
+
+    transform:translateY(-3px);
+
+}
+
+.usuario{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.usuario i{
+
+    font-size:42px;
+
+    color:var(--azul);
+
+}
+
+.usuario small{
+
+    color:var(--texto2);
+
+}
+
+/*==========================
+RESUMEN
+==========================*/
+
+.resumen-turno{
+
+    margin-top:25px;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:var(--sombra);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.resumen-turno h2{
+
+    color:var(--azul);
+
+    margin-bottom:10px;
+
+}
+
+.resumen-turno p{
+
+    color:var(--texto2);
+
+    line-height:1.7;
+
+}
+
+.ultimaActualizacion{
+
+    padding:14px 20px;
+
+    border-radius:16px;
+
+    background:#EEF4FF;
+
+    color:var(--azul);
+
+    font-weight:600;
+
+}
+
+/*==================================================
+KPIs
+==================================================*/
+
+.cards-dashboard{
+
+    margin-top:25px;
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:20px;
+
+}
+
+/*==================================================
+KPI ENTERPRISE V2
+==================================================*/
+
+.card-dashboard{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#FFFFFF;
+
+    border-radius:20px;
+
+    padding:18px 20px;
+
+    min-height:220px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    box-shadow:0 10px 28px rgba(15,23,42,.08);
+
+    transition:.30s;
+
+    cursor:pointer;
+
+}
+
+.card-dashboard:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 18px 36px rgba(15,23,42,.14);
+
+}
+
+.card-dashboard:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 22px 45px rgba(0,0,0,.12);
+
+}
+
+.card-dashboard::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:6px;
+
+}
+
+.azul::before{
+
+    background:var(--azul);
+
+}
+
+.verde::before{
+
+    background:var(--verde);
+
+}
+
+.amarillo::before{
+
+    background:var(--amarillo);
+
+}
+
+.rojo::before{
+
+    background:var(--rojo);
+
+}
+
+.morado::before{
+
+    background:var(--morado);
+
+}
+
+.card-icono{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:28px;
+
+    margin-bottom:20px;
+
+}
+
+.azul .card-icono{
+
+    background:linear-gradient(135deg,#2563EB,#4F8DFF);
+
+}
+
+.verde .card-icono{
+
+    background:linear-gradient(135deg,#16A34A,#3FD57A);
+
+}
+
+.amarillo .card-icono{
+
+    background:linear-gradient(135deg,#F59E0B,#FFC43D);
+
+}
+
+.rojo .card-icono{
+
+    background:linear-gradient(135deg,#DC2626,#FF5E5E);
+
+}
+
+.morado .card-icono{
+
+    background:linear-gradient(135deg,#7C3AED,#9F67FF);
+
+}
+
+.card-info span{
+
+    color:var(--texto2);
+
+    font-size:14px;
+
+}
+
+.card-info h2{
+
+    font-size:40px;
+
+    line-height:1;
+
+    margin:4px 0 8px;
+
+    color:#0F172A;
+
+    font-weight:800;
+
+}
+
+.card-info small{
+
+    color:#94A3B8;
+
+    font-size:13px;
+
+}
+/*==================================================
+SICA 5.0 ENTERPRISE
+PARTE 2
+CENTRO DE OPERACIONES
+==================================================*/
+
+/*==================================================
+GRID PRINCIPAL
+==================================================*/
+
+.centro-operaciones{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:24px;
+
+    margin-top:28px;
+
+    align-items:start;
+
+}
+
+/*==================================================
+PANELES
+==================================================*/
+
+.panel,
+.panel-operadores{
+
+    background:rgba(255,255,255,.92);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:24px;
+
+    padding:24px;
+
+    box-shadow:var(--sombra);
+
+    border:1px solid rgba(255,255,255,.75);
+
+}
+
+.panel-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:22px;
+
+}
+
+.panel-header h2{
+
+    font-size:22px;
+
+    color:var(--azul);
+
+    font-weight:700;
+
+}
+
+.panel-header p{
+
+    margin-top:6px;
+
+    color:var(--texto2);
+
+    font-size:14px;
+
+}
+
+/*==================================================
+BOTÓN DEL PANEL
+==================================================*/
+
+.btnPanel{
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#EEF4FF;
+
+    color:var(--azul);
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.btnPanel:hover{
+
+    background:var(--azul);
+
+    color:white;
+
+    transform:translateY(-3px);
+
+}
+
+/*==================================================
+MAPA
+==================================================*/
+
+#mapaContainer{
+
+    width:100%;
+
+    height:520px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:2px solid #E2E8F0;
+
+    background:#EAF2FF;
+
+}
+
+/*==================================================
+PANEL OPERADORES
+==================================================*/
+
+.panel-operadores{
+
+    height:100%;
+
+}
+
+.lista-operadores{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    max-height:520px;
+
+    overflow-y:auto;
+
+    padding-right:6px;
+
+}
+
+/*==================================================
+TARJETA OPERADOR
+==================================================*/
+
+.operador-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#F8FAFC;
+
+    transition:.30s;
+
+    cursor:pointer;
+
+    border:1px solid transparent;
+
+}
+
+.operador-card:hover{
+
+    background:white;
+
+    border-color:#BFDBFE;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+
+}
+
+.operador-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.operador-avatar{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:white;
+
+    background:linear-gradient(135deg,#2563EB,#5AA3FF);
+
+}
+
+.operador-datos strong{
+
+    display:block;
+
+    color:#0F172A;
+
+    font-size:15px;
+
+    margin-bottom:5px;
+
+}
+
+.operador-datos span{
+
+    color:var(--texto2);
+
+    font-size:13px;
+
+}
+
+/*==================================================
+ESTADOS
+==================================================*/
+
+.estado{
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.estado.activo{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.estado.pendiente{
+
+    background:#FEF3C7;
+
+    color:#B45309;
+
+}
+
+.estado.alerta{
+
+    background:#FEE2E2;
+
+    color:#B91C1C;
+
+}
+
+/*==================================================
+GRÁFICA
+==================================================*/
+
+.grafica-container{
+
+    width:100%;
+
+    height:360px;
+
+    position:relative;
+
+}
+
+#graficaPV{
+
+    width:100%!important;
+
+    height:100%!important;
+
+}
+
+/*==================================================
+INSIGHTS
+==================================================*/
+
+.insights{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:16px;
+
+    margin-top:24px;
+
+}
+
+.insight{
+
+    background:#F8FAFC;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    text-align:center;
+
+    transition:.30s;
+
+    border:1px solid #EEF2F7;
+
+}
+
+.insight:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.insight strong{
+
+    display:block;
+
+    color:var(--azul);
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+}
+
+.insight span{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#0F172A;
+
+}
+
+/*==================================================
+SCROLL
+==================================================*/
+
+.lista-operadores::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.lista-operadores::-webkit-scrollbar-thumb{
+
+    background:#CBD5E1;
+
+    border-radius:20px;
+
+}
+
+.lista-operadores::-webkit-scrollbar-thumb:hover{
+
+    background:#94A3B8;
+
+}
+/*==================================================
+SICA 5.0 ENTERPRISE
+PARTE 3
+INDICADORES + ALERTAS
+==================================================*/
+
+/*==================================================
+GRID INFERIOR
+==================================================*/
+
+.operacion-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:24px;
+
+    margin-top:28px;
+
+    align-items:start;
+
+}
+
+/*==================================================
+INDICADORES DEL DÍA
+==================================================*/
+
+.indicadores-dia{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    padding-top:5px;
+
+}
+
+.indicador-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:18px;
+
+    background:#F8FAFC;
+
+    border-radius:18px;
+
+    border-left:6px solid var(--azul);
+
+    transition:.30s;
+
+    box-shadow:0 4px 12px rgba(15,23,42,.05);
+
+}
+
+.indicador-item:hover{
+
+    background:white;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 14px 28px rgba(15,23,42,.10);
+
+}
+
+.indicador-item i{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#EEF4FF;
+
+    color:var(--azul);
+
+    font-size:22px;
+
+}
+
+.indicador-item span{
+
+    display:block;
+
+    font-size:13px;
+
+    color:var(--texto2);
+
+}
+
+.indicador-item strong{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#0F172A;
+
+}
+
+/*==================================================
+CENTRO DE ALERTAS
+==================================================*/
+
+.lista-alertas{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    max-height:520px;
+
+    overflow-y:auto;
+
+    padding-right:6px;
+
+}
+
+/*==================================================
+ALERTA
+==================================================*/
+
+.alerta{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    transition:.30s;
+
+    border-left:6px solid transparent;
+
+    background:#F8FAFC;
+
+}
+
+.alerta:hover{
+
+    transform:translateX(6px);
+
+    background:white;
+
+    box-shadow:0 10px 25px rgba(15,23,42,.08);
+
+}
+
+.alerta i{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:20px;
+
+}
+
+/*=============================
+TIPOS DE ALERTA
+=============================*/
+
+.alerta.success{
+
+    border-left-color:#16A34A;
+
+}
+
+.alerta.success i{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.alerta.warning{
+
+    border-left-color:#F59E0B;
+
+}
+
+.alerta.warning i{
+
+    background:#FEF3C7;
+
+    color:#B45309;
+
+}
+
+.alerta.error{
+
+    border-left-color:#DC2626;
+
+}
+
+.alerta.error i{
+
+    background:#FEE2E2;
+
+    color:#B91C1C;
+
+}
+
+.alerta.info{
+
+    border-left-color:#2563EB;
+
+}
+
+.alerta.info i{
+
+    background:#DBEAFE;
+
+    color:#2563EB;
+
+}
+
+/*==================================================
+TEXTO ALERTA
+==================================================*/
+
+.alerta-contenido{
+
+    flex:1;
+
+}
+
+.alerta-contenido strong{
+
+    display:block;
+
+    color:#0F172A;
+
+    margin-bottom:6px;
+
+    font-size:15px;
+
+}
+
+.alerta-contenido span{
+
+    display:block;
+
+    color:var(--texto2);
+
+    font-size:13px;
+
+    line-height:1.5;
+
+}
+
+.alerta-contenido small{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#94A3B8;
+
+    font-size:12px;
+
+}
+
+/*==================================================
+SCROLL ALERTAS
+==================================================*/
+
+.lista-alertas::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.lista-alertas::-webkit-scrollbar-thumb{
+
+    background:#CBD5E1;
+
+    border-radius:20px;
+
+}
+
+.lista-alertas::-webkit-scrollbar-thumb:hover{
+
+    background:#94A3B8;
+
+}
+/*==================================================
+SICA 5.0 ENTERPRISE
+PARTE 4
+TENDENCIAS + PANEL OPERADOR + FOOTER
+==================================================*/
+
+/*==================================================
+TENDENCIAS DEL DÍA
+==================================================*/
+
+#graficaTendencias{
+
+    width:100%!important;
+
+    height:340px!important;
+
+}
+
+.panel .grafica-container{
+
+    position:relative;
+
+    width:100%;
+
+    height:340px;
+
+}
+
+.panel{
+
+    transition:.30s;
+
+}
+
+.panel:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 22px 45px rgba(15,23,42,.10);
+
+}
+
+/*==================================================
+PANEL LATERAL
+==================================================*/
+
+.panel-operador{
+
+    position:fixed;
+
+    top:0;
+
+    right:-430px;
+
+    width:420px;
+
+    height:100vh;
+
+    background:white;
+
+    box-shadow:-15px 0 45px rgba(15,23,42,.15);
+
+    transition:.35s;
+
+    z-index:9999;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.panel-operador.activo{
+
+    right:0;
+
+}
+
+/*==================================================
+HEADER PANEL
+==================================================*/
+
+.panel-operador-header{
+
+    background:linear-gradient(135deg,#2563EB,#1D4ED8);
+
+    color:white;
+
+    padding:28px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.panel-operador-header h2{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.panel-operador-header button{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.panel-operador-header button:hover{
+
+    background:white;
+
+    color:#2563EB;
+
+}
+
+/*==================================================
+BODY PANEL
+==================================================*/
+
+.panel-operador-body{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:28px;
+
+}
+
+/*==================================================
+FOTO
+==================================================*/
+
+.foto-operador{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:25px;
+
+}
+
+.foto-operador img{
+
+    width:140px;
+
+    height:140px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:6px solid #EEF4FF;
+
+}
+
+/*==================================================
+DATOS
+==================================================*/
+
+.dato{
+
+    margin-bottom:20px;
+
+    padding:15px;
+
+    background:#F8FAFC;
+
+    border-radius:16px;
+
+}
+
+.dato span{
+
+    display:block;
+
+    color:var(--texto2);
+
+    font-size:13px;
+
+    margin-bottom:5px;
+
+}
+
+.dato strong{
+
+    display:block;
+
+    font-size:17px;
+
+    color:#0F172A;
+
+}
+
+/*==================================================
+FOOTER
+==================================================*/
+
+.footer-dashboard{
+
+    margin:35px 0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 25px;
+
+    background:white;
+
+    border-radius:18px;
+
+    box-shadow:var(--sombra);
+
+    color:var(--texto2);
+
+    font-size:14px;
+
+}
+
+/*==================================================
+ANIMACIONES
+==================================================*/
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.dashboard-header,
+.resumen-turno,
+.card-dashboard,
+.panel,
+.panel-operadores,
+.footer-dashboard{
+
+    animation:aparecer .45s ease;
+
+}
+
+/*==================================================
+SCROLL GENERAL
+==================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#E2E8F0;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#94A3B8;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#64748B;
+
+}
+/*==================================================
+SICA 5.0 ENTERPRISE
+PARTE 5
+RESPONSIVE + EFECTOS FINALES
+==================================================*/
+
+/*==================================================
+TRANSICIONES GLOBALES
+==================================================*/
+
+*{
+
+    transition:
+        background-color .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+
+}
+
+/*==================================================
+HOVER TARJETAS
+==================================================*/
+
+.card-dashboard:hover{
+
+    transform:translateY(-8px) scale(1.02);
+
+}
+
+.panel:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.panel-operadores:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/*==================================================
+FOCUS INPUT
+==================================================*/
+
+.dashboard-search input:focus{
+
+    outline:none;
+
+}
+
+.dashboard-search:focus-within{
+
+    border:1px solid #93C5FD;
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/*==================================================
+RESPONSIVE LAPTOP
+==================================================*/
+
+/*==================================================
+RESPONSIVE - LAPTOP GRANDE
+==================================================*/
+
+@media (max-width:1400px){
+
+    .dashboard-container{
+
+        width:98%;
+
+        margin:auto;
+
+    }
+
+    /*----------------------------------*/
+    /* HEADER */
+    /*----------------------------------*/
+
+    .dashboard-header{
+
+        padding:18px 22px;
+
+        gap:20px;
+
+    }
+
+    .logo-card{
+
+        width:150px;
+
+        height:68px;
+
+    }
+
+    .logo-card img{
+
+        width:120px;
+
+    }
+
+    .logo-info h1{
+
+        font-size:28px;
+
+    }
+
+    .logo-info p{
+
+        font-size:15px;
+
+    }
+
+    .dashboard-search{
+
+        max-width:380px;
+
+    }
+
+    /*----------------------------------*/
+    /* KPIs */
+    /*----------------------------------*/
+
+    .cards-dashboard{
+
+        grid-template-columns:repeat(4,1fr);
+
+        gap:20px;
+
+    }
+
+    /*----------------------------------*/
+    /* CENTRO OPERACIONES */
+    /*----------------------------------*/
+
+    .centro-operaciones{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .operacion-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+    .dashboard-container{
+
+        width:98%;
+
+    }
+
+    .cards-dashboard{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+    .centro-operaciones{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .operacion-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/*==================================================
+RESPONSIVE TABLET
+==================================================*/
+
+@media(max-width:992px){
+
+    .dashboard-header{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .dashboard-logo{
+
+        justify-content:center;
+
+    }
+
+    .dashboard-user{
+
+        justify-content:center;
+
+    }
+
+    .dashboard-search{
+
+        width:100%;
+
+    }
+
+    .cards-dashboard{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .insights{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .panel-operador{
+
+        width:100%;
+
+    }
+
+    #mapaContainer{
+
+        height:400px;
+
+    }
+
+}
+
+/*==================================================
+RESPONSIVE CELULAR
+==================================================*/
+
+@media(max-width:768px){
+
+    .dashboard-container{
+
+        width:95%;
+
+        margin:15px auto;
+
+    }
+
+    .dashboard-header{
+
+        padding:18px;
+
+    }
+
+    .dashboard-logo{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .dashboard-logo img{
+
+        width:65px;
+
+    }
+
+    .dashboard-logo h1{
+
+        font-size:28px;
+
+    }
+
+    .dashboard-search{
+
+        padding:12px 15px;
+
+    }
+
+    .cards-dashboard{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .card-dashboard{
+
+        padding:20px;
+
+    }
+
+    .card-info h2{
+
+        font-size:38px;
+
+    }
+
+    .centro-operaciones{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .operacion-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .resumen-turno{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:18px;
+
+    }
+
+    .panel{
+
+        padding:18px;
+
+    }
+
+    .panel-operadores{
+
+        padding:18px;
+
+    }
+
+    #mapaContainer{
+
+        height:300px;
+
+    }
+
+    .footer-dashboard{
+
+        flex-direction:column;
+
+        gap:12px;
+
+        text-align:center;
+
+    }
+
+}
+
+/*==================================================
+PEQUEÑOS DETALLES PREMIUM
+==================================================*/
+
+.card-dashboard{
+
+    border:1px solid rgba(255,255,255,.65);
+
+}
+
+.panel{
+
+    border:1px solid rgba(255,255,255,.70);
+
+}
+
+.panel-operadores{
+
+    border:1px solid rgba(255,255,255,.70);
+
+}
+
+.card-dashboard::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-40px;
+
+    right:-40px;
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.18);
+
+}
+
+/*==================================================
+SELECCIÓN DE TEXTO
+==================================================*/
+
+::selection{
+
+    background:#2563EB;
+
+    color:white;
+
+}
+/*==============================================
+KPIs PREMIUM V2
+==============================================*/
+
+.card-dashboard{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(180deg,#FFFFFF,#F8FBFF);
+
+    border:1px solid #E5EDF8;
+
+}
+
+.card-dashboard::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:130px;
+
+    height:130px;
+
+    border-radius:50%;
+
+    top:-55px;
+
+    right:-55px;
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.card-icono{
+
+    box-shadow:
+
+    0 12px 25px rgba(37,99,235,.20);
+
+}
+
+.card-info h2{
+
+    font-size:52px;
+
+    font-weight:800;
+
+    letter-spacing:-2px;
+
+}
+
+.card-info span{
+
+    text-transform:uppercase;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+}
+
+.card-info small{
+
+    display:inline-block;
+
+    margin-top:8px;
+
+    padding:6px 12px;
+
+    border-radius:30px;
+
+    background:#EEF4FF;
+
+    color:#2563EB;
+
+    font-weight:600;
+
+}
+
+.card-dashboard:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.card-dashboard:hover .card-icono{
+
+    transform:rotate(-8deg) scale(1.08);
+
+}
+/*====================================================
+MAPA INTELIGENTE V2
+MARCADORES SICA
+====================================================*/
+
+.marker-pv{
+
+    width:24px;
+
+    height:24px;
+
+    border-radius:50%;
+
+    border:4px solid white;
+
+    box-shadow:0 0 0 6px rgba(0,0,0,.10);
+
+    transition:.30s;
+
+}
+
+.marker-pv:hover{
+
+    transform:scale(1.25);
+
+}
+
+.marker-normal{
+
+    background:#22C55E;
+
+}
+
+.marker-atencion{
+
+    background:#F59E0B;
+
+}
+
+.marker-incidencia{
+
+    background:#EF4444;
+
+}
+
+.marker-sin-iniciar{
+
+    background:#3B82F6;
+
+}
+/*====================================================
+POPUP ENTERPRISE
+====================================================*/
+
+.popup-pv{
+
+    min-width:240px;
+
+    font-family:inherit;
+
+    color:#0F172A;
+
+}
+
+.popup-pv h3{
+
+    margin:0 0 12px;
+
+    color:#2563EB;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.popup-pv hr{
+
+    border:none;
+
+    border-top:1px solid #E2E8F0;
+
+    margin:14px 0;
+
+}
+
+.popup-estado{
+
+    display:inline-block;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+    background:#EEF4FF;
+
+    color:#2563EB;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+.popup-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:10px 0;
+
+    color:#0F172A;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+.popup-item strong{
+
+    color:#0F172A;
+
+}
+
+.btn-popup{
+
+    width:100%;
+
+    margin-top:18px;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:11px;
+
+    background:#2563EB;
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.btn-popup:hover{
+
+    background:#1D4ED8;
+
+}
+/*====================================================
+ESTADO DEL MAPA
+====================================================*/
+
+.estado-mapa{
+
+    display:flex;
+
+    gap:18px;
+
+    margin-top:10px;
+
+    flex-wrap:wrap;
+
+}
+
+.estado-mapa span{
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    background:#F8FAFC;
+
+    border:1px solid #E2E8F0;
+
+}
+
+#pvOperando{
+
+    color:#15803D;
+
+    background:#DCFCE7;
+
+}
+
+#pvSinIniciar{
+
+    color:#B91C1C;
+
+    background:#FEE2E2;
+
+}
+/*====================================================
+MARCADOR ENTERPRISE
+====================================================*/
+
+.marker-enterprise{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.marker-numero{
+
+    min-width:28px;
+
+    height:22px;
+
+    padding:0 6px;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:#0F172A;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:4px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.20);
+
+    border:1px solid #E2E8F0;
+
+}
+
+.marker-pv{
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    border:3px solid white;
+
+    box-shadow:0 0 0 5px rgba(0,0,0,.10);
+
+}
+
+.marker-normal{
+
+    background:#22C55E;
+
+}
+
+.marker-incidencia{
+
+    background:#EF4444;
+
+}
+/*==================================================
+FIN SICA 5.0 ENTERPRISE
+==================================================*/
+/*==================================================
+PANEL PUNTO DE VENTA
+==================================================*/
+
+.panel-pv{
+
+    position:fixed;
+
+    top:0;
+
+    right:-430px;
+
+    width:420px;
+
+    height:100vh;
+
+    background:white;
+
+    box-shadow:-15px 0 45px rgba(15,23,42,.18);
+
+    z-index:9998;
+
+    transition:.35s;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.panel-pv.activo{
+
+    right:0;
+
+}
+
+/*==================================================*/
+
+.panel-pv-header{
+
+    padding:28px;
+
+    background:linear-gradient(135deg,#2563EB,#1D4ED8);
+
+    color:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.panel-pv-header h2{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.panel-pv-header button{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+.panel-pv-header button:hover{
+
+    background:white;
+
+    color:#2563EB;
+
+}
+
+/*==================================================*/
+
+.panel-pv-body{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:28px;
+
+}
+
+/*==================================================*/
+
+.pv-estado{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+/*==================================================*/
+
+.pv-card{
+
+    background:#F8FAFC;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-bottom:18px;
+
+}
+
+.pv-card h3{
+
+    color:#2563EB;
+
+    margin-bottom:12px;
+
+    font-size:16px;
+
+}
+
+/*==================================================*/
+
+.btn-panel{
+
+    width:100%;
+
+    margin-top:10px;
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    background:#2563EB;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.btn-panel:hover{
+
+    background:#1D4ED8;
+
+}
+/*==================================================
+ANIMACIONES ENTERPRISE
+==================================================*/
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==================================================*/
+
+.card-dashboard{
+
+    animation:aparecer .55s ease forwards;
+
+}
+
+/*==================================================*/
+
+.card-dashboard:nth-child(1){
+
+    animation-delay:.05s;
+
+}
+
+.card-dashboard:nth-child(2){
+
+    animation-delay:.12s;
+
+}
+
+.card-dashboard:nth-child(3){
+
+    animation-delay:.19s;
+
+}
+
+.card-dashboard:nth-child(4){
+
+    animation-delay:.26s;
+
+}
+
+.card-dashboard:nth-child(5){
+
+    animation-delay:.33s;
+
+}
+/*==================================================
+KPIs - BARRAS DE PROGRESO
+==================================================*/
+
+.kpi-progress{
+
+    width:100%;
+
+    height:8px;
+
+    background:#E5E7EB;
+
+    border-radius:20px;
+
+    margin-top:12px;
+
+    overflow:hidden;
+
+}
+
+/*==================================================*/
+
+.kpi-progress-fill{
+
+    width:0;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#2563EB,#60A5FA);
+
+    border-radius:20px;
+
+    transition:width .8s ease;
+
+}
+
+/*==================================================*/
+
+.kpi-porcentaje{
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    color:#64748B;
+
+}
+
+/*==================================================
+COLORES POR KPI
+==================================================*/
+
+.verde .kpi-progress-fill{
+
+    background:linear-gradient(90deg,#22C55E,#4ADE80);
+
+}
+
+.amarillo .kpi-progress-fill{
+
+    background:linear-gradient(90deg,#F59E0B,#FBBF24);
+
+}
+
+.rojo .kpi-progress-fill{
+
+    background:linear-gradient(90deg,#EF4444,#F87171);
+
+}
+
+.morado .kpi-progress-fill{
+
+    background:linear-gradient(90deg,#7C3AED,#A855F7);
+
+}
+/*==================================================
+TARJETAS PREMIUM V2
+==================================================*/
+
+.card-dashboard{
+
+    transition:
+        transform .30s ease,
+        box-shadow .30s ease,
+        border-color .30s ease;
+
+}
+
+.card-dashboard:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(37,99,235,.18);
+
+    border:1px solid rgba(37,99,235,.25);
+
+}
+
+/*==================================================*/
+
+.card-dashboard:hover .card-icono{
+
+    transform:scale(1.08);
+
+    transition:.30s;
+
+}
+
+/*==================================================*/
+
+.card-dashboard:hover h2{
+
+    color:#2563EB;
+
+}
+/*==================================================
+MODO OSCURO
+==================================================*/
+
+body.dark{
+
+    background:#0F172A;
+
+    color:#F8FAFC;
+
+}
+
+/*==================================================*/
+
+body.dark .dashboard-container{
+
+    background:#0F172A;
+
+}
+
+/*==================================================*/
+
+body.dark .dashboard-header,
+
+body.dark .resumen-turno,
+
+body.dark .panel,
+
+body.dark .card-dashboard,
+
+body.dark .panel-operadores,
+
+body.dark .panel-grafica,
+
+body.dark .panel-pv,
+
+body.dark .panel-operador,
+
+body.dark footer{
+
+    background:#1E293B;
+
+    color:#F8FAFC;
+
+    border:1px solid rgba(255,255,255,.06);
+
+}
+
+/*==================================================*/
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark strong{
+
+    color:#F8FAFC;
+
+}
+
+/*==================================================*/
+
+body.dark p,
+body.dark span,
+body.dark small{
+
+    color:#CBD5E1;
+
+}
+/*==================================================
+POPUP LEAFLET - CORRECCIÓN
+==================================================*/
+
+body.dark .popup-pv h3{
+
+    color:#2563EB !important;
+
+}
+
+body.dark .popup-pv strong{
+
+    color:#0F172A !important;
+
+}
+
+body.dark .popup-pv p,
+
+body.dark .popup-pv span,
+
+body.dark .popup-pv small,
+
+body.dark .popup-pv .popup-item{
+
+    color:#0F172A !important;
+
+}
+
+body.dark .popup-pv hr{
+
+    border-color:#E2E8F0;
+
+}
+/*==================================================*/
+
+body.dark input{
+
+    background:#0F172A;
+
+    color:white;
+
+    border:1px solid #334155;
+
+}
+
+/*==================================================*/
+
+body.dark .dashboard-search{
+
+    background:#0F172A;
+
+}
+
+/*==================================================*/
+
+body.dark .btnIcono{
+
+    background:#334155;
+
+    color:white;
+
+}
+
+/*==================================================*/
+
+body.dark .pv-card,
+
+body.dark .indicador-item,
+
+body.dark .insight,
+
+body.dark .operador-card,
+
+body.dark .alerta-card{
+
+    background:#1F2937;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#F8FAFC;
+
+    box-shadow:none;
+
+}
+
+body.dark .alerta-card h4{
+
+    color:#F8FAFC;
+
+}
+
+body.dark .alerta-card p{
+
+    color:#CBD5E1;
+
+}
+
+body.dark .alerta-card small{
+
+    color:#94A3B8;
+
+}
+
+body.dark .alerta-card i{
+
+    color:#22C55E;
+
+}
+
+
+/*==================================================*/
+
+body.dark .kpi-progress{
+
+    background:#334155;
+
+}
+/*==================================================
+CENTRO DE ALERTAS ENTERPRISE
+==================================================*/
+
+.alerta-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:18px;
+
+    margin-bottom:14px;
+
+    background:#FFFFFF;
+
+    border-radius:18px;
+
+    box-shadow:0 8px 18px rgba(15,23,42,.06);
+
+    transition:.30s;
+
+}
+
+.alerta-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 28px rgba(15,23,42,.12);
+
+}
+
+/*==================================================*/
+
+.alerta-icono{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:16px;
+
+    background:#DCFCE7;
+
+    color:#16A34A;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    flex-shrink:0;
+
+}
+
+/*==================================================*/
+
+.alerta-info{
+
+    flex:1;
+
+}
+
+.alerta-info h4{
+
+    margin:0;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#0F172A;
+
+}
+
+.alerta-info p{
+
+    margin:6px 0;
+
+    color:#475569;
+
+    font-size:14px;
+
+}
+
+.alerta-info small{
+
+    color:#94A3B8;
+
+    font-size:13px;
+
+}
+
+/*==================================================
+MODO OSCURO
+==================================================*/
+
+body.dark .alerta-card{
+
+    background:#1F2937;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:none;
+
+}
+
+body.dark .alerta-card:hover{
+
+    background:#273549;
+
+}
+
+body.dark .alerta-info h4{
+
+    color:#F8FAFC;
+
+}
+
+body.dark .alerta-info p{
+
+    color:#CBD5E1;
+
+}
+
+body.dark .alerta-info small{
+
+    color:#94A3B8;
+
+}
+
+body.dark .alerta-icono{
+
+    background:rgba(34,197,94,.15);
+
+    color:#4ADE80;
+
+}
+/*==================================================
+HEADER ENTERPRISE V2
+==================================================*/
+
+.dashboard-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+/*==================================================*/
+
+.logo-card{
+
+    width:90px;
+
+    height:70px;
+
+    background:white;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.logo-card img{
+
+    width:72px;
+
+    height:auto;
+
+}
+
+/*==================================================*/
+
+.logo-info h1{
+
+    margin:0;
+
+    color:white;
+
+    font-size:34px;
+
+    font-weight:800;
+
+}
+
+.logo-info p{
+
+    margin-top:6px;
+
+    color:rgba(255,255,255,.90);
+
+    font-size:17px;
+
+}
+
+/*==================================================*/
+
+.dashboard-user{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.usuario{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:white;
+
+}
+
+.usuario i{
+
+    font-size:40px;
+
+}
+
+.usuario small{
+
+    color:rgba(255,255,255,.75);
+
+}
+/*==================================================
+FONDO CORPORATIVO SICA
+==================================================*/
+
+body{
+
+    background:#EEF5FF;
+
+    transition:background .35s ease;
+
+}
+
+/*==================================================*/
+
+.dashboard-container{
+
+    background:transparent;
+
+}
+
+/*==================================================*/
+
+.cards-dashboard,
+.centro-operaciones,
+.operacion-grid{
+
+    background:transparent;
+
+}
+
+/*==================================================*/
+
+.panel,
+.card-dashboard,
+.panel-operadores,
+.panel-grafica,
+.resumen-turno{
+
+    background:#FFFFFF;
+
+    box-shadow:0 8px 24px rgba(15,23,42,.06);
+
+}

@@ -1,0 +1,415 @@
+/*====================================================
+SICA v5.0
+MENÚ PRINCIPAL
+====================================================*/
+
+.contenedor-menu{
+
+    width:95%;
+
+    max-width:1500px;
+
+    margin:30px auto;
+
+}
+
+/*=============================================
+ENCABEZADO
+=============================================*/
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 35px;
+
+    border-radius:20px;
+
+    background:linear-gradient(90deg,#0057B8,#0077d9);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+    margin-bottom:35px;
+
+}
+
+.header-izquierda{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.logoEmpresa{
+
+    background:white;
+
+    padding:12px;
+
+    border-radius:18px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.20);
+
+}
+
+.logoEmpresa img{
+    width:155px;
+
+    height:auto;
+
+}
+
+
+
+.tituloSistema .marca{
+
+    color:#FFD54A;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+.tituloSistema h1{
+
+    color:white;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    margin:6px 0;
+
+}
+
+.tituloSistema .version{
+
+    color:#D6E8FF;
+
+    font-size:12px;
+
+}
+
+/*=============================================
+USUARIO
+=============================================*/
+
+.usuario{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:white;
+
+    padding:14px 22px;
+
+    border-radius:18px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+
+}
+
+.avatar{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:#FFD54F;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#0057B8;
+
+    font-size:28px;
+
+}
+
+.datosUsuario{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+#nombreUsuario{
+
+    color:#0057B8;
+
+    font-weight:700;
+
+    font-size:18px;
+
+}
+
+#rolUsuario{
+
+    color:#777;
+
+    font-size:14px;
+
+}
+/*=========================================
+TÍTULO DEL MENÚ
+=========================================*/
+
+.tituloMenu{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin:20px 30;
+
+}
+
+.tituloMenu .linea{
+
+    flex:1;
+
+    max-width:280px;
+
+    height:2px;
+
+    background:rgba(255,255,255,.35);
+
+}
+
+.tituloMenu h2{
+
+    color:#FFD54F;
+
+    font-size:36px;
+
+    font-weight:700;
+
+    margin:0;
+
+}
+
+/*=========================================
+TARJETAS
+=========================================*/
+
+.menu{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:28px;
+
+}
+
+.menu button{
+
+    position:relative;
+
+    overflow:visible;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+        to bottom,
+        #F7D65C 0%,
+        #F7D65C 42%,
+        #FFFFFF 42%,
+        #FFFFFF 100%
+    );
+
+    min-height:300px;
+
+    padding:25px;
+
+    transition:.35s;
+
+    box-shadow:0 12px 28px rgba(0,0,0,.18);
+
+}
+
+.menu button:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.28);
+
+}
+/*====================================================
+ICONO CIRCULAR
+====================================================*/
+
+.iconoMenu{
+
+    position:absolute;
+
+    left:50%;
+
+    top:35px;
+
+    transform:translateX(-50%);
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.20);
+
+    z-index:50;
+
+}
+/*====================================================
+TÍTULO
+====================================================*/
+
+.menu h3{
+
+    margin-top:110px;
+
+    color:#0B4FB3;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin-bottom:18px;
+
+}
+
+/*====================================================
+DESCRIPCIÓN
+====================================================*/
+
+.menu p{
+
+    color:#444;
+
+    font-size:17px;
+
+    line-height:1.6;
+
+    text-align:center;
+
+    padding:0 25px;
+
+}
+
+/*====================================================
+BOTÓN INFERIOR
+====================================================*/
+
+.flecha{
+
+    position:absolute;
+
+    right:20px;
+
+    bottom:20px;
+
+    width:48px;
+
+    height:48px;
+
+    background:#0B4FB3;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
+
+    transition:.30s;
+
+}
+
+.flecha i{
+
+    color:white;
+
+    font-size:22px;
+
+}
+
+.menu button:hover .flecha{
+
+    transform:scale(1.10);
+
+}
+/*=========================================
+BOTÓN DE ACCIÓN
+=========================================*/
+
+.accion{
+
+    position:absolute;
+
+    right:18px;
+
+    bottom:18px;
+
+    width:54px;
+
+    height:54px;
+
+    border-radius:50%;
+
+    background:#0B4FB3;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
+
+    transition:.30s;
+
+    overflow:hidden;
+
+}
