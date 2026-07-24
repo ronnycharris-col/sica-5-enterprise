@@ -103,7 +103,10 @@ export function liquidarJornada({
     actual.setMinutes(actual.getMinutes() + 1);
 
 }
-
+console.log("=== RESULTADO MOTOR ===");
+console.log(resultado);
+console.log("Minutos efectivos:", minutosEfectivos);
+console.log("Límite ordinarias:", limiteOrdinarias);
     return resultado;
 
 }

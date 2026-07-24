@@ -19,7 +19,6 @@ export function exportarExcel(resultado) {
     if (!resultado || resultado.length === 0) {
 
         alert("No hay información para exportar.");
-
         return;
 
     }
@@ -35,26 +34,25 @@ export function exportarExcel(resultado) {
     //--------------------------------------------------
 
     const datos = [];
+
     //--------------------------------------------------
-    // ENCABEZADO DEL REPORTE
+    // ENCABEZADO
     //--------------------------------------------------
 
     datos.push({
 
         Empleado: "SICA ENTERPRISE",
-
         Fecha: "",
-
         Entrada: "",
-
         Salida: "",
-
-        Ordinarias: "",
-
-        Extra_Diurna: "",
-
-        Extra_Nocturna: "",
-
+        Ord_D: "",
+        Ord_N: "",
+        Dom_D: "",
+        Dom_N: "",
+        Fest_D: "",
+        Fest_N: "",
+        Ext_D: "",
+        Ext_N: "",
         Total: ""
 
     });
@@ -62,19 +60,17 @@ export function exportarExcel(resultado) {
     datos.push({
 
         Empleado: "REPORTE DE HORAS LABORADAS",
-
         Fecha: "",
-
         Entrada: "",
-
         Salida: "",
-
-        Ordinarias: "",
-
-        Extra_Diurna: "",
-
-        Extra_Nocturna: "",
-
+        Ord_D: "",
+        Ord_N: "",
+        Dom_D: "",
+        Dom_N: "",
+        Fest_D: "",
+        Fest_N: "",
+        Ext_D: "",
+        Ext_N: "",
         Total: ""
 
     });
@@ -97,11 +93,21 @@ export function exportarExcel(resultado) {
 
             Salida: item.salida,
 
-            Ordinarias: item.ordinarias,
+            Ord_D: item.ordinariaDiurna,
 
-            Extra_Diurna: item.extraDiurna,
+            Ord_N: item.ordinariaNocturna,
 
-            Extra_Nocturna: item.extraNocturna,
+            Dom_D: item.dominicalDiurna,
+
+            Dom_N: item.dominicalNocturna,
+
+            Fest_D: item.festivaDiurna,
+
+            Fest_N: item.festivaNocturna,
+
+            Ext_D: item.extraDiurna,
+
+            Ext_N: item.extraNocturna,
 
             Total: item.total
 
@@ -110,20 +116,16 @@ export function exportarExcel(resultado) {
     });
 
     datos.push({});
-        //--------------------------------------------------
+
+    //--------------------------------------------------
     // CREAR HOJA
     //--------------------------------------------------
 
     const hoja = XLSX.utils.json_to_sheet(
-
         datos,
-
         {
-
             skipHeader: false
-
         }
-
     );
 
     //--------------------------------------------------
@@ -132,21 +134,19 @@ export function exportarExcel(resultado) {
 
     hoja["!cols"] = [
 
-        { wch: 30 },
-
-        { wch: 15 },
-
-        { wch: 15 },
-
-        { wch: 15 },
-
-        { wch: 15 },
-
-        { wch: 15 },
-
-        { wch: 15 },
-
-        { wch: 15 }
+        { wch: 30 }, // Empleado
+        { wch: 15 }, // Fecha
+        { wch: 12 }, // Entrada
+        { wch: 12 }, // Salida
+        { wch: 10 }, // Ord D
+        { wch: 10 }, // Ord N
+        { wch: 10 }, // Dom D
+        { wch: 10 }, // Dom N
+        { wch: 10 }, // Fest D
+        { wch: 10 }, // Fest N
+        { wch: 10 }, // Ext D
+        { wch: 10 }, // Ext N
+        { wch: 12 }  // Total
 
     ];
 
@@ -155,13 +155,9 @@ export function exportarExcel(resultado) {
     //--------------------------------------------------
 
     XLSX.utils.book_append_sheet(
-
         libro,
-
         hoja,
-
         "Horas Laboradas"
-
     );
 
     //--------------------------------------------------
@@ -171,31 +167,12 @@ export function exportarExcel(resultado) {
     const hoy = new Date();
 
     const nombreArchivo =
-
-        `Horas_Laboradas_${
-
-            hoy.getFullYear()
-
-        }-${
-
-            String(hoy.getMonth() + 1).padStart(2, "0")
-
-        }-${
-
-            String(hoy.getDate()).padStart(2, "0")
-
-        }.xlsx`;
+        `Horas_Laboradas_${hoy.getFullYear()}-${String(hoy.getMonth() + 1).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}.xlsx`;
 
     //--------------------------------------------------
     // DESCARGAR
     //--------------------------------------------------
 
-    XLSX.writeFile(
-
-        libro,
-
-        nombreArchivo
-
-    );
+    XLSX.writeFile(libro, nombreArchivo);
 
 }

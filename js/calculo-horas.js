@@ -1,14 +1,25 @@
 //====================================================
-// SICA Enterprise
+// SICA Enterprise 5.0
+// Módulo de Liquidación
 // calculo-horas.js
 //====================================================
-//====================================================
-// CONVERTIR HORA A MINUTOS
-//====================================================
 
-function convertirHoraAMinutos(horaTexto) {
+import { obtenerFestivos } from "./calendario-colombia.js";
+import { liquidarJornada } from "./motor-liquidacion.js";
+import { obtenerConfiguracion } from "./motor-configuracion.js";
 
-    if (!horaTexto) return 0;
+///====================================================
+// CONVERTIR HORA (12 HORAS) A HORAS, MINUTOS Y SEGUNDOS
+//====================================================
+function convertirHora(horaTexto) {
+
+    if (!horaTexto) {
+        return {
+            horas: 0,
+            minutos: 0,
+            segundos: 0
+        };
+    }
 
     let hora = horaTexto.trim();
 
@@ -21,205 +32,310 @@ function convertirHoraAMinutos(horaTexto) {
 
     const partes = hora.split(":");
 
-    let horas = parseInt(partes[0]);
+    let horas = parseInt(partes[0], 10);
+    const minutos = parseInt(partes[1], 10);
+    const segundos = partes.length >= 3
+        ? parseInt(partes[2], 10)
+        : 0;
 
-    const minutos = parseInt(partes[1]);
+    if (esPM && horas !== 12) {
+        horas += 12;
+    }
 
-    if (esPM && horas !== 12) horas += 12;
+    if (!esPM && horas === 12) {
+        horas = 0;
+    }
 
-    if (!esPM && horas === 12) horas = 0;
-
-    return (horas * 60) + minutos;
+    return {
+        horas,
+        minutos,
+        segundos
+    };
 
 }
-export function calcularHoras(registros) {
-//====================================================
-// CONVERTIR MINUTOS A HORAS
-//====================================================
 
+//====================================================
+// CONVERTIR MINUTOS A FORMATO HH:MM
+//====================================================
 function convertirMinutosAHoras(minutos) {
 
     const horas = Math.floor(minutos / 60);
-
     const mins = minutos % 60;
 
     return `${horas}:${String(mins).padStart(2, "0")}`;
 
 }
+
+//====================================================
+// FUNCIÓN PRINCIPAL
+//====================================================
+export function calcularHoras(registros) {
+
     //==========================================
-    // ORDENAR POR FECHA
+    // ORDENAR REGISTROS POR FECHA
     //==========================================
 
     registros.sort(
-
-        (a, b) =>
-
-            a.fechaServidor.seconds -
-
-            b.fechaServidor.seconds
-
+        (a, b) => a.fechaServidor.seconds - b.fechaServidor.seconds
     );
 
     //==========================================
-    // RESULTADO
+    // RESULTADO FINAL
     //==========================================
 
     const resultado = [];
-
+        //==========================================
+    // RECORRER REGISTROS (ENTRADA / SALIDA)
     //==========================================
-    // RECORRER REGISTROS
-    //==========================================
 
-   for (let i = 0; i < registros.length; i += 2) {
+    for (let i = 0; i < registros.length; i += 2) {
 
-    const entrada = registros[i];
+        const entrada = registros[i];
+        const salida = registros[i + 1];
+console.table([
+    {
+        tipo: entrada?.tipo,
+        fecha: entrada?.fecha,
+        hora: entrada?.hora,
+        documento: entrada?.documento
+    },
+    {
+        tipo: salida?.tipo,
+        fecha: salida?.fecha,
+        hora: salida?.hora,
+        documento: salida?.documento
+    }
+]);
+        //==========================================
+        // VALIDACIONES BÁSICAS
+        //==========================================
 
-const salida = registros[i + 1];
+        if (!entrada) {
+            continue;
+        }
 
-if (!entrada) continue;
+        if (!salida) {
+            console.warn(`El empleado ${entrada.nombre} no tiene registro de salida.`);
+            continue;
+        }
 
-const minutosEntrada = convertirHoraAMinutos(entrada.hora);
+        if (!entrada.fecha) {
+            console.warn("Registro sin fecha:", entrada);
+            continue;
+        }
 
-const minutosSalida = convertirHoraAMinutos(salida?.hora);
+        if (!entrada.hora || !salida.hora) {
+            console.warn("Registro con hora incompleta:", {
+                entrada,
+                salida
+            });
+            continue;
+        }
 
-console.log("Entrada:", minutosEntrada);
-
-console.log("Salida:", minutosSalida);
-
+        //==========================================
+// CONVERTIR HORAS
 //==========================================
-// CALCULAR MINUTOS TRABAJADOS
+
+const horaEntrada = convertirHora(entrada.hora);
+const horaSalida = convertirHora(salida.hora);
+console.table([
+    {
+        tipo: entrada.tipo,
+        fecha: entrada.fecha,
+        hora: entrada.hora
+    },
+    {
+        tipo: salida.tipo,
+        fecha: salida.fecha,
+        hora: salida.hora
+    }
+]);
+//==========================================
+// CREAR FECHAS COMPLETAS
 //==========================================
 
-let minutosTrabajados = minutosSalida - minutosEntrada;
+const [dia, mes, anio] = entrada.fecha.split("/").map(Number);
 
-//==========================================
-// DESCONTAR ALMUERZO
-//==========================================
-
-const INICIO_ALMUERZO = 13 * 60; // 780
-
-const FIN_ALMUERZO = 14 * 60;    // 840
-
-if (
-
-    minutosEntrada <= INICIO_ALMUERZO &&
-
-    minutosSalida >= FIN_ALMUERZO
-
-) {
-
-    minutosTrabajados -= 60;
-
-}
-//==========================================
-// HORAS ORDINARIAS
-//==========================================
-
-const minutosOrdinarios = Math.min(
-
-    minutosTrabajados,
-
-    420
-
+const fechaEntrada = new Date(
+    anio,
+    mes - 1,
+    dia,
+    horaEntrada.horas,
+    horaEntrada.minutos,
+    horaEntrada.segundos
 );
 
-//==========================================
-// MINUTOS EXTRAS
-//==========================================
-
-const minutosExtras = Math.max(
-
-    minutosTrabajados - 420,
-
-    0
-
+const fechaSalida = new Date(
+    anio,
+    mes - 1,
+    dia,
+    horaSalida.horas,
+    horaSalida.minutos,
+    horaSalida.segundos
 );
-//==========================================
-// CALCULAR EXTRAS
-//==========================================
 
-let extraDiurna = 0;
+        //==========================================
+        // JORNADA QUE TERMINA AL DÍA SIGUIENTE
+        //==========================================
 
-let extraNocturna = 0;
+        if (fechaSalida <= fechaEntrada) {
+            fechaSalida.setDate(fechaSalida.getDate() + 1);
+        }
 
-// Hora en que terminan las 7 horas ordinarias
-let inicioExtras = minutosEntrada + minutosOrdinarios;
+        //==========================================
+        // VALIDAR DURACIÓN DE LA JORNADA
+        //==========================================
 
-// Si hubo almuerzo, las extras empiezan una hora después
-if (
-
-    minutosEntrada <= 780 &&
-
-    minutosSalida >= 840
-
-) {
-
-    inicioExtras += 60;
-
-}
-
-// 19:00
-const LIMITE_NOCTURNO = 19 * 60;
-
-if (inicioExtras < minutosSalida) {
-
-    if (inicioExtras < LIMITE_NOCTURNO) {
-
-        extraDiurna = Math.min(
-
-            minutosSalida,
-
-            LIMITE_NOCTURNO
-
-        ) - inicioExtras;
-
-    }
-
-    if (minutosSalida > LIMITE_NOCTURNO) {
-
-        extraNocturna =
-
-            minutosSalida -
-
-            Math.max(
-
-                inicioExtras,
-
-                LIMITE_NOCTURNO
-
-            );
-
-    }
-
-}
-//==========================================
-// GUARDAR RESULTADO
-//==========================================
-
-resultado.push({
-
+        const minutosTrabajados =
+            (fechaSalida - fechaEntrada) / 60000;
+console.log("========== JORNADA ==========");
+console.log({
     empleado: entrada.nombre,
-
     fecha: entrada.fecha,
-
     entrada: entrada.hora,
-
-    salida: salida ? salida.hora : "",
-
-    ordinarias: convertirMinutosAHoras(minutosOrdinarios),
-
-    extraDiurna: convertirMinutosAHoras(extraDiurna),
-
-    extraNocturna: convertirMinutosAHoras(extraNocturna),
-
-    total: convertirMinutosAHoras(minutosTrabajados)
-
+    salida: salida.hora,
+    tipoEntrada: entrada.tipo,
+    tipoSalida: salida.tipo,
+    minutosTrabajados
 });
+       
 
-}
+        if (minutosTrabajados > (16 * 60)) {
+            console.warn(
+                `Registro inválido: duración superior a 16 horas. Empleado: ${entrada.nombre}`
+            );
+            continue;
+        }
 
-console.table(resultado);
+        //==========================================
+        // CONFIGURACIÓN Y FESTIVOS
+        //==========================================
 
-return resultado;
+        const configuracion = obtenerConfiguracion();
+        const festivos = obtenerFestivos(fechaEntrada.getFullYear());
+
+        //==========================================
+        // LIQUIDAR JORNADA
+        //==========================================
+
+        const liquidacion = liquidarJornada({
+            fechaEntrada,
+            fechaSalida,
+            festivos,
+            configuracion
+        });
+
+        //==========================================
+        // TOTALES DE HORAS EXTRAS
+        //==========================================
+
+        const extraDiurnaTotal =
+            liquidacion.EXTRA_DIURNA +
+            liquidacion.EXTRA_DOMINICAL_DIURNA +
+            liquidacion.EXTRA_FESTIVA_DIURNA;
+
+        const extraNocturnaTotal =
+            liquidacion.EXTRA_NOCTURNA +
+            liquidacion.EXTRA_DOMINICAL_NOCTURNA +
+            liquidacion.EXTRA_FESTIVA_NOCTURNA;
+                    //==========================================
+        // GUARDAR RESULTADO
+        //==========================================
+
+        resultado.push({
+
+            empleado: entrada.nombre,
+
+            fecha: entrada.fecha,
+
+            entrada: entrada.hora,
+
+            salida: salida.hora,
+
+            ordinariaDiurna:
+                convertirMinutosAHoras(
+                    liquidacion.ORDINARIA_DIURNA
+                ),
+
+            ordinariaNocturna:
+                convertirMinutosAHoras(
+                    liquidacion.ORDINARIA_NOCTURNA
+                ),
+
+            dominicalDiurna:
+                convertirMinutosAHoras(
+                    liquidacion.ORDINARIA_DOMINICAL_DIURNA
+                ),
+
+            dominicalNocturna:
+                convertirMinutosAHoras(
+                    liquidacion.ORDINARIA_DOMINICAL_NOCTURNA
+                ),
+
+            festivaDiurna:
+                convertirMinutosAHoras(
+                    liquidacion.ORDINARIA_FESTIVA_DIURNA
+                ),
+
+            festivaNocturna:
+                convertirMinutosAHoras(
+                    liquidacion.ORDINARIA_FESTIVA_NOCTURNA
+                ),
+
+            //======================================
+            // HORAS EXTRAS TOTALES
+            //======================================
+
+            extraDiurna:
+                convertirMinutosAHoras(
+                    extraDiurnaTotal
+                ),
+
+            extraNocturna:
+                convertirMinutosAHoras(
+                    extraNocturnaTotal
+                ),
+
+            //======================================
+            // DETALLE DE EXTRAS
+            //======================================
+
+            extraDominicalDiurna:
+                convertirMinutosAHoras(
+                    liquidacion.EXTRA_DOMINICAL_DIURNA
+                ),
+
+            extraDominicalNocturna:
+                convertirMinutosAHoras(
+                    liquidacion.EXTRA_DOMINICAL_NOCTURNA
+                ),
+
+            extraFestivaDiurna:
+                convertirMinutosAHoras(
+                    liquidacion.EXTRA_FESTIVA_DIURNA
+                ),
+
+            extraFestivaNocturna:
+                convertirMinutosAHoras(
+                    liquidacion.EXTRA_FESTIVA_NOCTURNA
+                ),
+
+            //======================================
+            // TOTAL LABORADO
+            //======================================
+
+            total:
+                convertirMinutosAHoras(
+                    liquidacion.minutosTrabajados
+                )
+
+        });
+            }
+
+    //==========================================
+    // RETORNAR RESULTADO
+    //==========================================
+
+    return resultado;
 
 }

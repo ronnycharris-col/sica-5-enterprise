@@ -20,6 +20,9 @@ export function tieneAlmuerzo(configuracion) {
  * Por ahora usa una hora fija.
  * Más adelante leeremos el horario desde la programación del turno.
  */
+/**
+ * Determina si un minuto pertenece al almuerzo.
+ */
 export function esMinutoAlmuerzo(fechaHora, configuracion) {
 
     if (!tieneAlmuerzo(configuracion)) {
@@ -28,8 +31,10 @@ export function esMinutoAlmuerzo(fechaHora, configuracion) {
 
     const hora = fechaHora.getHours();
 
-    // Temporal: almuerzo de 12:00 a 12:59
-    return hora === 12;
+    const inicio = configuracion.almuerzo.inicio;
+    const fin = configuracion.almuerzo.fin;
+
+    return hora >= inicio && hora < fin;
 
 }
 

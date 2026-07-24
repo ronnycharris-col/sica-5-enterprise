@@ -1,5 +1,5 @@
 //====================================================
-// SICA Enterprise
+// SICA Enterprise 5.0
 // HORAS LABORADAS
 // horas.js
 //====================================================
@@ -24,17 +24,30 @@ import {
 
 } from "./calculo-horas.js";
 
-import { exportarExcel } from "./excel-horas.js";
+import {
 
-import { exportarPDF } from "./pdf-horas.js";
+    exportarExcel
 
-import { crearBuscador } from "./componentes/buscador.js";
+} from "./excel-horas.js";
+
+import {
+
+    exportarPDF
+
+} from "./pdf-horas.js";
+
+import {
+
+    crearBuscador
+
+} from "./componentes/buscador.js";
 
 //====================================================
-// RESULTADO ACTUAL
+// VARIABLES GLOBALES
 //====================================================
 
 let resultadoActual = [];
+
 //====================================================
 // INICIO
 //====================================================
@@ -57,34 +70,13 @@ async function iniciar() {
 
         console.log("====================================");
         console.log("SICA Enterprise - Horas Laboradas");
-        console.log("Iniciando módulo...");
         console.log("====================================");
 
-        //==============================
-        // BOTÓN PDF
-        //==============================
-
-        document
-            .getElementById("btnPDF")
-            .addEventListener(
-                "click",
-                () => {
-
-                    exportarPDF(resultadoActual);
-
-                }
-            );
-
-        //==============================
+        //====================================
         // CARGAR EMPLEADOS
-        //==============================
+        //====================================
 
         await cargarEmpleados();
-
-        console.log(
-            "Empleados cargados:",
-            empleados.length
-        );
 
         crearBuscador({
 
@@ -102,16 +94,11 @@ async function iniciar() {
 
         });
 
-        //==============================
-        // CARGAR PUNTOS DE VENTA
-        //==============================
+        //====================================
+        // CARGAR PUNTOS
+        //====================================
 
         await cargarPuntosVenta();
-
-        console.log(
-            "Puntos de Venta cargados:",
-            puntosVenta.length
-        );
 
         crearBuscador({
 
@@ -129,43 +116,48 @@ async function iniciar() {
 
         });
 
-        //==============================
-        // BOTÓN CONSULTAR
-        //==============================
+     //====================================
+     // BOTONES
+     //====================================
 
-        document
-            .getElementById("btnBuscar")
-            .addEventListener(
-                "click",
-                consultar
-            );
+document
+    .getElementById("btnBuscar")
+    .addEventListener(
+        "click",
+        consultar
+    );
 
-        //==============================
-        // BOTÓN EXCEL
-        //==============================
+document
+    .getElementById("btnLimpiar")
+    .addEventListener(
+        "click",
+        limpiarFormulario
+    );
 
-        document
-            .getElementById("btnExcel")
-            .addEventListener(
-                "click",
-                () => {
+document
+    .getElementById("btnExcel")
+    .addEventListener(
+        "click",
+        () => exportarExcel(resultadoActual)
+    );
 
-                    exportarExcel(resultadoActual);
+document
+    .getElementById("btnPDF")
+    .addEventListener(
+        "click",
+        () => exportarPDF(resultadoActual)
+    );
 
-                }
-            );
+console.log("Módulo iniciado correctamente.");
+} 
+    catch (error) {
 
-        console.log("Módulo iniciado correctamente.");
-
-    } catch (error) {
-
-        console.error(
-            "Error iniciando Horas Laboradas:",
-            error
-        );
+        console.error(error);
 
         alert(
+
             "No fue posible iniciar el módulo."
+
         );
 
     }
@@ -180,10 +172,11 @@ async function consultar() {
     const fechaInicio = document.getElementById("fechaInicio").value;
     const fechaFin = document.getElementById("fechaFin").value;
     const empleado = document.getElementById("empleado").value;
+   
     const puntoVenta = document.getElementById("puntoVenta").value;
 
     //====================================
-    // VALIDACIONES
+    // VALIDAR FECHAS
     //====================================
 
     if (!fechaInicio || !fechaFin) {
@@ -206,7 +199,10 @@ async function consultar() {
 
         );
 
-        console.log("Registros encontrados:", registros.length);
+        console.log(
+            "Registros encontrados:",
+            registros.length
+        );
 
         //====================================
         // FILTRAR EMPLEADO
@@ -222,6 +218,8 @@ async function consultar() {
 
         }
 
+        
+
         //====================================
         // FILTRAR PUNTO DE VENTA
         //====================================
@@ -236,17 +234,40 @@ async function consultar() {
 
         }
 
-        console.log("Registros filtrados:", registros.length);
+        console.log(
+            "Registros filtrados:",
+            registros.length
+        );
 
-        resultadoActual = calcularHoras(registros);
+        //====================================
+        // CALCULAR HORAS
+        //====================================
 
-        mostrarTabla(resultadoActual);
+        resultadoActual = calcularHoras(
 
-    } catch (error) {
+            registros
+
+        );
+
+        //====================================
+        // MOSTRAR TABLA
+        //====================================
+
+        mostrarTabla(
+
+            resultadoActual
+
+        );
+
+    }
+
+    catch (error) {
 
         console.error(error);
 
-        alert("Ocurrió un error al consultar la información.");
+        alert(
+            "Ocurrió un error al consultar la información."
+        );
 
     }
 
@@ -269,13 +290,14 @@ function mostrarTabla(resultado) {
 
     if (resultado.length === 0) {
 
-        lblTotal.textContent = "Registros encontrados: 0";
+        lblTotal.textContent =
+            "Registros encontrados: 0";
 
         tbody.innerHTML = `
 
             <tr>
 
-                <td colspan="8" style="text-align:center;">
+                <td colspan="13">
 
                     No se encontraron registros.
 
@@ -307,7 +329,17 @@ function mostrarTabla(resultado) {
 
             <td>${item.salida}</td>
 
-            <td>${item.ordinarias}</td>
+            <td>${item.ordinariaDiurna}</td>
+
+            <td>${item.ordinariaNocturna}</td>
+
+            <td>${item.dominicalDiurna}</td>
+
+            <td>${item.dominicalNocturna}</td>
+
+            <td>${item.festivaDiurna}</td>
+
+            <td>${item.festivaNocturna}</td>
 
             <td>${item.extraDiurna}</td>
 
@@ -322,12 +354,47 @@ function mostrarTabla(resultado) {
     });
 
     //====================================
-    // TOTAL REGISTROS
+    // TOTAL
     //====================================
 
     lblTotal.textContent =
-        "Registros encontrados: " + resultado.length;
 
-    console.log("Tabla actualizada correctamente.");
+        "Registros encontrados: " +
+
+        resultado.length;
+
+    console.log(
+
+        "Tabla actualizada correctamente."
+
+    );
 
 }
+//====================================================
+// LIMPIAR FORMULARIO
+//====================================================
+
+function limpiarFormulario() {
+
+    document.getElementById("fechaInicio").value = "";
+    document.getElementById("fechaFin").value = "";
+
+    document.getElementById("buscarEmpleado").value = "";
+    document.getElementById("empleado").value = "";
+
+    document.getElementById("buscarPuntoVenta").value = "";
+    document.getElementById("puntoVenta").value = "";
+
+    resultadoActual = [];
+
+    document.getElementById("tablaHoras").innerHTML = "";
+
+    document.getElementById("totalRegistros").textContent =
+        "Registros encontrados: 0";
+    document.getElementById("listaEmpleados").innerHTML = "";
+
+    document.getElementById("listaPuntosVenta").innerHTML = "";
+    console.log("Formulario limpiado.");
+
+}
+ 

@@ -30,7 +30,7 @@ export let empleados = [];
 
 export let puntosVenta = [];
 
-console.log("Firebase Horas cargado correctamente.");
+
 //====================================================
 // CARGAR EMPLEADOS
 //====================================================
@@ -152,6 +152,7 @@ export async function cargarPuntosVenta() {
     }
 
 }
+
 //====================================================
 // BUSCAR REGISTROS
 //====================================================

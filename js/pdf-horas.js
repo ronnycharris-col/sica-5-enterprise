@@ -1,260 +1,261 @@
-//====================================================
-// RCH Systems
-// PDF HORAS LABORADAS
-// pdf-horas.js
-//====================================================
+/**
+ * ==========================================================
+ * SICA Enterprise 5.0
+ * Exportar PDF - Horas Laboradas
+ * ==========================================================
+ */
 
 import { jsPDF } from "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/+esm";
+import autoTable from "https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/+esm";
 
-//====================================================
-// EXPORTAR PDF
-//====================================================
+export function exportarPDF(resultado, filtros = {}) {
 
-export function exportarPDF(resultado) {
-
-    //--------------------------------------------------
+    //---------------------------------------------------------
     // VALIDAR INFORMACIÓN
-    //--------------------------------------------------
+    //---------------------------------------------------------
 
     if (!resultado || resultado.length === 0) {
 
         alert("No hay información para exportar.");
-
         return;
 
     }
 
-    //--------------------------------------------------
-    // CREAR DOCUMENTO
-    //--------------------------------------------------
+    //---------------------------------------------------------
+    // CREAR PDF
+    //---------------------------------------------------------
 
     const pdf = new jsPDF({
 
         orientation: "landscape",
-
         unit: "mm",
-
         format: "a4"
 
     });
 
-    //--------------------------------------------------
-    // CONFIGURACIÓN INICIAL
-    //--------------------------------------------------
-
-    let posY = 20;
-        //--------------------------------------------------
+    //---------------------------------------------------------
     // TÍTULO
-    //--------------------------------------------------
+    //---------------------------------------------------------
 
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(18);
 
     pdf.text(
-        "RCH Systems",
+        "SICA ENTERPRISE 5.0",
         148,
-        posY,
+        15,
         { align: "center" }
     );
 
-    posY += 8;
-
-    pdf.setFontSize(14);
-
-    pdf.text(
-        "Sistema Integral de Control de Acceso",
-        148,
-        posY,
-        { align: "center" }
-    );
-
-    posY += 7;
-
-    pdf.setFontSize(12);
-
-    pdf.text(
-        "Enterprise Edition",
-        148,
-        posY,
-        { align: "center" }
-    );
-
-    posY += 12;
-
-    //--------------------------------------------------
-    // REPORTE
-    //--------------------------------------------------
-
-    pdf.setFontSize(14);
+    pdf.setFontSize(13);
 
     pdf.text(
         "REPORTE DE HORAS LABORADAS",
         148,
-        posY,
+        23,
         { align: "center" }
     );
 
-    posY += 12;
-
-    //--------------------------------------------------
-    // FECHA DEL REPORTE
-    //--------------------------------------------------
+    //---------------------------------------------------------
+    // FILTROS
+    //---------------------------------------------------------
 
     pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(10);
-
-    pdf.text(
-        "Fecha de generación: " +
-        new Date().toLocaleDateString("es-CO"),
-        14,
-        posY
-    );
-
-    posY += 10;
-        //--------------------------------------------------
-    // ENCABEZADOS DE LA TABLA
-    //--------------------------------------------------
-
-    pdf.setFont("helvetica", "bold");
     pdf.setFontSize(9);
 
-    const columnas = [
+    pdf.text(
+        `Fecha Inicial: ${filtros.fechaInicio || "Todas"}`,
+        14,
+        34
+    );
+
+    pdf.text(
+        `Fecha Final: ${filtros.fechaFin || "Todas"}`,
+        14,
+        40
+    );
+
+    pdf.text(
+        `Empleado: ${filtros.empleado || "Todos"}`,
+        90,
+        34
+    );
+
+    pdf.text(
+        `Punto de Venta: ${filtros.puntoVenta || "Todos"}`,
+        90,
+        40
+    );
+
+    pdf.text(
+        `Generado: ${new Date().toLocaleString("es-CO")}`,
+        205,
+        34
+    );
+
+    //---------------------------------------------------------
+    // ENCABEZADO
+    //---------------------------------------------------------
+
+    const encabezado = [[
 
         "Empleado",
         "Fecha",
         "Entrada",
         "Salida",
-        "Ord.",
-        "Ext. D.",
-        "Ext. N.",
+        "Ord D",
+        "Ord N",
+        "Dom D",
+        "Dom N",
+        "Fest D",
+        "Fest N",
+        "Ext D",
+        "Ext N",
         "Total"
 
-    ];
+    ]];
 
-    const posiciones = [
+    //---------------------------------------------------------
+    // FILAS
+    //---------------------------------------------------------
 
-        10,
-        70,
-        95,
-        120,
-        145,
-        165,
-        188,
-        215
+    const filas = resultado.map(item => [
 
-    ];
+        item.empleado,
+        item.fecha,
+        item.entrada,
+        item.salida,
+        item.ordinariaDiurna,
+        item.ordinariaNocturna,
+        item.dominicalDiurna,
+        item.dominicalNocturna,
+        item.festivaDiurna,
+        item.festivaNocturna,
+        item.extraDiurna,
+        item.extraNocturna,
+        item.total
 
-    columnas.forEach((texto, index) => {
+    ]);
+        //---------------------------------------------------------
+    // TABLA
+    //---------------------------------------------------------
 
-        pdf.text(
+    autoTable(pdf, {
 
-            texto,
+        startY: 48,
 
-            posiciones[index],
+        head: encabezado,
 
-            posY
+        body: filas,
 
-        );
+        theme: "grid",
 
-    });
+        styles: {
 
-    posY += 5;
+            fontSize: 7,
+            cellPadding: 2,
+            halign: "center",
+            valign: "middle"
 
-    //--------------------------------------------------
-    // LÍNEA SEPARADORA
-    //--------------------------------------------------
+        },
 
-    pdf.line(
+        headStyles: {
 
-        10,
+            fillColor: [13, 71, 161],
+            textColor: [255, 255, 255],
+            fontStyle: "bold"
 
-        posY,
+        },
 
-        285,
+        alternateRowStyles: {
 
-        posY
+            fillColor: [245, 245, 245]
 
-    );
+        },
 
-    posY += 6;
+        columnStyles: {
 
-    //--------------------------------------------------
-    // REGISTROS
-    //--------------------------------------------------
-
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(8);
-
-    resultado.forEach(item => {
-
-        pdf.text(String(item.empleado), 10, posY);
-        pdf.text(String(item.fecha), 70, posY);
-        pdf.text(String(item.entrada), 95, posY);
-        pdf.text(String(item.salida), 120, posY);
-        pdf.text(String(item.ordinarias), 145, posY);
-        pdf.text(String(item.extraDiurna), 165, posY);
-        pdf.text(String(item.extraNocturna), 188, posY);
-        pdf.text(String(item.total), 215, posY);
-
-        posY += 6;
-
-        //--------------------------------------------------
-        // NUEVA PÁGINA SI ES NECESARIO
-        //--------------------------------------------------
-
-        if (posY > 190) {
-
-            pdf.addPage();
-
-            posY = 20;
+            0: { cellWidth: 45 },
+            1: { cellWidth: 20 },
+            2: { cellWidth: 16 },
+            3: { cellWidth: 16 }
 
         }
 
     });
-        //--------------------------------------------------
-    // TOTAL DE REGISTROS
-    //--------------------------------------------------
 
-    posY += 6;
+    //---------------------------------------------------------
+    // RESUMEN
+    //---------------------------------------------------------
+
+    const y = pdf.lastAutoTable
+        ? pdf.lastAutoTable.finalY + 8
+        : 55;
 
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(10);
 
     pdf.text(
 
-        "Total de registros: " + resultado.length,
+        `Registros encontrados: ${resultado.length}`,
 
-        10,
+        14,
 
-        posY
+        y
 
     );
 
-    //--------------------------------------------------
-    // NOMBRE DEL ARCHIVO
-    //--------------------------------------------------
+    //---------------------------------------------------------
+    // PIE DE PÁGINA
+    //---------------------------------------------------------
+
+    const paginas = pdf.getNumberOfPages();
+
+    for (let i = 1; i <= paginas; i++) {
+
+        pdf.setPage(i);
+
+        pdf.setFont("helvetica", "normal");
+
+        pdf.setFontSize(8);
+
+        pdf.text(
+
+            "Generado automáticamente por SICA Enterprise 5.0",
+
+            14,
+
+            205
+
+        );
+
+        pdf.text(
+
+            `Página ${i} de ${paginas}`,
+
+            283,
+
+            205,
+
+            {
+
+                align: "right"
+
+            }
+
+        );
+
+    }
+
+    //---------------------------------------------------------
+    // DESCARGAR
+    //---------------------------------------------------------
 
     const hoy = new Date();
 
     const nombreArchivo =
 
-        `Horas_Laboradas_${
-
-            hoy.getFullYear()
-
-        }-${
-
-            String(hoy.getMonth() + 1).padStart(2, "0")
-
-        }-${
-
-            String(hoy.getDate()).padStart(2, "0")
-
-        }.pdf`;
-
-    //--------------------------------------------------
-    // GUARDAR PDF
-    //--------------------------------------------------
+        `Horas_Laboradas_${hoy.getFullYear()}-${String(hoy.getMonth()+1).padStart(2,"0")}-${String(hoy.getDate()).padStart(2,"0")}.pdf`;
 
     pdf.save(nombreArchivo);
 

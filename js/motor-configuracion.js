@@ -21,14 +21,17 @@ export const CONFIGURACION_DEFECTO = {
 },
 
     nocturna: {
-        inicio: 21,
-        fin: 6
+    inicio: 19,
+    fin: 6
+
     },
 
     almuerzo: {
-        descontar: true,
-        minutos: 60
-    },
+    descontar: true,
+    inicio: 13,
+    fin: 14,
+    minutos: 60
+},
 
     extras: {
         habilitadas: true,
