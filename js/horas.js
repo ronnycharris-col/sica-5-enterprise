@@ -143,7 +143,17 @@ document
     .getElementById("btnPDF")
     .addEventListener(
         "click",
-        () => exportarPDF(resultadoActual)
+        () => exportarPDF(resultadoActual, {
+
+            fechaInicio: document.getElementById("fechaInicio").value,
+
+            fechaFin: document.getElementById("fechaFin").value,
+
+            empleado: document.getElementById("buscarEmpleado").value,
+
+            puntoVenta: document.getElementById("buscarPuntoVenta").value
+
+        })
     );
 
 console.log("Módulo iniciado correctamente.");
