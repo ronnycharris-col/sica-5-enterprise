@@ -5,9 +5,8 @@
  * ==========================================================
  */
 
-import { jsPDF } from "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/+esm";
-import autoTable from "https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/+esm";
-
+import { jsPDF } from "https://esm.sh/jspdf@2.5.1";
+import autoTable from "https://esm.sh/jspdf-autotable@3.8.2";
 export function exportarPDF(resultado, filtros = {}) {
 
     //---------------------------------------------------------
@@ -136,53 +135,53 @@ export function exportarPDF(resultado, filtros = {}) {
         item.total
 
     ]);
-        //---------------------------------------------------------
-    // TABLA
     //---------------------------------------------------------
+// TABLA
+//---------------------------------------------------------
 
-    autoTable(pdf, {
+autoTable(pdf, {
 
-        startY: 48,
+    startY: 48,
 
-        head: encabezado,
+    head: encabezado,
 
-        body: filas,
+    body: filas,
 
-        theme: "grid",
+    theme: "grid",
 
-        styles: {
+    styles: {
 
-            fontSize: 7,
-            cellPadding: 2,
-            halign: "center",
-            valign: "middle"
+        fontSize: 7,
+        cellPadding: 2,
+        halign: "center",
+        valign: "middle"
 
-        },
+    },
 
-        headStyles: {
+    headStyles: {
 
-            fillColor: [13, 71, 161],
-            textColor: [255, 255, 255],
-            fontStyle: "bold"
+        fillColor: [13, 71, 161],
+        textColor: [255, 255, 255],
+        fontStyle: "bold"
 
-        },
+    },
 
-        alternateRowStyles: {
+    alternateRowStyles: {
 
-            fillColor: [245, 245, 245]
+        fillColor: [245, 245, 245]
 
-        },
+    },
 
-        columnStyles: {
+    columnStyles: {
 
-            0: { cellWidth: 45 },
-            1: { cellWidth: 20 },
-            2: { cellWidth: 16 },
-            3: { cellWidth: 16 }
+        0: { cellWidth: 45 },
+        1: { cellWidth: 20 },
+        2: { cellWidth: 16 },
+        3: { cellWidth: 16 }
 
-        }
+    }
 
-    });
+});
 
     //---------------------------------------------------------
     // RESUMEN
