@@ -54,59 +54,55 @@ export function liquidarJornada({
 
     };
 
-    let minutosEfectivos = 0;
+       let minutosEfectivos = 0;
 
     const actual = new Date(fechaEntrada);
 
     while (actual < fechaSalida) {
 
-    // ¿Este minuto cuenta como trabajo efectivo?
-    if (!esMinutoLaborado(actual, config)) {
+        // ¿Este minuto cuenta como trabajo efectivo?
+        if (!esMinutoLaborado(actual, config)) {
+
+            actual.setMinutes(actual.getMinutes() + 1);
+            continue;
+
+        }
+
+        // ¿Ya terminó las horas ordinarias?
+        const esExtra = minutosEfectivos >= limiteOrdinarias;
+
+        const info = clasificarMinuto({
+
+            fechaHora: new Date(actual),
+            festivos,
+            configuracion: config,
+            esExtra
+
+        });
+
+        if (resultado.hasOwnProperty(info.categoria)) {
+
+            resultado[info.categoria]++;
+
+        }
+
+        resultado.minutosTrabajados++;
+
+        if (esExtra) {
+
+            resultado.minutosExtras++;
+
+        } else {
+
+            resultado.minutosOrdinarios++;
+
+        }
+
+        minutosEfectivos++;
 
         actual.setMinutes(actual.getMinutes() + 1);
-        continue;
 
     }
 
-    // ¿Ya terminó las horas ordinarias?
-    const esExtra = minutosEfectivos >= limiteOrdinarias;
-
-    const info = clasificarMinuto({
-
-        fechaHora: new Date(actual),
-        festivos,
-        configuracion: config,
-        esExtra
-
-    });
-
-    if (resultado.hasOwnProperty(info.categoria)) {
-
-        resultado[info.categoria]++;
-
-    }
-
-    resultado.minutosTrabajados++;
-
-    if (esExtra) {
-
-        resultado.minutosExtras++;
-
-    } else {
-
-        resultado.minutosOrdinarios++;
-
-    }
-
-    minutosEfectivos++;
-
-    actual.setMinutes(actual.getMinutes() + 1);
-
-}
-console.log("=== RESULTADO MOTOR ===");
-console.log(resultado);
-console.log("Minutos efectivos:", minutosEfectivos);
-console.log("Límite ordinarias:", limiteOrdinarias);
     return resultado;
-
 }

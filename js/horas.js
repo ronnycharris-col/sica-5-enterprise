@@ -19,9 +19,7 @@ import {
 } from "./firebase-horas.js";
 
 import {
-
     calcularHoras
-
 } from "./calculo-horas.js";
 
 import {
@@ -243,21 +241,13 @@ async function consultar() {
         // CALCULAR HORAS
         //====================================
 
-        resultadoActual = calcularHoras(
-
-            registros
-
-        );
+        resultadoActual = calcularHoras(registros);
 
         //====================================
         // MOSTRAR TABLA
         //====================================
 
-        mostrarTabla(
-
-            resultadoActual
-
-        );
+        mostrarTabla(resultadoActual);
 
     }
 

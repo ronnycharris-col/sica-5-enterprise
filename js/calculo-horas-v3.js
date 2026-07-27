@@ -134,7 +134,20 @@ for (const registrosEmpleado of empleados.values()) {
             }
 
         }
-
+console.table([
+    {
+        tipo: entrada?.tipo,
+        fecha: entrada?.fecha,
+        hora: entrada?.hora,
+        documento: entrada?.documento
+    },
+    {
+        tipo: salida?.tipo,
+        fecha: salida?.fecha,
+        hora: salida?.hora,
+        documento: salida?.documento
+    }
+]);
         //==========================================
         // VALIDACIONES BÁSICAS
         //==========================================
@@ -167,7 +180,18 @@ for (const registrosEmpleado of empleados.values()) {
 
 const horaEntrada = convertirHora(entrada.hora);
 const horaSalida = convertirHora(salida.hora);
-
+console.table([
+    {
+        tipo: entrada.tipo,
+        fecha: entrada.fecha,
+        hora: entrada.hora
+    },
+    {
+        tipo: salida.tipo,
+        fecha: salida.fecha,
+        hora: salida.hora
+    }
+]);
 //==========================================
 // CREAR FECHAS COMPLETAS
 //==========================================
@@ -206,7 +230,16 @@ const fechaSalida = new Date(
 
         const minutosTrabajados =
             (fechaSalida - fechaEntrada) / 60000;
-
+console.log("========== JORNADA ==========");
+console.log({
+    empleado: entrada.nombre,
+    fecha: entrada.fecha,
+    entrada: entrada.hora,
+    salida: salida.hora,
+    tipoEntrada: entrada.tipo,
+    tipoSalida: salida.tipo,
+    minutosTrabajados
+});
        
 
         if (minutosTrabajados > (16 * 60)) {
