@@ -238,16 +238,7 @@ const fechaSalida = new Date(
         // TOTALES DE HORAS EXTRAS
         //==========================================
 
-        const extraDiurnaTotal =
-            liquidacion.EXTRA_DIURNA +
-            liquidacion.EXTRA_DOMINICAL_DIURNA +
-            liquidacion.EXTRA_FESTIVA_DIURNA;
-
-        const extraNocturnaTotal =
-            liquidacion.EXTRA_NOCTURNA +
-            liquidacion.EXTRA_DOMINICAL_NOCTURNA +
-            liquidacion.EXTRA_FESTIVA_NOCTURNA;
-                    //==========================================
+        
         // GUARDAR RESULTADO
         //==========================================
 
@@ -291,19 +282,16 @@ const fechaSalida = new Date(
                     liquidacion.ORDINARIA_FESTIVA_NOCTURNA
                 ),
 
-            //======================================
-            // HORAS EXTRAS TOTALES
-            //======================================
-
+            
             extraDiurna:
-                convertirMinutosAHoras(
-                    extraDiurnaTotal
-                ),
+    convertirMinutosAHoras(
+        liquidacion.EXTRA_DIURNA
+    ),
 
-            extraNocturna:
-                convertirMinutosAHoras(
-                    extraNocturnaTotal
-                ),
+extraNocturna:
+    convertirMinutosAHoras(
+        liquidacion.EXTRA_NOCTURNA
+    ),
 
             //======================================
             // DETALLE DE EXTRAS

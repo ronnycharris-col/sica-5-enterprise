@@ -98,21 +98,30 @@ export function exportarPDF(resultado, filtros = {}) {
 
     const encabezado = [[
 
-        "Empleado",
-        "Fecha",
-        "Entrada",
-        "Salida",
-        "Ord D",
-        "Ord N",
-        "Dom D",
-        "Dom N",
-        "Fest D",
-        "Fest N",
-        "Ext D",
-        "Ext N",
-        "Total"
+    "Empleado",
+    "Fecha",
+    "Entrada",
+    "Salida",
 
-    ]];
+    "Ord D",
+    "Ord N",
+
+    "Dom D",
+    "Dom N",
+    "Dom Extra D",
+    "Dom Extra N",
+
+    "Fest D",
+    "Fest N",
+    "Fest Extra D",
+    "Fest Extra N",
+
+    "Extra D",
+    "Extra N",
+
+    "Total"
+
+]];
 
     //---------------------------------------------------------
     // FILAS
@@ -120,21 +129,30 @@ export function exportarPDF(resultado, filtros = {}) {
 
     const filas = resultado.map(item => [
 
-        item.empleado,
-        item.fecha,
-        item.entrada,
-        item.salida,
-        item.ordinariaDiurna,
-        item.ordinariaNocturna,
-        item.dominicalDiurna,
-        item.dominicalNocturna,
-        item.festivaDiurna,
-        item.festivaNocturna,
-        item.extraDiurna,
-        item.extraNocturna,
-        item.total
+    item.empleado,
+    item.fecha,
+    item.entrada,
+    item.salida,
 
-    ]);
+    item.ordinariaDiurna,
+    item.ordinariaNocturna,
+
+    item.dominicalDiurna,
+    item.dominicalNocturna,
+    item.extraDominicalDiurna,
+    item.extraDominicalNocturna,
+
+    item.festivaDiurna,
+    item.festivaNocturna,
+    item.extraFestivaDiurna,
+    item.extraFestivaNocturna,
+
+    item.extraDiurna,
+    item.extraNocturna,
+
+    item.total
+
+]);
     //---------------------------------------------------------
 // TABLA
 //---------------------------------------------------------

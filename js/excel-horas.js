@@ -46,14 +46,22 @@ export function exportarExcel(resultado) {
         Entrada: "",
         Salida: "",
         Ord_D: "",
-        Ord_N: "",
-        Dom_D: "",
-        Dom_N: "",
-        Fest_D: "",
-        Fest_N: "",
-        Ext_D: "",
-        Ext_N: "",
-        Total: ""
+Ord_N: "",
+
+Dom_D: "",
+Dom_N: "",
+Dom_Extra_D: "",
+Dom_Extra_N: "",
+
+Fest_D: "",
+Fest_N: "",
+Fest_Extra_D: "",
+Fest_Extra_N: "",
+
+Ext_D: "",
+Ext_N: "",
+
+Total: ""
 
     });
 
@@ -64,14 +72,22 @@ export function exportarExcel(resultado) {
         Entrada: "",
         Salida: "",
         Ord_D: "",
-        Ord_N: "",
-        Dom_D: "",
-        Dom_N: "",
-        Fest_D: "",
-        Fest_N: "",
-        Ext_D: "",
-        Ext_N: "",
-        Total: ""
+Ord_N: "",
+
+Dom_D: "",
+Dom_N: "",
+Dom_Extra_D: "",
+Dom_Extra_N: "",
+
+Fest_D: "",
+Fest_N: "",
+Fest_Extra_D: "",
+Fest_Extra_N: "",
+
+Ext_D: "",
+Ext_N: "",
+
+Total: ""
 
     });
 
@@ -93,23 +109,30 @@ export function exportarExcel(resultado) {
 
             Salida: item.salida,
 
-            Ord_D: item.ordinariaDiurna,
-
-            Ord_N: item.ordinariaNocturna,
-
             Dom_D: item.dominicalDiurna,
 
-            Dom_N: item.dominicalNocturna,
+Dom_N: item.dominicalNocturna,
 
-            Fest_D: item.festivaDiurna,
+Dom_Extra_D: item.extraDominicalDiurna,
 
-            Fest_N: item.festivaNocturna,
+Dom_Extra_N: item.extraDominicalNocturna,
 
-            Ext_D: item.extraDiurna,
 
-            Ext_N: item.extraNocturna,
+Fest_D: item.festivaDiurna,
 
-            Total: item.total
+Fest_N: item.festivaNocturna,
+
+Fest_Extra_D: item.extraFestivaDiurna,
+
+Fest_Extra_N: item.extraFestivaNocturna,
+
+
+Ext_D: item.extraDiurna,
+
+Ext_N: item.extraNocturna,
+
+
+Total: item.total
 
         });
 
@@ -142,8 +165,12 @@ export function exportarExcel(resultado) {
         { wch: 10 }, // Ord N
         { wch: 10 }, // Dom D
         { wch: 10 }, // Dom N
+        { wch: 12 }, // Dom Extra D
+        { wch: 12 }, // Dom Extra N
         { wch: 10 }, // Fest D
         { wch: 10 }, // Fest N
+        { wch: 12 }, // Fest Extra D
+        { wch: 12 }, // Fest Extra N
         { wch: 10 }, // Ext D
         { wch: 10 }, // Ext N
         { wch: 12 }  // Total

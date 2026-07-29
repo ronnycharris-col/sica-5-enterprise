@@ -39,3 +39,57 @@
     color:#fff;
 
 }
+.tabla-horas {
+    width: 95%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.tabla-horas th {
+    font-size: 11px;
+    padding: 5px;
+    text-align: center;
+}
+
+.tabla-horas td {
+    font-size: 11px;
+    padding: 5px;
+    text-align: center;
+}
+/*========================================
+   TABLA HORAS LABORADAS
+========================================*/
+
+.tabla-horas {
+
+    width: 95%;
+
+    margin: auto;
+
+    border-collapse: collapse;
+
+}
+
+
+.tabla-horas th {
+
+    font-size: 11px;
+
+    padding: 5px;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+}
+
+
+.tabla-horas td {
+
+    font-size: 11px;
+
+    padding: 5px;
+
+    text-align: center;
+
+}

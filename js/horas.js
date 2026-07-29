@@ -297,7 +297,7 @@ function mostrarTabla(resultado) {
 
             <tr>
 
-                <td colspan="13">
+                <td colspan="17">
 
                     No se encontraron registros.
 
@@ -310,6 +310,7 @@ function mostrarTabla(resultado) {
         return;
 
     }
+
 
     //====================================
     // RECORRER RESULTADOS
@@ -329,21 +330,34 @@ function mostrarTabla(resultado) {
 
             <td>${item.salida}</td>
 
+
             <td>${item.ordinariaDiurna}</td>
 
             <td>${item.ordinariaNocturna}</td>
+
 
             <td>${item.dominicalDiurna}</td>
 
             <td>${item.dominicalNocturna}</td>
 
+            <td>${item.extraDominicalDiurna}</td>
+
+            <td>${item.extraDominicalNocturna}</td>
+
+
             <td>${item.festivaDiurna}</td>
 
             <td>${item.festivaNocturna}</td>
 
+            <td>${item.extraFestivaDiurna}</td>
+
+            <td>${item.extraFestivaNocturna}</td>
+
+
             <td>${item.extraDiurna}</td>
 
             <td>${item.extraNocturna}</td>
+
 
             <td>${item.total}</td>
 
@@ -352,6 +366,26 @@ function mostrarTabla(resultado) {
         tbody.appendChild(fila);
 
     });
+
+
+    //====================================
+    // TOTAL
+    //====================================
+
+    lblTotal.textContent =
+
+        "Registros encontrados: " +
+
+        resultado.length;
+
+
+    console.log(
+
+        "Tabla actualizada correctamente."
+
+    );
+
+}
 
     //====================================
     // TOTAL
@@ -369,7 +403,7 @@ function mostrarTabla(resultado) {
 
     );
 
-}
+
 //====================================================
 // LIMPIAR FORMULARIO
 //====================================================
