@@ -169,12 +169,12 @@ autoTable(pdf, {
 
     styles: {
 
-        fontSize: 7,
-        cellPadding: 2,
-        halign: "center",
-        valign: "middle"
+    fontSize: 8,
+    cellPadding: 2,
+    halign: "center",
+    valign: "middle"
 
-    },
+},
 
     headStyles: {
 

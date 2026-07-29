@@ -93,3 +93,120 @@
     text-align: center;
 
 }
+
+
+/* Tabla */
+
+.contenedor-tabla-horas table{
+
+    min-width:1400px;
+
+    white-space:nowrap;
+
+}
+
+
+/* Mantener lectura cómoda */
+
+.contenedor-tabla-horas th{
+
+    font-size:14px;
+
+}
+
+
+.contenedor-tabla-horas td{
+
+    font-size:13px;
+
+}
+/*========================================
+   TABLA HORAS LABORADAS
+========================================*/
+
+.tabla-scroll{
+
+    width:100%;
+    overflow-x:auto;
+    margin-top:30px;
+
+}
+
+
+.tabla-horas{
+
+    min-width:1150px;
+    white-space:nowrap;
+
+}
+
+
+.tabla-horas th,
+.tabla-horas td{
+
+    padding:6px;
+    font-size:12px;
+
+}
+
+
+.tabla-horas th{
+
+    text-align:center;
+    line-height:1.1;
+
+}
+/*========================================
+   TABLA HORAS LABORADAS
+========================================*/
+
+.tabla-scroll{
+
+    width:100%;
+    overflow-x:auto;
+    margin-top:30px;
+
+}
+
+
+.tabla-horas{
+
+    min-width:1200px;
+    white-space:nowrap;
+    border-collapse:collapse;
+
+}
+
+
+.tabla-horas th,
+.tabla-horas td{
+
+    padding:5px;
+    font-size:11px;
+
+}
+
+
+.tabla-horas th{
+
+    text-align:center;
+    line-height:1.1;
+
+}
+/*========================================
+   AJUSTES TABLA HORAS
+========================================*/
+
+.tabla-horas{
+
+    margin-bottom:20px;
+
+}
+
+
+.tabla-horas th{
+
+    vertical-align:middle;
+    text-align:center;
+
+}
