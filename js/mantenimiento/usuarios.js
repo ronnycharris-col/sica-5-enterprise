@@ -53,46 +53,59 @@ export function mostrarModuloUsuarios(panel){
             </header>
 
 
-            <!--==========================================
-                    BUSCADOR
-            ==========================================-->
+        <!--==========================================
+        BUSCADOR
+==========================================-->
 
-            <div class="busqueda">
+<div class="busqueda">
 
-                <input
+    <input
 
-                    id="txtBuscarUsuario"
+        id="txtBuscarUsuario"
 
-                    class="input"
+        class="input"
 
-                    type="text"
+        type="text"
 
-                    autocomplete="off"
+        autocomplete="off"
 
-                    placeholder="Ingrese el documento del usuario"
+        placeholder="Ingrese el documento del usuario"
 
-                >
+    >
 
-                <button
+    <button
 
-                    id="btnBuscarUsuario"
+        id="btnBuscarUsuario"
 
-                    class="btn btnAzul"
+        class="btn btnAzul"
 
-                >
+    >
 
-                    <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-magnifying-glass"></i>
 
-                    Buscar
+        Buscar
 
-                </button>
-
-            </div>
+    </button>
 
 
-            <hr>
+    <button
+
+        id="btnActualizarPermisos"
+
+        class="btn btnAzul"
+
+        style="display:none;"
+
+    >
+
+        🔄 Actualizar permisos por rol
+
+    </button>
 
 
+</div>
+
+<hr>
             <!--==========================================
                     RESULTADO
             ==========================================-->
@@ -150,7 +163,29 @@ function iniciarEventos(){
 
     const btnBuscar = document.getElementById("btnBuscarUsuario");
     const txtBuscar = document.getElementById("txtBuscarUsuario");
+const btnActualizarPermisos =
+document.getElementById("btnActualizarPermisos");
 
+
+if(btnActualizarPermisos){
+
+    const usuarioSesion = JSON.parse(
+        sessionStorage.getItem("usuarioActivo")
+    );
+
+
+    if(usuarioSesion?.rol !== "administrador"){
+
+        btnActualizarPermisos.style.display="none";
+
+    }else{
+
+        btnActualizarPermisos.onclick =
+        actualizarPermisosPorRol;
+
+    }
+
+}
     if(btnBuscar){
 
         btnBuscar.addEventListener("click", buscarUsuario);
@@ -368,239 +403,321 @@ async function buscarUsuario(){
 
 function mostrarFichaUsuario(idUsuario, usuario){
 
-    const resultado = document.getElementById(
-
-        "resultadoUsuarios"
-
+    const usuarioSesion = JSON.parse(
+        sessionStorage.getItem("usuarioActivo")
     );
+
+
+    const resultado = document.getElementById(
+        "resultadoUsuarios"
+    );
+
+
+    const esAdministrador =
+        usuarioSesion?.rol === "administrador";
+
+
+    const esCoordinador =
+        usuarioSesion?.rol === "coordinador";
+
+
+    let opcionesRol = "";
+
+
+    if(esAdministrador){
+
+        opcionesRol = `
+
+        <option value="administrador"
+        ${usuario.rol==="administrador"?"selected":""}>
+        👑 Administrador
+        </option>
+
+
+        <option value="coordinador"
+        ${usuario.rol==="coordinador"?"selected":""}>
+        🛠 Coordinador
+        </option>
+
+
+        <option value="operador"
+        ${usuario.rol==="operador"?"selected":""}>
+        👤 Operador
+        </option>
+
+        `;
+
+    }
+
+
+    if(esCoordinador){
+
+        opcionesRol = `
+
+        <option value="operador"
+        selected>
+        👤 Operador
+        </option>
+
+        `;
+
+    }
+
+
+
+    let permisosHTML = "";
+
+
+    if(esAdministrador){
+
+        permisosHTML = `
+
+<h3 class="tituloPermisos">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+Permisos del usuario
+
+</h3>
+
+
+<div class="permisosGrid">
+
+
+<label>
+<input type="checkbox" id="permDashboard"
+${usuario.permisos?.dashboard?"checked":""}>
+📊 Dashboard
+</label>
+
+
+<label>
+<input type="checkbox" id="permEmpleados"
+${usuario.permisos?.empleados?"checked":""}>
+👥 Empleados
+</label>
+
+
+<label>
+<input type="checkbox" id="permPuntosVenta"
+${usuario.permisos?.puntosVenta?"checked":""}>
+🏪 Puntos de Venta
+</label>
+
+
+<label>
+<input type="checkbox" id="permHoras"
+${usuario.permisos?.horas?"checked":""}>
+⏱ Horas
+</label>
+
+<label>
+<input type="checkbox" id="permEntradas"
+${usuario.permisos?.entradasSalidas?"checked":""}>
+📷 Entradas / Salidas
+</label>
+
+
+<label>
+<input type="checkbox" id="permBackup"
+${usuario.permisos?.backup?"checked":""}>
+💾 Respaldo
+</label>
+
+<label>
+<input type="checkbox" id="permReportes"
+${usuario.permisos?.reportes?"checked":""}>
+📄 Reportes
+</label>
+
+
+<label>
+<input type="checkbox" id="permUsuarios"
+${usuario.permisos?.usuarios?"checked":""}>
+👤 Usuarios
+</label>
+
+
+<label>
+<input type="checkbox" id="permConfiguracion"
+${usuario.permisos?.configuracion?"checked":""}>
+⚙️ Configuración
+</label>
+
+<label>
+<input type="checkbox" id="permMantenimiento"
+${usuario.permisos?.mantenimiento ? "checked" : ""}>
+🛠️ Mantenimiento
+</label>
+
+</div>
+
+`;
+
+    }
+
+
 
     resultado.innerHTML = `
 
-        <div class="panelCard panelFichaUsuario">
+<div class="panelCard panelFichaUsuario">
 
-    <div class="cabeceraUsuario">
 
-        <div class="iconoUsuario">
+<h2>${usuario.nombre}</h2>
 
-            <i class="fa-solid fa-user"></i>
+<p>
+Documento:
+<strong>${usuario.usuario}</strong>
+</p>
 
-        </div>
 
-        <div class="datosCabecera">
+<div class="rol-box">
 
-            <h2>${usuario.nombre}</h2>
+<label>
+Rol
+</label>
 
-            <span>Documento: ${usuario.usuario}</span>
 
-        </div>
+<select id="txtRol" class="input">
 
-        <div class="${
-            usuario.estado === "Activo"
-                ? "estadoActivo"
-                : "estadoInactivo"
-        }">
+${opcionesRol}
 
-            ${usuario.estado}
+</select>
 
-        </div>
 
-    </div>
+</div>
 
-    <hr>
 
-            <p>
+${permisosHTML}
 
-                <strong>Documento:</strong>
 
-                ${usuario.usuario}
+<div class="botones">
 
-            </p>
 
-            <p>
+<button id="btnClave"
+class="btn-premium">
 
-                <strong>Rol</strong>
-
-            </p>
-
-            <select
-                id="txtRol"
-                class="input">
-
-                <option
-                    value="administrador"
-                    ${usuario.rol==="administrador" ? "selected" : ""}>
-
-                    Administrador
-
-                </option>
-
-                <option
-                    value="coordinador"
-                    ${usuario.rol==="coordinador" ? "selected" : ""}>
-
-                    Coordinador
-
-                </option>
-
-                <option
-                    value="operador"
-                    ${usuario.rol==="operador" ? "selected" : ""}>
-
-                    Operador
-
-                </option>
-
-            </select>
-
-            <br><br>
-
-            <p>
-
-               <strong>Estado:</strong>
-
-<span style="font-weight:bold;
-color:${usuario.estado==="Activo"
-    ? "#2E7D32"
-    : "#C62828"}">
-
-    ${usuario.estado}
-
-</span>
-
-            </p>
-
-            <br>
-
-            <label>
-
-                <input
-
-                    type="checkbox"
-
-                    id="chkMantenimiento"
-
-                    ${usuario.permisoMantenimiento ? "checked" : ""}
-
-                >
-
-              🛠 Permitir acceso al Centro de Mantenimiento
-
-            </label>
-
-            <br><br>
-
-            <div class="botones">
-
-                <button
-                    id="btnGuardar"
-                    class="btn btnVerde">
-
-                    💾 Guardar Cambios
-
-                </button>
-<button
-    id="btnClave"
-    class="btn btnAzul">
-
-    🔑 Restablecer Clave
+🔑 Restablecer Clave
 
 </button>
-                <button
-                    id="btnEstado"
-                    class="btn btnRojo">
 
-                    ${usuario.estado==="Activo"
 
-                        ? "🚫 Desactivar"
+<button id="btnEstado"
+class="btn-premium">
 
-                        : "✅ Activar"}
-
-                </button>
-<button
-    id="btnEliminar"
-    class="btn btnRojo">
-
-    🗑️ Eliminar Usuario
+${usuario.estado==="Activo"?"🚫 Desactivar":"✅ Activar"}
 
 </button>
-            </div>
 
-        </div>
 
-    `;
 
-    //------------------------------------------------
-    // EVENTOS
-    //------------------------------------------------
+${
+(
+esAdministrador ||
+esCoordinador
+)
+&& usuario.rol==="operador"
+?
+`
+<button id="btnEliminar"
+class="btn-premium">
 
-    document.getElementById(
+🗑️ Eliminar Usuario
 
-        "btnGuardar"
+</button>
+`
+:""
+}
 
-    ).addEventListener(
 
-        "click",
+${
+esAdministrador
+?
+`
+<button id="btnGuardar"
+class="btn-premium">
 
-        ()=>guardarCambios(
+💾 Guardar Cambios
 
-            idUsuario,
+</button>
+`
+:""
+}
 
-            usuario
 
-        )
+</div>
 
-    );
-document.getElementById(
 
-    "btnClave"
+</div>
 
-).addEventListener(
+`;
 
-    "click",
 
-    ()=>restablecerClave(
 
-        idUsuario,
+const btnGuardar =
+document.getElementById("btnGuardar");
 
-        usuario
 
-    )
+const btnClave =
+document.getElementById("btnClave");
 
+
+const btnEstado =
+document.getElementById("btnEstado");
+
+
+const btnEliminar =
+document.getElementById("btnEliminar");
+
+console.log("SESION:", usuarioSesion);
+console.log("USUARIO CONSULTADO:", usuario);
+console.log("ROL SESION:", usuarioSesion?.rol);
+console.log("ROL USUARIO:", usuario.rol);
+
+
+if(btnGuardar){
+
+btnGuardar.onclick = ()=>guardarCambios(
+    idUsuario,
+    usuario
 );
-    document.getElementById(
 
-        "btnEstado"
+}
 
-    ).addEventListener(
 
-        "click",
 
-        ()=>cambiarEstado(
+if(btnClave){
 
-            idUsuario,
-
-            usuario
-
-        )
-
-    );
-document.getElementById(
-
-    "btnEliminar"
-
-).addEventListener(
-
-    "click",
-
-    ()=>eliminarUsuario(
-
-        idUsuario,
-
-        usuario
-
-    )
-
+btnClave.onclick = ()=>restablecerClave(
+    idUsuario,
+    usuario
 );
+
+}
+
+
+
+if(btnEstado){
+
+btnEstado.onclick = ()=>cambiarEstado(
+    idUsuario,
+    usuario
+);
+
+}
+
+
+
+if(btnEliminar){
+
+btnEliminar.onclick = ()=>eliminarUsuario(
+    idUsuario,
+    usuario
+);
+
+}
+
+
 }
 //====================================================
 // GUARDAR CAMBIOS
@@ -608,19 +725,74 @@ document.getElementById(
 
 async function guardarCambios(idUsuario, usuario){
 
+    const usuarioSesion = JSON.parse(
+        sessionStorage.getItem("usuarioActivo")
+    );
+
+
+    //================================================
+    // SEGURIDAD COORDINADOR
+    //================================================
+
+    if(usuarioSesion?.rol === "coordinador"){
+
+        alert(
+            "Un coordinador no puede modificar roles ni permisos."
+        );
+
+        return;
+
+    }
+
+
     try{
 
+
         const rol = document.getElementById(
-
             "txtRol"
-
         ).value;
 
-        const permisoMantenimiento = document.getElementById(
 
-            "chkMantenimiento"
 
-        ).checked;
+        const permisos = {
+
+            dashboard:
+            document.getElementById("permDashboard")?.checked || false,
+
+
+            empleados:
+            document.getElementById("permEmpleados")?.checked || false,
+
+
+            puntosVenta:
+            document.getElementById("permPuntosVenta")?.checked || false,
+
+
+            horas:
+            document.getElementById("permHoras")?.checked || false,
+
+
+            reportes:
+            document.getElementById("permReportes")?.checked || false,
+
+
+            usuarios:
+            document.getElementById("permUsuarios")?.checked || false,
+
+
+            configuracion:
+            document.getElementById("permConfiguracion")?.checked || false,
+            entradasSalidas:
+document.getElementById("permEntradas")?.checked || false,
+
+
+backup:
+document.getElementById("permBackup")?.checked || false,
+            
+
+        };
+
+
 
         await updateDoc(
 
@@ -630,21 +802,26 @@ async function guardarCambios(idUsuario, usuario){
 
                 rol,
 
-                permisoMantenimiento
+                permisos
 
             }
 
         );
 
+
+
         usuario.rol = rol;
 
-        usuario.permisoMantenimiento = permisoMantenimiento;
+        usuario.permisos = permisos;
+
+
 
         alert(
 
             "Cambios guardados correctamente."
 
         );
+
 
     }
 
@@ -741,10 +918,10 @@ if(!confirmar){
 
 async function restablecerClave(idUsuario, usuario){
 
+
+
     const confirmar = confirm(
-
-        `¿Desea restablecer la contraseña de ${usuario.nombre}?`
-
+        "¿Desea restablecer la contraseña de " + usuario.nombre + "?"
     );
 
     if(!confirmar){
@@ -754,21 +931,14 @@ async function restablecerClave(idUsuario, usuario){
     }
 
     try{
-//----------------------------------------------------
-// CONTRASEÑA TEMPORAL
-//----------------------------------------------------
 
-const claveTemporal =
+        const claveTemporal =
+            "SICA" +
+            Math.floor(
+                1000 + Math.random()*9000
+            );
 
-    "SICA" +
 
-    Math.floor(
-
-        1000 +
-
-        Math.random()*9000
-
-    );
         await updateDoc(
 
             doc(db,"usuarios",idUsuario),
@@ -777,23 +947,19 @@ const claveTemporal =
 
                 clave: claveTemporal,
 
-                primerIngreso: true
+                primerIngreso:true
 
             }
 
         );
 
-        
 
-           alert(
+        alert(
+            "Contraseña restablecida correctamente.\n\n" +
+            "Contraseña temporal: " +
+            claveTemporal
+        );
 
-    "Contraseña restablecida correctamente.\n\n" +
-
-    "Contraseña temporal: " +
-
-    claveTemporal
-
-);
 
     }
 
@@ -802,9 +968,7 @@ const claveTemporal =
         console.error(error);
 
         alert(
-
             "No fue posible restablecer la contraseña."
-
         );
 
     }
@@ -817,7 +981,8 @@ const claveTemporal =
 async function eliminarUsuario(idUsuario, usuario){
 
     const confirmar = confirm(
-        `¿Está seguro de eliminar al usuario ${usuario.nombre}?\n\nEsta acción no se puede deshacer.`
+        "¿Está seguro de eliminar al usuario " + usuario.nombre +
+        "?\n\nEsta acción no se puede deshacer."
     );
 
     if(!confirmar) return;
@@ -829,7 +994,6 @@ async function eliminarUsuario(idUsuario, usuario){
         );
 
         alert("Usuario eliminado correctamente.");
-
         document.getElementById("resultadoUsuarios").innerHTML = `
             <div class="panelCard" style="text-align:center;padding:40px;">
                 <i class="fa-solid fa-circle-check"
@@ -852,6 +1016,161 @@ async function eliminarUsuario(idUsuario, usuario){
         console.error(error);
 
         alert("No fue posible eliminar el usuario.");
+
+    }
+}
+//====================================================
+// MIGRACIÓN MASIVA DE PERMISOS POR ROL
+// SOLO ADMINISTRADOR
+//====================================================
+
+export async function actualizarPermisosPorRol(){
+
+    const usuarioSesion = JSON.parse(
+        sessionStorage.getItem("usuarioActivo")
+    );
+
+
+    if(usuarioSesion?.rol !== "administrador"){
+
+        alert(
+            "Solo el administrador puede ejecutar esta actualización."
+        );
+
+        return;
+    }
+
+
+    const confirmar = confirm(
+        "¿Desea actualizar los permisos de todos los usuarios según su rol?"
+    );
+
+
+    if(!confirmar) return;
+
+
+    try{
+
+
+        const usuarios = await getDocs(
+            collection(db,"usuarios")
+        );
+
+
+        let actualizados = 0;
+
+
+        for(const usuarioDoc of usuarios.docs){
+
+
+            const usuario = usuarioDoc.data();
+
+
+            // NO TOCAR ADMINISTRADORES
+
+            if(usuario.rol === "administrador"){
+
+                continue;
+
+            }
+
+
+
+            let permisos = {};
+
+
+
+            //=============================
+            // OPERADOR
+            //=============================
+
+            if(usuario.rol === "operador"){
+
+
+                permisos = {
+
+                    entradasSalidas:true,
+
+                    horas:false,
+                    usuarios:false,
+                    empleados:false,
+                    puntosVenta:false,
+                    dashboard:false,
+                    backup:false,
+                    mantenimiento:false,
+                    reportes:false,
+                    configuracion:false
+
+                };
+
+            }
+
+
+
+            //=============================
+            // COORDINADOR
+            //=============================
+
+            if(usuario.rol === "coordinador"){
+
+
+                permisos = {
+
+                    usuarios:true,
+                    empleados:true,
+                    puntosVenta:true,
+                    reportes:true,
+                    entradasSalidas:true,
+
+                    horas:false,
+
+                    dashboard:false,
+                    backup:false,
+                    mantenimiento:false,
+                    configuracion:false
+
+                };
+
+            }
+
+
+
+            await updateDoc(
+
+                doc(
+                    db,
+                    "usuarios",
+                    usuarioDoc.id
+                ),
+
+                {
+                    permisos
+                }
+
+            );
+
+
+            actualizados++;
+
+
+        }
+
+
+
+        alert(
+            "Proceso terminado.\nUsuarios actualizados: "
+            + actualizados
+        );
+
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Error actualizando permisos."
+        );
 
     }
 

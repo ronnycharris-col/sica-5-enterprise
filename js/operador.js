@@ -176,17 +176,17 @@ function iniciarBuscadorPuntos() {
 
         const encontrados = puntosVenta.filter((punto) => {
 
-            return (
+    return (
 
-                punto.nombre.toLowerCase().includes(texto)
+        (punto.nombre || "").toLowerCase().includes(texto)
 
-                ||
+        ||
 
-                punto.codigo.toString().includes(texto)
+        String(punto.codigo || "").includes(texto)
 
-            );
+    );
 
-        });
+});
 
         if (encontrados.length === 0) {
 
@@ -678,41 +678,39 @@ if (!validarVigenciaGPS()) return;
     try {
 
         //--------------------------------------------------
-        // BUSCAR REGISTROS DEL DÍA
-        //--------------------------------------------------
+// BUSCAR ÚLTIMA ENTRADA ABIERTA
+//--------------------------------------------------
 
-        const consulta = query(
+const consulta = query(
+    collection(db, "registros"),
+    where("documento", "==", txtDocumento.value),
+    orderBy("fechaServidor", "desc")
+);
 
-            collection(db, "registros"),
+const snapshot = await getDocs(consulta);
 
-            where("documento", "==", txtDocumento.value),
+let tieneEntrada = false;
+let tieneSalida = false;
 
-            where("fecha", "==", new Date().toLocaleDateString("es-CO"))
+snapshot.forEach((doc) => {
 
-        );
+    if (tieneEntrada) return;
 
-        const snapshot = await getDocs(consulta);
+    const registro = doc.data();
 
-        let tieneEntrada = false;
-        let tieneSalida = false;
+    if (registro.tipo === "Entrada") {
 
-        snapshot.forEach((doc) => {
+        tieneEntrada = true;
 
-            const registro = doc.data();
+    }
 
-            if (registro.tipo === "Entrada") {
+    if (registro.tipo === "Salida") {
 
-                tieneEntrada = true;
+        tieneSalida = true;
 
-            }
+    }
 
-            if (registro.tipo === "Salida") {
-
-                tieneSalida = true;
-
-            }
-
-        });
+});
 
         //--------------------------------------------------
         // VALIDACIONES

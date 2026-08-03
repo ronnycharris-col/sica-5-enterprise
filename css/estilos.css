@@ -1172,8 +1172,371 @@ RCH SYSTEMS LOGIN
     font-weight:350;
 
 }
+/* ACCIONES TABLA EMPLEADOS */
+
+.acciones{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+}
+
+
+.acciones button{
+
+    width:36px;
+    height:36px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:16px;
+
+}
+
+
+.btn-ver{
+
+    background:#2563eb;
+    color:white;
+
+}
+
+
+.btn-editar{
+
+    background:#f59e0b;
+    color:white;
+
+}
+
+
+.btn-eliminar{
+
+    background:#dc2626;
+    color:white;
+
+}
+
+
+.acciones button:hover{
+
+    transform:scale(1.12);
+
+}
+.tooltip{
+
+position:relative;
+
+}
+
+
+.tooltip-text{
+
+visibility:hidden;
+
+position:absolute;
+
+bottom:45px;
+left:50%;
+
+transform:translateX(-50%);
+
+background:#1f2937;
+color:white;
+
+padding:6px 10px;
+
+border-radius:6px;
+
+font-size:12px;
+
+white-space:nowrap;
+
+z-index:1000;
+
+}
+
+
+.tooltip:hover .tooltip-text{
+
+visibility:visible;
+
+}
+
+/* BOTONES ACCIONES TABLA */
+
+/* ==============================
+   BOTONES DE ACCIÓN EMPLEADOS
+   ============================== */
+
+
+.btn-icon{
+
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    border:none;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    margin:3px;
+
+    font-size:16px;
+
+}
+
+
+.btn-icon i{
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+
+/* VER DETALLE */
+
+.btnAzul{
+
+    background:#2563eb;
+
+}
+
+
+
+/* EDITAR */
+
+.btnAmarillo{
+
+    background:#f59e0b;
+
+}
+
+
+
+/* CREAR USUARIO */
+
+.btnVerde{
+
+    background:#16a34a;
+
+}
+
+
+
+/* ELIMINAR */
+
+.btnRojo{
+
+    background:#dc2626;
+
+}
+
+
+
+/* EFECTO AL PASAR MOUSE */
+
+.btn-icon:hover{
+
+    transform:scale(1.18);
+
+    box-shadow:0 5px 12px rgba(0,0,0,0.35);
+
+}
+
+
+
+/* TEXTO FLOTANTE */
+
+.btn-icon{
+    position:relative;
+}
+
+
+.btn-icon::after{
+
+    content:attr(data-tooltip);
+
+    position:absolute;
+
+    top:-45px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:#000;
+
+    color:#fff;
+
+    padding:8px 12px;
+
+    border-radius:8px;
+
+    font-size:14px;
+
+    font-weight:900;
+
+    white-space:nowrap;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.2s;
+
+   z-index:99999;
+
+}
+
+
+.btn-icon:hover::after{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
 
 
 /*====================================================
 FIN SICA 5.1
 ====================================================*/
+/* Ajuste tooltip botón eliminar */
+
+.btn-eliminar::after{
+
+    left:auto;
+
+    right:0;
+
+    transform:none;
+
+}
+@keyframes mostrarTooltip{
+
+    from{
+
+        opacity:0;
+        margin-top:8px;
+
+    }
+
+    to{
+
+        opacity:1;
+        margin-top:0;
+
+    }
+
+}
+/*====================================
+  BUSCADOR PUNTO DE VENTA
+====================================*/
+
+#listaPuntos{
+
+    background:white;
+
+    color:#003b8f;
+
+    border-radius:8px;
+
+    max-height:220px;
+
+    overflow-y:auto;
+
+    position:absolute;
+
+    width:100%;
+
+    z-index:9999;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+
+}
+
+
+.opcionPunto{
+
+    padding:10px;
+
+    cursor:pointer;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+
+.opcionPunto:hover{
+
+    background:#f5d24f;
+
+    color:#000;
+
+}
+.btnAccion{
+
+    padding:8px 12px;
+    border:none;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    margin:3px;
+
+}
+
+
+.btnAzul{
+    background:#2563eb;
+}
+
+
+.btnAmarillo{
+    background:#f59e0b;
+}
+
+
+.btnRojo{
+    background:#dc2626;
+}
+.btn-icon{
+
+    width:38px;
+    height:38px;
+    border-radius:50%;
+
+    border:none;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:0 5px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+.btn-icon i{
+
+    color:white;
+
+}
+

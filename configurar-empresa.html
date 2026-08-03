@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Configurar Empresa - SICA Global</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.card{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 10px #ccc;
+
+}
+
+
+h1{
+    color:#0b57d0;
+}
+
+
+.modulo{
+
+    display:flex;
+    justify-content:space-between;
+    padding:12px;
+    border-bottom:1px solid #ddd;
+
+}
+
+
+button{
+
+    background:#0b57d0;
+    color:white;
+    padding:10px 20px;
+    border:0;
+    border-radius:6px;
+    cursor:pointer;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>
+SICA Enterprise - Configuración Empresa
+</h1>
+
+
+<div class="card">
+
+
+<h2 id="nombreEmpresa">
+Cargando...
+</h2>
+
+
+<p>
+Código:
+<strong id="codigoEmpresa"></strong>
+</p>
+
+
+<p>
+Plan:
+<strong id="planEmpresa"></strong>
+</p>
+
+
+<h3>
+Módulos habilitados
+</h3>
+
+
+
+<div class="modulo">
+<span>Dashboard</span>
+<input type="checkbox" id="dashboard">
+</div>
+
+
+<div class="modulo">
+<span>Empleados</span>
+<input type="checkbox" id="empleados">
+</div>
+
+
+<div class="modulo">
+<span>Puntos de Venta</span>
+<input type="checkbox" id="puntosVenta">
+</div>
+
+
+<div class="modulo">
+<span>Horas</span>
+<input type="checkbox" id="horas">
+</div>
+
+
+<div class="modulo">
+<span>Reportes</span>
+<input type="checkbox" id="reportes">
+</div>
+
+
+<div class="modulo">
+<span>Liquidación</span>
+<input type="checkbox" id="liquidacion">
+</div>
+
+
+<div class="modulo">
+<span>Nómina</span>
+<input type="checkbox" id="nomina">
+</div>
+
+<div class="modulo">
+    <label>
+        Operadores
+    </label>
+    <input type="checkbox" id="operadores">
+</div>
+
+<div class="modulo">
+    <label>
+        Usuarios
+    </label>
+    <input type="checkbox" id="usuarios">
+</div>
+
+<div class="modulo">
+    <label>
+        Seguridad
+    </label>
+    <input type="checkbox" id="seguridad">
+</div>
+
+<div class="modulo">
+    <label>
+        Auditoría
+    </label>
+    <input type="checkbox" id="auditoria">
+</div>
+
+<div class="modulo">
+    <label>
+        Configuración
+    </label>
+    <input type="checkbox" id="configuracion">
+</div>
+
+<div class="modulo">
+    <label>
+        Respaldo
+    </label>
+    <input type="checkbox" id="respaldo">
+</div>
+
+<div class="modulo">
+    <label>
+        Calendario
+    </label>
+    <input type="checkbox" id="calendario">
+</div>
+<br>
+
+
+<button id="guardar">
+Guardar cambios
+</button>
+
+
+</div>
+
+
+
+<script type="module" src="js/configurar-empresa.js"></script>
+
+
+</body>
+
+
+</html>

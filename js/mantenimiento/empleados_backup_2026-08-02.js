@@ -32,18 +32,7 @@ let idEmpleadoActual = null;
 //====================================================
 
 export function mostrarModuloEmpleados(panel){
-if(!document.querySelector('link[href*="font-awesome"]')){
 
-    const fontAwesome = document.createElement("link");
-
-    fontAwesome.rel = "stylesheet";
-
-    fontAwesome.href =
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css";
-
-    document.head.appendChild(fontAwesome);
-
-}
     panel.innerHTML = `
 
         <div class="panelCard">
@@ -470,10 +459,7 @@ if(texto === ""){
 
 
             const empleado = registro.data();
-            if (empleado.documento === "1041694528") {
-    console.log("DANIELA COMPLETA:", JSON.stringify(empleado, null, 2));
-}
-            console.log(registro.id, empleado);
+
 
             const documento = 
                 String(empleado.documento || "")
@@ -767,25 +753,18 @@ window.cargarEmpleados = cargarEmpleados;
 
             const empleado = registro.data();
 
-if (empleado.documento === "1041694528") {
-    console.log("DANIELA:", empleado);
-}
 
 
+            const punto =
 
-            console.log("Empleado:", empleado);
+                empleado.puntoVenta ||
 
-const punto =
-    empleado.puntoVenta ??
-    empleado.puntoventa ??
-    empleado.punto ??
-    "(VACÍO)";
+                empleado.puntoventa ||
 
-if (empleado.documento === "1041694528") {
-    console.log("PUNTO CALCULADO:", punto);
-}
+                empleado.punto ||
 
-console.log("Punto detectado:", punto);
+                "-";
+
 
 
             const estado =
@@ -993,25 +972,8 @@ window.editarEmpleado = async function(id){
             empleado.nombre || "";
 
 
-        const punto =
-
-    empleado.puntoVenta ||
-
-    empleado.puntoventa ||
-
-    empleado.punto ||
-
-    "";
-
-document.getElementById("txtPunto").value = punto;
-
-const buscarPunto = document.getElementById("buscarPunto");
-
-if(buscarPunto){
-
-    buscarPunto.value = punto;
-
-}
+        document.getElementById("txtPunto").value =
+            empleado.puntoVenta || "";
 
 
         document.getElementById("txtEstado").value =

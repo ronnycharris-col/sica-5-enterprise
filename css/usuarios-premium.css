@@ -1,0 +1,655 @@
+/* ==========================================
+   SICA ENTERPRISE 6.0
+   USUARIOS PREMIUM
+========================================== */
+
+
+body{
+
+    font-family:'Poppins',Arial,sans-serif;
+    background:#0455b5;
+    margin:0;
+    padding:40px;
+    color:#1d3557;
+
+}
+
+
+
+.contenedor-usuarios{
+
+    max-width:1200px;
+    margin:auto;
+
+}
+
+
+
+.header-usuarios{
+
+    background:linear-gradient(
+        135deg,
+        #0757b8,
+        #0d47a1
+    );
+
+    color:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+    margin-bottom:30px;
+
+}
+
+
+
+.header-usuarios h1{
+
+    margin:0;
+    font-size:32px;
+
+}
+
+
+
+.card-usuarios{
+
+    background:white;
+    border-radius:20px;
+    padding:30px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.20);
+
+}
+
+
+
+.titulo-seccion{
+
+    color:#0b57d0;
+    font-size:24px;
+    margin-bottom:20px;
+
+}
+
+
+
+.usuario-card{
+
+    border-radius:18px;
+    padding:25px;
+
+    background:#f7faff;
+
+    border-left:6px solid #0b57d0;
+
+    margin-top:20px;
+
+}
+
+
+
+.usuario-card h2{
+
+    margin:0;
+    color:#0b57d0;
+
+}
+
+
+
+.badge{
+
+    display:inline-block;
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+    font-weight:bold;
+
+    margin-top:10px;
+
+}
+
+
+
+.badge.activo{
+
+    background:#d4edda;
+    color:#1b7a35;
+
+}
+
+
+
+.permisos{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+
+
+.permiso{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    box-shadow:0 3px 10px #ddd;
+
+}
+
+
+
+.permiso label{
+
+    font-weight:600;
+
+}
+
+
+
+input[type="checkbox"]{
+
+    transform:scale(1.4);
+
+    margin-right:10px;
+
+}
+
+
+
+.botones{
+
+    margin-top:30px;
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+.btn-premium{
+
+    background:#0b57d0;
+
+    color:white;
+
+    border:0;
+
+    padding:12px 25px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+
+
+.btn-premium:hover{
+
+    transform:translateY(-2px);
+
+}
+/* ==========================================
+   FICHA USUARIO PREMIUM
+========================================== */
+
+
+.usuarioPerfil{
+
+    display:flex;
+    align-items:center;
+    gap:25px;
+
+    background:#f5f9ff;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    border-left:6px solid #0b57d0;
+
+}
+
+
+
+.avatarUsuario{
+
+    width:75px;
+    height:75px;
+
+    border-radius:50%;
+
+    background:#0b57d0;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:35px;
+
+}
+
+
+
+.datosUsuario h3{
+
+    color:#0b57d0;
+
+}
+
+
+
+.estadoActivo{
+
+    margin-left:auto;
+
+    background:#d4edda;
+
+    color:#1b7a35;
+
+    padding:10px 20px;
+
+    border-radius:20px;
+
+    font-weight:bold;
+
+}
+
+
+
+.estadoInactivo{
+
+    margin-left:auto;
+
+    background:#ffd6d6;
+
+    color:#c62828;
+
+    padding:10px 20px;
+
+    border-radius:20px;
+
+    font-weight:bold;
+
+}
+
+
+
+.permisosGrid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(200px,1fr));
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+
+
+.permisoCard{
+
+    background:#f8fbff;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+
+.permisoCard:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+
+.permisoCard input{
+
+    transform:scale(1.4);
+
+}
+
+
+
+.tituloPermisos{
+
+    color:#0b57d0;
+
+    margin-top:30px;
+
+}
+
+
+
+.botones{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
+
+}
+
+
+
+.btn-premium{
+
+    background:#0b57d0;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 22px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+
+
+.btn-premium:hover{
+
+    opacity:.85;
+
+}
+/* ==========================================
+   SWITCH PREMIUM PERMISOS
+========================================== */
+
+
+.permisoCard{
+
+    background:linear-gradient(
+        145deg,
+        #ffffff,
+        #f3f8ff
+    );
+
+    border:1px solid #e1e9f5;
+
+    transition:.3s;
+
+}
+
+
+.permisoCard:hover{
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+}
+
+
+/* CHECKBOX MODERNO */
+
+.permisoCard input[type="checkbox"]{
+
+    appearance:none;
+
+    width:45px;
+    height:24px;
+
+    background:#cfd8e3;
+
+    border-radius:20px;
+
+    position:relative;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.permisoCard input[type="checkbox"]::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:18px;
+    height:18px;
+
+    background:white;
+
+    border-radius:50%;
+
+    top:3px;
+    left:3px;
+
+    transition:.3s;
+
+}
+
+
+
+.permisoCard input[type="checkbox"]:checked{
+
+    background:#16a34a;
+
+}
+
+
+
+.permisoCard input[type="checkbox"]:checked::before{
+
+    transform:translateX(21px);
+
+}
+
+
+
+/* TITULO DEL PERMISO */
+
+.permisoCard label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    color:#16345c;
+
+    font-weight:600;
+
+}
+/* ==========================================
+   SELECTOR DE ROL PREMIUM
+========================================== */
+
+
+#txtRol{
+
+    appearance:none;
+
+    background:#f5f9ff;
+
+    border:2px solid #dbe7f7;
+
+    border-radius:12px;
+
+    padding:12px 45px 12px 15px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#0b57d0;
+
+    cursor:pointer;
+
+    min-width:220px;
+
+}
+
+
+#txtRol:hover{
+
+    border-color:#0b57d0;
+
+}
+
+
+#txtRol:focus{
+
+    outline:none;
+
+    box-shadow:
+    0 0 0 3px rgba(11,87,208,.15);
+
+}
+
+
+
+/* CONTENEDOR DEL ROL */
+
+.datosUsuario label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-weight:700;
+
+    color:#16345c;
+
+}
+/* ==========================================
+   ROL PREMIUM
+========================================== */
+
+
+.rol-box{
+
+    width:320px;
+
+    background:#f5f9ff;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    border-left:5px solid #0b57d0;
+
+    margin-top:15px;
+
+}
+
+
+
+.rol-box label{
+
+    display:block;
+
+    font-weight:700;
+
+    color:#0b57d0;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.rol-box select{
+
+    appearance:auto;
+
+    width:100%;
+
+    height:42px;
+
+    padding:8px 12px;
+
+    border-radius:10px;
+
+    border:2px solid #dbe7ff;
+
+    background:white;
+
+    color:#0b57d0;
+
+    font-weight:600;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+}
+
+
+
+.rol-box select:hover{
+
+    border-color:#0b57d0;
+
+}
+.btn-principal{
+
+    background:#ffd84d;
+    color:#003b8f;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+
+}
+
+
+.btn-principal:hover{
+
+    transform:scale(1.03);
+
+}

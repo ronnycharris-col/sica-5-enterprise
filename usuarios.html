@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+<title>
+SICA Enterprise - Usuarios
+</title>
+
+
+<!-- Fuente -->
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+
+<!-- Iconos -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+<!-- Diseño Premium -->
+
+<link rel="stylesheet"
+href="css/usuarios-premium.css">
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="contenedor-usuarios">
+
+
+
+<header class="header-usuarios">
+
+
+<h1>
+
+<i class="fa-solid fa-users-gear"></i>
+
+Gestión de Usuarios
+
+</h1>
+
+
+<p>
+
+Administración de usuarios, roles y permisos
+de SICA Enterprise.
+
+</p>
+
+
+</header>
+
+
+
+
+
+<div class="card-usuarios">
+
+
+<h2 class="titulo-seccion">
+
+Usuarios de la empresa
+
+</h2>
+
+
+
+<div id="listaUsuarios">
+
+
+Cargando usuarios...
+
+</div>
+
+<br><br>
+
+<button class="btn-principal" onclick="location.href='menu.html'">
+
+    <i class="fa-solid fa-house"></i>
+    Volver al Inicio
+
+</button>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script type="module">
+
+
+import { mostrarModuloUsuarios } 
+from "./js/mantenimiento/usuarios.js";
+
+
+
+const panel = document.getElementById(
+    "listaUsuarios"
+);
+
+
+
+mostrarModuloUsuarios(panel);
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

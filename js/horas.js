@@ -372,12 +372,11 @@ function mostrarTabla(resultado) {
     // TOTAL
     //====================================
 
-    lblTotal.textContent =
+    document.getElementById("totalRegistros").textContent =
 
-        "Registros encontrados: " +
+    "Registros encontrados: " +
 
-        resultado.length;
-
+    resultado.length;
 
     console.log(
 
@@ -387,21 +386,7 @@ function mostrarTabla(resultado) {
 
 }
 
-    //====================================
-    // TOTAL
-    //====================================
-
-    lblTotal.textContent =
-
-        "Registros encontrados: " +
-
-        resultado.length;
-
-    console.log(
-
-        "Tabla actualizada correctamente."
-
-    );
+    
 
 
 //====================================================

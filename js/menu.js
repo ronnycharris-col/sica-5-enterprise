@@ -1,8 +1,9 @@
 //====================================================
 // SICA 5.0 ENTERPRISE
 // MENU
-// PARTE 1 DE 3
+// PARTE 1
 //====================================================
+
 
 //====================================================
 // IMPORTACIONES
@@ -10,12 +11,15 @@
 
 import { db } from "./firebase.js";
 
+import { obtenerModulosEmpresa } from "./motor-global.js";
+
 import {
 
     doc,
     getDoc
 
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
 
 //====================================================
 // SESIÓN
@@ -27,55 +31,76 @@ const usuarioActivo = JSON.parse(
 
 );
 
+
+
 if(!usuarioActivo){
 
     alert("Debe iniciar sesión.");
 
     window.location.href = "index.html";
 
-    throw new Error("Sesión no encontrada.");
+    throw new Error(
+        "Sesión no encontrada"
+    );
 
 }
+
+
+//====================================================
+// PERMISOS
+//====================================================
+
+let permisos = usuarioActivo.permisos || {};
+
 
 //====================================================
 // CONTROLES
 //====================================================
 
 const nombreUsuario =
-
 document.getElementById("nombreUsuario");
+
 
 const btnDashboard =
 document.getElementById("btnDashboard");
 
-const btnPresentes =
-document.getElementById("btnPresentes");
 
 const btnUsuarios =
 document.getElementById("btnUsuarios");
 
+
 const btnEmpleados =
 document.getElementById("btnEmpleados");
+
 
 const btnPuntos =
 document.getElementById("btnPuntos");
 
+
 const btnOperador =
 document.getElementById("btnOperador");
+
 
 const btnConsultar =
 document.getElementById("btnConsultar");
 
+
 const btnBackup =
 document.getElementById("btnBackup");
+
+
 const btnHoras =
 document.getElementById("btnHoras");
+
 
 const btnMantenimiento =
 document.getElementById("btnMantenimiento");
 
+
 const btnCerrarSesion =
 document.getElementById("btnCerrarSesion");
+
+
 
 //====================================================
 // MOSTRAR USUARIO
@@ -87,186 +112,179 @@ if(nombreUsuario){
 
         <strong>${usuarioActivo.nombre}</strong><br>
 
-        ${usuarioActivo.rol.charAt(0).toUpperCase() +
+        ${usuarioActivo.rol
+        .charAt(0)
+        .toUpperCase()
+        +
         usuarioActivo.rol.slice(1)}
 
     `;
 
 }
 
+
 //====================================================
-// OCULTAR MANTENIMIENTO
+// MANTENIMIENTO CONTROLADO POR PERMISOS
 //====================================================
 
-if(btnMantenimiento){
 
-    btnMantenimiento.style.display = "none";
+//====================================================
+// INICIO DEL MENU
+//====================================================
+
+async function iniciarMenu(){
+
+
+    await cargarPermisos();
+
+
+    await cargarModulosGlobales();
+
+
+    document.body.style.visibility="visible";
+
 
 }
+
+
+iniciarMenu();
+//====================================================
+// CARGAR MÓDULOS GLOBALES
+//====================================================
+
+async function cargarModulosGlobales(){
+
+
+    const modulos = await obtenerModulosEmpresa();
+
+
+    console.log(
+        "MÓDULOS RECIBIDOS:",
+        modulos
+    );
+
+
+    if(!modulos){
+
+        console.error(
+            "No llegaron módulos"
+        );
+
+        return;
+
+    }
+
+
+
+    const botones = {
+
+
+        dashboard: btnDashboard,
+
+        empleados: btnEmpleados,
+
+        puntosVenta: btnPuntos,
+
+        horas: btnHoras,
+
+        reportes: btnConsultar
+
+
+    };
+
+
+
+    Object.keys(botones).forEach(modulo=>{
+
+    const boton = botones[modulo];
+
+    if(
+        boton &&
+        modulos[modulo] === false
+    ){
+        boton.style.display = "none";
+    }
+
+});
+
+
+    console.log(
+        "MÓDULOS APLICADOS:",
+        modulos
+    );
+
+
+}
+
+
+
 //====================================================
 // CARGAR PERMISOS DEL USUARIO
 //====================================================
 
-cargarPermisos();
-
 async function cargarPermisos(){
 
-    try{
 
-        const referencia = doc(
+    permisos = usuarioActivo.permisos || {};
 
-            db,
-            "usuarios",
-            usuarioActivo.usuario
-
-        );
-
-        const documento = await getDoc(
-
-            referencia
-
-        );
-
-        if(!documento.exists()){
-
-            console.warn(
-
-                "Usuario no encontrado."
-
-            );
-
-            return;
-
-        }
-
-        const datos = documento.data();
-
-        console.log(
-
-            "Permisos cargados:",
-
-            datos
-
-        );
-
-        //------------------------------------------------
-        // BOTÓN MANTENIMIENTO
-        //------------------------------------------------
-
-        if(
-
-            datos.permisoMantenimiento === true
-
-        ){
-
-            if(btnMantenimiento){
-
-                btnMantenimiento.style.display =
-
-                    "block";
-
-            }
-
-        }
-
-    }
-
-    catch(error){
-
-        console.error(
-
-            "Error cargando permisos:",
-
-            error
-
-        );
-
-    }
-
-}
-
-//====================================================
-// PERMISOS POR ROL
-//====================================================
-
-//----------------------------------------------------
-// OPERADOR
-//----------------------------------------------------
-
-if(usuarioActivo.rol === "operador"){
-
-    if(btnDashboard) btnDashboard.style.display = "none";
-
-    if(btnPresentes) btnPresentes.style.display = "none";
-
-    if(btnUsuarios) btnUsuarios.style.display = "none";
-
-    if(btnEmpleados) btnEmpleados.style.display = "none";
-
-    if(btnPuntos) btnPuntos.style.display = "none";
-
-    if(btnConsultar) btnConsultar.style.display = "none";
-
-    if(btnBackup) btnBackup.style.display = "none";
-
-    if(btnHoras) btnHoras.style.display = "none";
     
-    if(btnMantenimiento){
 
-        btnMantenimiento.style.display = "none";
+    const botones = {
 
+
+        usuarios:"btnUsuarios",
+
+        empleados:"btnEmpleados",
+
+        puntosVenta:"btnPuntos",
+
+        entradasSalidas:"btnOperador",
+
+        dashboard:"btnDashboard",
+
+        reportes:"btnConsultar",
+
+        horas:"btnHoras",
+
+        backup:"btnBackup",
+
+        mantenimiento:"btnMantenimiento"
+
+
+    };
+
+
+
+    Object.keys(botones).forEach(permiso => {
+
+    const boton = document.getElementById(botones[permiso]);
+
+    
+
+    if (
+        boton &&
+        permisos[permiso] !== true
+    ){
+        boton.style.display = "none";
     }
 
-}
 
-//----------------------------------------------------
-// COORDINADOR
-//----------------------------------------------------
 
-if(usuarioActivo.rol === "coordinador"){
 
-    if(btnBackup){
+    });
 
-        btnBackup.style.display = "none";
 
-    }
 
-    const tituloUsuarios =
+    
 
-        document.querySelector(
-
-            "#btnUsuarios h3"
-
-        );
-
-    if(tituloUsuarios){
-
-        tituloUsuarios.textContent =
-
-            "Operadores";
-
-    }
 
 }
-//====================================================
-// ADMINISTRADOR
-//====================================================
-
-if(usuarioActivo.rol === "administrador"){
-
-    console.log(
-
-        "Administrador autenticado."
-
-    );
-
-}
-
 //====================================================
 // CERRAR SESIÓN
 //====================================================
 
 if(btnCerrarSesion){
+
 
     btnCerrarSesion.addEventListener(
 
@@ -274,21 +292,24 @@ if(btnCerrarSesion){
 
         ()=>{
 
+
             sessionStorage.removeItem(
-
                 "usuarioActivo"
-
             );
 
-            window.location.href =
 
+            window.location.href =
                 "index.html";
+
 
         }
 
     );
 
+
 }
+
+
 
 //====================================================
 // INICIALIZACIÓN
@@ -302,11 +323,15 @@ console.log(
 
 );
 
+
+
 console.log(
 
     "Menú cargado correctamente."
 
 );
+
+
 
 console.log(
 
