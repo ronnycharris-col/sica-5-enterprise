@@ -530,43 +530,30 @@ if (!validarVigenciaGPS()) return;
     //--------------------------------------------------
 
     try {
+const consulta = query(
+    collection(db, "registros"),
+    where("documento", "==", txtDocumento.value),
+    orderBy("fechaServidor", "desc")
+);
 
-        const consulta = query(
-            collection(db, "registros"),
-            where("documento", "==", txtDocumento.value),
-            where("fecha", "==", new Date().toLocaleDateString("es-CO"))
-        );
+const snapshot = await getDocs(consulta);
 
-        const snapshot = await getDocs(consulta);
+let ultimoRegistro = null;
 
-        let tieneEntrada = false;
-let tieneSalida = false;
+if (!snapshot.empty) {
 
-        snapshot.forEach((doc) => {
+    ultimoRegistro = snapshot.docs[0].data();
 
-            const registro = doc.data();
+}
 
-            if (registro.tipo === "Entrada") {
+if (
+    ultimoRegistro &&
+    ultimoRegistro.tipo === "Entrada"
+) {
 
-                tieneEntrada = true;
-
-            }
-
-            if (registro.tipo === "Salida") {
-
-                tieneSalida = true;
-
-            }
-
-        });
-
-        //--------------------------------------------------
-// VALIDAR UNA SOLA ENTRADA POR DÍA
-//--------------------------------------------------
-
-if (tieneEntrada) {
-
-    alert("Ya registró la entrada de hoy. Solo se permite una entrada por día.");
+    alert(
+        "Tiene una entrada pendiente. Debe registrar primero la salida antes de registrar una nueva entrada."
+    );
 
     return;
 
